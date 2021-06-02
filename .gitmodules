@@ -1,0 +1,3 @@
+[submodule "tester_unreal/Plugins/hIK_unreal"]
+	path = tester_unreal/Plugins/hIK_unreal
+	url = https://github.com/wwxhero/hIK_unreal.git
