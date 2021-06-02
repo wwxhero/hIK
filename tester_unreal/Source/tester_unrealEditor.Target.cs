@@ -3,12 +3,12 @@
 using UnrealBuildTool;
 using System.Collections.Generic;
 
-public class tester_record_utEditorTarget : TargetRules
+public class tester_unrealEditorTarget : TargetRules
 {
-	public tester_record_utEditorTarget( TargetInfo Target) : base(Target)
+	public tester_unrealEditorTarget( TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Editor;
 		DefaultBuildSettings = BuildSettingsVersion.V2;
-		ExtraModuleNames.AddRange( new string[] { "tester_record_ut" } );
+		ExtraModuleNames.AddRange( new string[] { "tester_unreal" } );
 	}
 }

@@ -4,14 +4,14 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
-#include "tester_record_utGameModeBase.generated.h"
+#include "tester_unrealGameModeBase.generated.h"
 
 /**
- * 
+ *
  */
 UCLASS()
-class TESTER_RECORD_UT_API Atester_record_utGameModeBase : public AGameModeBase
+class TESTER_UNREAL_API Atester_unrealGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
-	
+
 };

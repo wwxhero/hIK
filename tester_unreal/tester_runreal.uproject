@@ -5,7 +5,7 @@
 	"Description": "",
 	"Modules": [
 		{
-			"Name": "tester_record_ut",
+			"Name": "tester_unreal",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
 		}
