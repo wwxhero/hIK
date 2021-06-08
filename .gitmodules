@@ -4,3 +4,7 @@
 [submodule "tester_unreal/Externals/lib_hIK"]
 	path = tester_unreal/Externals/lib_hIK
 	url = https://github.com/wwxhero/lib_hIK.git
+[submodule "tester_unreal/Externals/bvh_posture_reset"]
+	path = tester_unreal/Externals/bvh_posture_reset
+	url = https://github.com/wwxhero/bvh11.git
+
