@@ -1,10 +1,10 @@
-[submodule "tester_unreal/Plugins/hIK_unreal"]
+[submodule "tester_unreal_blank/Plugins/hIK_unreal"]
 	path = tester_unreal_blank/Plugins/hIK_unreal
 	url = https://github.com/wwxhero/hIK_unreal.git
 
-[submodule "tester_unreal/Externals/lib_hIK"]
-	path = tester_unreal_blank/Externals/lib_hIK
+[submodule "Externals/lib_hIK"]
+	path = Externals/lib_hIK
 	url = https://github.com/wwxhero/lib_hIK.git
-[submodule "tester_unreal/Externals/bvh_posture_reset"]
-	path = tester_unreal_blank/Externals/bvh_posture_reset
+[submodule "Externals/bvh_posture_reset"]
+	path = Externals/bvh_posture_reset
 	url = https://github.com/wwxhero/bvh11
