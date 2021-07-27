@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <FKRecord>
-	<Destination file = "fbx/MakeHuman_163_cm_T.fbx">
+	<Source file = "fbx/MakeHuman_163_cm_T.fbx">
 		<!-- fbx skeletal structure:
 			MakeHuman-default-skeleton
 			Root
@@ -169,15 +169,9 @@
 		-->
 		<Scale b_name = "upperarm01_L" x = "1.0" y = "1.333" z = "1.0" />
 		<Scale b_name = "upperarm01_R" x = "1.0" y = "1.333" z = "1.0" />
-		<Target b_name = "root" />
-		<Target b_name = "lowerleg01_L" />
-		<Target b_name = "lowerleg01_R" />
-		<Target b_name = "lowerarm01_L" />
-		<Target b_name = "lowerarm01_R" />
-		<Target b_name = "head" />
-	</Destination>
+	</Source>
 
-	<Source file = "bvh/01_01_1_s6.bvh">
+	<Destination file = "htr/01_01_1_s6.htr">
 		<!-- bvh skeletal structure:
 			HIERARCHY
 			ROOT Hips
@@ -364,35 +358,41 @@
 				}
 			}
 		-->
-	</Source>
+		<EndEffecter b_name = "Hips" />
+		<EndEffecter b_name = "LeftLeg" />
+		<EndEffecter b_name = "RightLeg" />
+		<EndEffecter b_name = "LeftForeArm" />
+		<EndEffecter b_name = "RightForeArm" />
+		<EndEffecter b_name = "Head" />
+	</Destination>
 
 	<MotionPipe m11="1" m12="0" m13="0"
 				m21="0" m22="0" m23="1"
 				m31="0" m32="1" m33="0">
-			<Pair from = "Hips"				to = "root" />
-			<Pair from = "LHipJoint"		to = "pelvis_L" />
-			<Pair from = "RHipJoint"		to = "pelvis_R" />
-			<Pair from = "LowerBack"		to = "spine05" />
-			<Pair from = "LeftUpLeg"		to = "upperleg01_L" />
-			<Pair from = "RightUpLeg"		to = "upperleg01_R" />
-			<Pair from = "Spine"			to = "spine01" />
-			<Pair from = "LeftLeg"			to = "lowerleg01_L" />
-			<Pair from = "RightLeg"			to = "lowerleg01_R" />
-			<Pair from = "Neck"				to = "neck01" />
-			<Pair from = "LeftShoulder"		to = "clavicle_L" />
-			<Pair from = "RightShoulder"	to = "clavicle_R" />
-			<Pair from = "LeftFoot"			to = "foot_L" />
-			<Pair from = "RightFoot"		to = "foot_R" />
-			<Pair from = "Neck1"			to = "neck02" />
-			<Pair from = "LeftArm"			to = "upperarm01_L" />
-			<Pair from = "RightArm"			to = "upperarm01_R" />
-			<Pair from = "LeftToeBase"		to = "toe1-1_L" />
-			<Pair from = "RightToeBase"		to = "toe1-1_R" />
-			<Pair from = "Head"				to = "head" />
-			<Pair from = "LeftForeArm"		to = "lowerarm01_L" />
-			<Pair from = "RightForeArm"		to = "lowerarm01_R" />
-			<Pair from = "LeftHand"			to = "wrist_L" />
-			<Pair from = "RightHand"		to = "wrist_R" />
+			<Pair to = "Hips"			from = "root" />
+			<Pair to = "LHipJoint"		from = "pelvis_L" />
+			<Pair to = "RHipJoint"		from = "pelvis_R" />
+			<Pair to = "LowerBack"		from = "spine05" />
+			<Pair to = "LeftUpLeg"		from = "upperleg01_L" />
+			<Pair to = "RightUpLeg"		from = "upperleg01_R" />
+			<Pair to = "Spine"			from = "spine01" />
+			<Pair to = "LeftLeg"		from = "lowerleg01_L" />
+			<Pair to = "RightLeg"		from = "lowerleg01_R" />
+			<Pair to = "Neck"			from = "neck01" />
+			<Pair to = "LeftShoulder"	from = "clavicle_L" />
+			<Pair to = "RightShoulder"	from = "clavicle_R" />
+			<Pair to = "LeftFoot"		from = "foot_L" />
+			<Pair to = "RightFoot"		from = "foot_R" />
+			<Pair to = "Neck1"			from = "neck02" />
+			<Pair to = "LeftArm"		from = "upperarm01_L" />
+			<Pair to = "RightArm"		from = "upperarm01_R" />
+			<Pair to = "LeftToeBase"	from = "toe1-1_L" />
+			<Pair to = "RightToeBase"	from = "toe1-1_R" />
+			<Pair to = "Head"			from = "head" />
+			<Pair to = "LeftForeArm"	from = "lowerarm01_L" />
+			<Pair to = "RightForeArm"	from = "lowerarm01_R" />
+			<Pair to = "LeftHand"		from = "wrist_L" />
+			<Pair to = "RightHand"		from = "wrist_R" />
 	</MotionPipe>
 
 </FKRecord>
