@@ -1,5 +1,8 @@
 <?xml version="1.0" ?>
-<Kinematics>
+<MotionPipe m11="1" m12="0" m13="0"
+			m21="0" m22="0" m23="1"
+			m31="0" m32="1" m33="0">
+
 	<Source file = "fbx/MakeHuman_163_cm_T.fbx">
 		<!-- fbx skeletal structure:
 			MakeHuman-default-skeleton
@@ -366,33 +369,30 @@
 		<EndEffecter b_name = "Head" />
 	</Destination>
 
-	<MotionPipe m11="1" m12="0" m13="0"
-				m21="0" m22="0" m23="1"
-				m31="0" m32="1" m33="0">
-			<Pair to = "Hips"			from = "root" />
-			<Pair to = "LHipJoint"		from = "pelvis_L" />
-			<Pair to = "RHipJoint"		from = "pelvis_R" />
-			<Pair to = "LowerBack"		from = "spine05" />
-			<Pair to = "LeftUpLeg"		from = "upperleg01_L" />
-			<Pair to = "RightUpLeg"		from = "upperleg01_R" />
-			<Pair to = "Spine"			from = "spine01" />
-			<Pair to = "LeftLeg"		from = "lowerleg01_L" />
-			<Pair to = "RightLeg"		from = "lowerleg01_R" />
-			<Pair to = "Neck"			from = "neck01" />
-			<Pair to = "LeftShoulder"	from = "clavicle_L" />
-			<Pair to = "RightShoulder"	from = "clavicle_R" />
-			<Pair to = "LeftFoot"		from = "foot_L" />
-			<Pair to = "RightFoot"		from = "foot_R" />
-			<Pair to = "Neck1"			from = "neck02" />
-			<Pair to = "LeftArm"		from = "upperarm01_L" />
-			<Pair to = "RightArm"		from = "upperarm01_R" />
-			<Pair to = "LeftToeBase"	from = "toe1-1_L" />
-			<Pair to = "RightToeBase"	from = "toe1-1_R" />
-			<Pair to = "Head"			from = "head" />
-			<Pair to = "LeftForeArm"	from = "lowerarm01_L" />
-			<Pair to = "RightForeArm"	from = "lowerarm01_R" />
-			<Pair to = "LeftHand"		from = "wrist_L" />
-			<Pair to = "RightHand"		from = "wrist_R" />
-	</MotionPipe>
 
-</Kinematics>
+	<Pair to = "Hips"			from = "root" />
+	<Pair to = "LHipJoint"		from = "pelvis_L" />
+	<Pair to = "RHipJoint"		from = "pelvis_R" />
+	<Pair to = "LowerBack"		from = "spine05" />
+	<Pair to = "LeftUpLeg"		from = "upperleg01_L" />
+	<Pair to = "RightUpLeg"		from = "upperleg01_R" />
+	<Pair to = "Spine"			from = "spine01" />
+	<Pair to = "LeftLeg"		from = "lowerleg01_L" />
+	<Pair to = "RightLeg"		from = "lowerleg01_R" />
+	<Pair to = "Neck"			from = "neck01" />
+	<Pair to = "LeftShoulder"	from = "clavicle_L" />
+	<Pair to = "RightShoulder"	from = "clavicle_R" />
+	<Pair to = "LeftFoot"		from = "foot_L" />
+	<Pair to = "RightFoot"		from = "foot_R" />
+	<Pair to = "Neck1"			from = "neck02" />
+	<Pair to = "LeftArm"		from = "upperarm01_L" />
+	<Pair to = "RightArm"		from = "upperarm01_R" />
+	<Pair to = "LeftToeBase"	from = "toe1-1_L" />
+	<Pair to = "RightToeBase"	from = "toe1-1_R" />
+	<Pair to = "Head"			from = "head" />
+	<Pair to = "LeftForeArm"	from = "lowerarm01_L" />
+	<Pair to = "RightForeArm"	from = "lowerarm01_R" />
+	<Pair to = "LeftHand"		from = "wrist_L" />
+	<Pair to = "RightHand"		from = "wrist_R" />
+</MotionPipe>
+
