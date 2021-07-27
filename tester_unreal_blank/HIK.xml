@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<FKRecord>
+<Kinematics>
 	<Source file = "fbx/MakeHuman_163_cm_T.fbx">
 		<!-- fbx skeletal structure:
 			MakeHuman-default-skeleton
@@ -395,4 +395,4 @@
 			<Pair to = "RightHand"		from = "wrist_R" />
 	</MotionPipe>
 
-</FKRecord>
+</Kinematics>
