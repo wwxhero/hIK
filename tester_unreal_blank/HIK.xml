@@ -361,12 +361,12 @@
 				}
 			}
 		-->
-		<EndEffecter b_name = "Hips" />
-		<EndEffecter b_name = "LeftLeg" />
-		<EndEffecter b_name = "RightLeg" />
-		<EndEffecter b_name = "LeftForeArm" />
-		<EndEffecter b_name = "RightForeArm" />
-		<EndEffecter b_name = "Head" />
+		<EndEFF b_name = "Hips" />
+		<EndEFF b_name = "LeftLeg" />
+		<EndEFF b_name = "RightLeg" />
+		<EndEFF b_name = "LeftForeArm" />
+		<EndEFF b_name = "RightForeArm" />
+		<EndEFF b_name = "Head" />
 	</Destination>
 
 
