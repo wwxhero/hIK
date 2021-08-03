@@ -3,178 +3,178 @@
 			m21="0" m22="0" m23="1"
 			m31="0" m32="1" m33="0">
 
-	<Source file = "fbx/MakeHuman_163_cm_T.fbx">
+	<Destination file = "fbx/MakeHuman_163_cm_T.fbx">
 		<!-- fbx skeletal structure:
 			MakeHuman-default-skeleton
-			Root
-				spine05
-					spine04
-						spine03
-							spine02
-								breast_L
-								breast_R
-								spine01
-									clavicle_L
-										shoulder01_L
-											upperarm01_L
-												upperarm02_L
-													lowerarm01_L
-														lowerarm02_L
-															wrist_L
-																finger1-1_L
-																	finger1-2_L
-																		finger1-3_L
-																metacarpal1_L
-																	finger2-1_L
-																		finger2-2_L
-																			finger2-3_L
-																metacarpal2_L
-																	finger3-1_L
-																		finger3-2_L
-																			finger3-3_L
-																metacarpal3_L
-																	finger4-1_L
-																		finger4-2_L
-																			finger4-3_L
-																metacarpal4_L
-																	finger5-1_L
-																		finger5-2_L
-																			finger5-3_L
-									clavicle_R
-										shoulder01_R
-											upperarm01_R
-												upperarm02_R
-													lowerarm01_R
-														lowerarm02_R
-															wrist_R
-																finger1-1_R
-																	finger1-2_R
-																		finger1-3_R
-																metacarpal1_R
-																	finger2-1_R
-																		finger2-2_R
-																			finger2-3_R
-																metacarpal2_R
-																	finger3-1_R
-																		finger3-2_R
-																			finger3-3_R
-																metacarpal3_R
-																	finger4-1_R
-																		finger4-2_R
-																			finger4-3_R
-																metacarpal4_R
-																	finger5-1_R
-																		finger5-2_R
-																			finger5-3_R
-									neck01
-										neck02
-											neck03
-												head
-													jaw
-														special04
-															oris02
-																oris01
-															oris06_L
-																oris07_L
-															oris06_R
-																oris07_R
-														tongue00
-															tongue01
-																tongue02
-																	tongue03
-																		tongue04
-																		tongue07_L
-																		tongue07_R
-																	tongue06_L
-																	tongue06_R
-																tongue05_L
-																tongue05_R
-													levator02_L
-														levator03_L
-															levator04_L
-																levator05_L
-													levator02_R
-														levator03_R
-															levator04_R
-																levator05_R
-													special01
-														oris04_L
-															oris03_L
-														oris04_R
-															oris03_R
-														oris06
-															oris05
-													special03
-														levator06_L
-														levator06_R
-													special06_L
-														special05_L
-															eye_L
-															orbicularis03_L
-															orbicularis04_L
-													special06_R
-														special05_R
-															eye_R
-															orbicularis03_R
-															orbicularis04_R
-													temporalis01_L
-														oculi02_L
-															oculi01_L
-													temporalis01_R
-														oculi02_R
-															oculi01_R
-													temporalis02_L
-														risorius02_L
-															risorius03_L
-													temporalis02_R
-														risorius02_R
-															risorius03_R
-				pelvis_L
-					upperleg01_L
-						upperleg02_L
-							lowerleg01_L
-								lowerleg02_L
-									foot_L
-										toe1-1_L
-											toe1-2_L
-										toe2-1_L
-											toe2-2_L
-												toe2-3_L
-										toe3-1_L
-											toe3-2_L
-												toe3-3_L
-										toe4-1_L
-											toe4-2_L
-												toe4-3_L
-										toe5-1_L
-											toe5-2_L
-												toe5-3_L
-				pelvis_R
-					upperleg01_R
-						upperleg02_R
-							lowerleg01_R
-								lowerleg02_R
-									foot_R
-										toe1-1_R
-											toe1-2_R
-										toe2-1_R
-											toe2-2_R
-												toe2-3_R
-										toe3-1_R
-											toe3-2_R
-												toe3-3_R
-										toe4-1_R
-											toe4-2_R
-												toe4-3_R
-										toe5-1_R
-											toe5-2_R
-												toe5-3_R
+				root
+					spine05
+						spine04
+							spine03
+								spine02
+									breast_L
+									breast_R
+									spine01
+										clavicle_L
+											shoulder01_L
+												upperarm01_L
+													upperarm02_L
+														lowerarm01_L
+															lowerarm02_L
+																wrist_L
+																	finger1-1_L
+																		finger1-2_L
+																			finger1-3_L
+																	metacarpal1_L
+																		finger2-1_L
+																			finger2-2_L
+																				finger2-3_L
+																	metacarpal2_L
+																		finger3-1_L
+																			finger3-2_L
+																				finger3-3_L
+																	metacarpal3_L
+																		finger4-1_L
+																			finger4-2_L
+																				finger4-3_L
+																	metacarpal4_L
+																		finger5-1_L
+																			finger5-2_L
+																				finger5-3_L
+										clavicle_R
+											shoulder01_R
+												upperarm01_R
+													upperarm02_R
+														lowerarm01_R
+															lowerarm02_R
+																wrist_R
+																	finger1-1_R
+																		finger1-2_R
+																			finger1-3_R
+																	metacarpal1_R
+																		finger2-1_R
+																			finger2-2_R
+																				finger2-3_R
+																	metacarpal2_R
+																		finger3-1_R
+																			finger3-2_R
+																				finger3-3_R
+																	metacarpal3_R
+																		finger4-1_R
+																			finger4-2_R
+																				finger4-3_R
+																	metacarpal4_R
+																		finger5-1_R
+																			finger5-2_R
+																				finger5-3_R
+										neck01
+											neck02
+												neck03
+													head
+														jaw
+															special04
+																oris02
+																	oris01
+																oris06_L
+																	oris07_L
+																oris06_R
+																	oris07_R
+															tongue00
+																tongue01
+																	tongue02
+																		tongue03
+																			tongue04
+																			tongue07_L
+																			tongue07_R
+																		tongue06_L
+																		tongue06_R
+																	tongue05_L
+																	tongue05_R
+														levator02_L
+															levator03_L
+																levator04_L
+																	levator05_L
+														levator02_R
+															levator03_R
+																levator04_R
+																	levator05_R
+														special01
+															oris04_L
+																oris03_L
+															oris04_R
+																oris03_R
+															oris06
+																oris05
+														special03
+															levator06_L
+															levator06_R
+														special06_L
+															special05_L
+																eye_L
+																orbicularis03_L
+																orbicularis04_L
+														special06_R
+															special05_R
+																eye_R
+																orbicularis03_R
+																orbicularis04_R
+														temporalis01_L
+															oculi02_L
+																oculi01_L
+														temporalis01_R
+															oculi02_R
+																oculi01_R
+														temporalis02_L
+															risorius02_L
+																risorius03_L
+														temporalis02_R
+															risorius02_R
+																risorius03_R
+					pelvis_L
+						upperleg01_L
+							upperleg02_L
+								lowerleg01_L
+									lowerleg02_L
+										foot_L
+											toe1-1_L
+												toe1-2_L
+											toe2-1_L
+												toe2-2_L
+													toe2-3_L
+											toe3-1_L
+												toe3-2_L
+													toe3-3_L
+											toe4-1_L
+												toe4-2_L
+													toe4-3_L
+											toe5-1_L
+												toe5-2_L
+													toe5-3_L
+					pelvis_R
+						upperleg01_R
+							upperleg02_R
+								lowerleg01_R
+									lowerleg02_R
+										foot_R
+											toe1-1_R
+												toe1-2_R
+											toe2-1_R
+												toe2-2_R
+													toe2-3_R
+											toe3-1_R
+												toe3-2_R
+													toe3-3_R
+											toe4-1_R
+												toe4-2_R
+													toe4-3_R
+											toe5-1_R
+												toe5-2_R
+													toe5-3_R
 		-->
-		<Scale b_name = "upperarm01_L" x = "1.0" y = "1.333" z = "1.0" />
-		<Scale b_name = "upperarm01_R" x = "1.0" y = "1.333" z = "1.0" />
-	</Source>
+		<Scale b_name = "upperarm01_L" x = "1.0" y = "1.1" z = "1.0" />
+		<Scale b_name = "upperarm01_R" x = "1.0" y = "1.1" z = "1.0" />
+	</Destination>
 
-	<Destination file = "htr/01_01_1_s6.htr">
+	<Source file = "htr/01_01_1_s6.htr">
 		<!-- bvh skeletal structure:
 			HIERARCHY
 			ROOT Hips
@@ -367,32 +367,32 @@
 		<EndEFF b_name = "LeftForeArm" />
 		<EndEFF b_name = "RightForeArm" />
 		<EndEFF b_name = "Head" />
-	</Destination>
+	</Source>
 
 
-	<Pair to = "Hips"			from = "root" />
-	<Pair to = "LHipJoint"		from = "pelvis_L" />
-	<Pair to = "RHipJoint"		from = "pelvis_R" />
-	<Pair to = "LowerBack"		from = "spine05" />
-	<Pair to = "LeftUpLeg"		from = "upperleg01_L" />
-	<Pair to = "RightUpLeg"		from = "upperleg01_R" />
-	<Pair to = "Spine"			from = "spine01" />
-	<Pair to = "LeftLeg"		from = "lowerleg01_L" />
-	<Pair to = "RightLeg"		from = "lowerleg01_R" />
-	<Pair to = "Neck"			from = "neck01" />
-	<Pair to = "LeftShoulder"	from = "clavicle_L" />
-	<Pair to = "RightShoulder"	from = "clavicle_R" />
-	<Pair to = "LeftFoot"		from = "foot_L" />
-	<Pair to = "RightFoot"		from = "foot_R" />
-	<Pair to = "Neck1"			from = "neck02" />
-	<Pair to = "LeftArm"		from = "upperarm01_L" />
-	<Pair to = "RightArm"		from = "upperarm01_R" />
-	<Pair to = "LeftToeBase"	from = "toe1-1_L" />
-	<Pair to = "RightToeBase"	from = "toe1-1_R" />
-	<Pair to = "Head"			from = "head" />
-	<Pair to = "LeftForeArm"	from = "lowerarm01_L" />
-	<Pair to = "RightForeArm"	from = "lowerarm01_R" />
-	<Pair to = "LeftHand"		from = "wrist_L" />
-	<Pair to = "RightHand"		from = "wrist_R" />
+	<Pair from = "Hips"				to = "root" />
+	<Pair from = "LHipJoint"		to = "pelvis_L" />
+	<Pair from = "RHipJoint"		to = "pelvis_R" />
+	<Pair from = "LowerBack"		to = "spine05" />
+	<Pair from = "LeftUpLeg"		to = "upperleg01_L" />
+	<Pair from = "RightUpLeg"		to = "upperleg01_R" />
+	<Pair from = "Spine"			to = "spine01" />
+	<Pair from = "LeftLeg"			to = "lowerleg01_L" />
+	<Pair from = "RightLeg"			to = "lowerleg01_R" />
+	<Pair from = "Neck"				to = "neck01" />
+	<Pair from = "LeftShoulder"		to = "clavicle_L" />
+	<Pair from = "RightShoulder"	to = "clavicle_R" />
+	<Pair from = "LeftFoot"			to = "foot_L" />
+	<Pair from = "RightFoot"		to = "foot_R" />
+	<Pair from = "Neck1"			to = "neck02" />
+	<Pair from = "LeftArm"			to = "upperarm01_L" />
+	<Pair from = "RightArm"			to = "upperarm01_R" />
+	<Pair from = "LeftToeBase"		to = "toe1-1_L" />
+	<Pair from = "RightToeBase"		to = "toe1-1_R" />
+	<Pair from = "Head"				to = "head" />
+	<Pair from = "LeftForeArm"		to = "lowerarm01_L" />
+	<Pair from = "RightForeArm"		to = "lowerarm01_R" />
+	<Pair from = "LeftHand"			to = "wrist_L" />
+	<Pair from = "RightHand"		to = "wrist_R" />
 </MotionPipe>
 

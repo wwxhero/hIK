@@ -169,8 +169,8 @@
 											toe5-2_R
 												toe5-3_R
 		-->
-		<Scale b_name = "upperarm01_L" x = "1.0" y = "1.333" z = "1.0" />
-		<Scale b_name = "upperarm01_R" x = "1.0" y = "1.333" z = "1.0" />
+		<Scale b_name = "upperarm01_L" x = "1.0" y = "1.1" z = "1.0" />
+		<Scale b_name = "upperarm01_R" x = "1.0" y = "1.1" z = "1.0" />
 		<EndEFF b_name = "root" />
 		<EndEFF b_name = "lowerleg01_L" />
 		<EndEFF b_name = "lowerleg01_R" />
