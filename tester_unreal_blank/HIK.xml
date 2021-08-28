@@ -361,12 +361,12 @@
 				}
 			}
 		-->
-		<EndEEF b_name = "Hips" len = "2" algor = "Proj" />
-		<EndEEF b_name = "LeftLeg" len = "3" algor = "SDLS" />
-		<EndEEF b_name = "RightLeg" len = "3" algor = "SDLS" />
-		<EndEEF b_name = "LeftForeArm" len = "3" algor = "SDLS" />
-		<EndEEF b_name = "RightForeArm" len = "3" algor = "SDLS" />
-		<EndEEF b_name = "Head" len = "6" algor = "SDLS" />
+		<EndEEF b_name = "Hips"			len = "2"	algor = "Proj" />
+		<EndEEF b_name = "LeftLeg"		len = "3"	algor = "SDLS" />
+		<EndEEF b_name = "RightLeg"		len = "3"	algor = "SDLS" />
+		<EndEEF b_name = "LeftForeArm"	len = "3"	algor = "SDLS" />
+		<EndEEF b_name = "RightForeArm"	len = "3"	algor = "SDLS" />
+		<EndEEF b_name = "Head"			len = "6"	algor = "SDLS" />
 	</Source>
 
 	<Pair from = "Entity"			to = "MakeHuman-default-skeleton" />
