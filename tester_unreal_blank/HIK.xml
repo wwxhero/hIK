@@ -361,12 +361,12 @@
 				}
 			}
 		-->
-		<EndEFF b_name = "Hips" />
-		<EndEFF b_name = "LeftLeg" />
-		<EndEFF b_name = "RightLeg" />
-		<EndEFF b_name = "LeftForeArm" />
-		<EndEFF b_name = "RightForeArm" />
-		<EndEFF b_name = "Head" />
+		<EndEEF b_name = "Hips" len = "2" algor = "Proj" />
+		<EndEEF b_name = "LeftLeg" len = "3" algor = "SDLS" />
+		<EndEEF b_name = "RightLeg" len = "3" algor = "SDLS" />
+		<EndEEF b_name = "LeftForeArm" len = "3" algor = "SDLS" />
+		<EndEEF b_name = "RightForeArm" len = "3" algor = "SDLS" />
+		<EndEEF b_name = "Head" len = "6" algor = "SDLS" />
 	</Source>
 
 	<Pair from = "Entity"			to = "MakeHuman-default-skeleton" />
@@ -395,30 +395,5 @@
 	<Pair from = "LeftHand"			to = "wrist_L" />
 	<Pair from = "RightHand"		to = "wrist_R" />
 
-	<!-- <Pair from = "MakeHuman-default-skeleton"			to = "MakeHuman-default-skeleton" />
-	<Pair from = "root"				to = "root" />
-	<Pair from = "pelvis_L"			to = "pelvis_L" />
-	<Pair from = "pelvis_R"			to = "pelvis_R" />
-	<Pair from = "spine05"			to = "spine05" />
-	<Pair from = "upperleg01_L"		to = "upperleg01_L" />
-	<Pair from = "upperleg01_R"		to = "upperleg01_R" />
-	<Pair from = "spine01"			to = "spine01" />
-	<Pair from = "lowerleg01_L"		to = "lowerleg01_L" />
-	<Pair from = "lowerleg01_R"		to = "lowerleg01_R" />
-	<Pair from = "neck01"			to = "neck01" />
-	<Pair from = "clavicle_L"		to = "clavicle_L" />
-	<Pair from = "clavicle_R"		to = "clavicle_R" />
-	<Pair from = "foot_L"			to = "foot_L" />
-	<Pair from = "foot_R"			to = "foot_R" />
-	<Pair from = "neck02"			to = "neck02" />
-	<Pair from = "upperarm01_L"		to = "upperarm01_L" />
-	<Pair from = "upperarm01_R"		to = "upperarm01_R" />
-	<Pair from = "toe1-1_L"			to = "toe1-1_L" />
-	<Pair from = "toe1-1_R"			to = "toe1-1_R" />
-	<Pair from = "head"				to = "head" />
-	<Pair from = "lowerarm01_L"		to = "lowerarm01_L" />
-	<Pair from = "lowerarm01_R"		to = "lowerarm01_R" />
-	<Pair from = "wrist_L"			to = "wrist_L" />
-	<Pair from = "wrist_R"			to = "wrist_R" /> -->
 </MotionPipe>
 

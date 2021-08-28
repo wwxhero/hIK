@@ -169,14 +169,14 @@
 											toe5-2_R
 												toe5-3_R
 		-->
-		<Scale b_name = "upperarm01_L" x = "1.0" y = "1.5" z = "1.0" />
-		<Scale b_name = "upperarm01_R" x = "1.0" y = "1.5" z = "1.0" />
-		<EndEFF b_name = "root" />
-		<EndEFF b_name = "lowerleg01_L" />
-		<EndEFF b_name = "lowerleg01_R" />
-		<EndEFF b_name = "lowerarm01_L" />
-		<EndEFF b_name = "lowerarm01_R" />
-		<EndEFF b_name = "head" />
+		<Scale b_name = "upperarm01_L" x = "1.0" y = "1.0" z = "1.0" />
+		<Scale b_name = "upperarm01_R" x = "1.0" y = "1.0" z = "1.0" />
+		<EndEEF b_name = "root" />
+		<EndEEF b_name = "lowerleg01_L" />
+		<EndEEF b_name = "lowerleg01_R" />
+		<EndEEF b_name = "lowerarm01_L" />
+		<EndEEF b_name = "lowerarm01_R" />
+		<EndEEF b_name = "head" />
 	</Destination>
 
 	<Source file = "bvh/01_01_1_s6.bvh">
