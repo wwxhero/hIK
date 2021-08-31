@@ -170,8 +170,14 @@
 												toe5-2_R
 													toe5-3_R
 		-->
-		<Scale b_name = "upperarm01_L" x = "1.0" y = "1.1" z = "1.0" />
-		<Scale b_name = "upperarm01_R" x = "1.0" y = "1.1" z = "1.0" />
+		<Scale b_name = "upperarm01_L" x = "1.0" y = "1.0" z = "1.0" />
+		<Scale b_name = "upperarm01_R" x = "1.0" y = "1.0" z = "1.0" />
+		<EndEEF b_name = "root" />
+		<EndEEF b_name = "lowerleg01_L" />
+		<EndEEF b_name = "lowerleg01_R" />
+		<EndEEF b_name = "lowerarm01_L" />
+		<EndEEF b_name = "lowerarm01_R" />
+		<EndEEF b_name = "head" />
 	</Destination>
 
 	<Source file = "htr/01_01_1_s6.htr">
@@ -361,12 +367,222 @@
 				}
 			}
 		-->
-		<EndEEF b_name = "Hips"			len = "2"	algor = "Proj" />
-		<EndEEF b_name = "LeftLeg"		len = "3"	algor = "SDLS" />
-		<EndEEF b_name = "RightLeg"		len = "3"	algor = "SDLS" />
-		<EndEEF b_name = "LeftForeArm"	len = "3"	algor = "SDLS" />
-		<EndEEF b_name = "RightForeArm"	len = "3"	algor = "SDLS" />
-		<EndEEF b_name = "Head"			len = "6"	algor = "SDLS" />
+		<IK_Chain eef = "Hips"			len = "1"	algor = "Proj"	weight_p = "1"	weight_r = "0"	n_iter = "20" P_Graph = "hips.pg">
+			<Joint name = "Entity">
+				<Stiffness>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</Stiffness>
+				<Limit>
+					<x min = "0" max = "0" />
+					<y min = "0" max = "0" />
+					<z min = "0" max = "0" />
+				</Limit>
+				<Lock>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</Lock>
+			</Joint>
+		</IK_Chain>
+		<IK_Chain eef = "LeftLeg"		len = "2"	algor = "SDLS"	weight_p = "1"	weight_r = "0">
+			<Joint>
+				<Stiffness>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</Stiffness>
+				<Limit>
+					<x min = "0" max = "0" />
+					<y min = "0" max = "0" />
+					<z min = "0" max = "0" />
+				</Limit>
+				<Lock>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</Lock>
+			</Joint>
+			<Joint>
+				<Stiffness>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</Stiffness>
+				<Limit>
+					<x min = "0" max = "0" />
+					<y min = "0" max = "0" />
+					<z min = "0" max = "0" />
+				</Limit>
+				<Lock>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</Lock>
+			</Joint>
+		</IK_Chain>
+		<IK_Chain eef = "RightLeg"		len = "2"	algor = "SDLS"	weight_p = "1"	weight_r = "0">
+			<Joint>
+				<Stiffness>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</Stiffness>
+				<Limit>
+					<x min = "0" max = "0" />
+					<y min = "0" max = "0" />
+					<z min = "0" max = "0" />
+				</Limit>
+				<Lock>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</Lock>
+			</Joint>
+			<Joint>
+				<Stiffness>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</Stiffness>
+				<Limit>
+					<x min = "0" max = "0" />
+					<y min = "0" max = "0" />
+					<z min = "0" max = "0" />
+				</Limit>
+				<Lock>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</Lock>
+			</Joint>
+		</IK_Chain>
+		<IK_Chain eef = "LeftForeArm"	len = "2"	algor = "SDLS"	weight_p = "1"	weight_r = "0">
+			<Joint>
+				<Stiffness>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</Stiffness>
+				<Limit>
+					<x min = "0" max = "0" />
+					<y min = "0" max = "0" />
+					<z min = "0" max = "0" />
+				</Limit>
+				<Lock>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</Lock>
+			</Joint>
+			<Joint>
+				<Stiffness>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</Stiffness>
+				<Limit>
+					<x min = "0" max = "0" />
+					<y min = "0" max = "0" />
+					<z min = "0" max = "0" />
+				</Limit>
+				<Lock>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</Lock>
+			</Joint>
+		</IK_Chain>
+		<IK_Chain eef = "RightForeArm"	len = "2"	algor = "SDLS"	weight_p = "1"	weight_r = "0">
+			<Joint>
+				<Stiffness>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</Stiffness>
+				<Limit>
+					<x min = "0" max = "0" />
+					<y min = "0" max = "0" />
+					<z min = "0" max = "0" />
+				</Limit>
+				<Lock>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</Lock>
+			</Joint>
+			<Joint>
+				<Stiffness>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</Stiffness>
+				<Limit>
+					<x min = "0" max = "0" />
+					<y min = "0" max = "0" />
+					<z min = "0" max = "0" />
+				</Limit>
+				<Lock>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</Lock>
+			</Joint>
+		</IK_Chain>
+		<IK_Chain eef = "Head"			len = "3"	algor = "SDLS"	weight_p = "1"	weight_r = "0">
+			<Joint>
+				<Stiffness>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</Stiffness>
+				<Limit>
+					<x min = "0" max = "0" />
+					<y min = "0" max = "0" />
+					<z min = "0" max = "0" />
+				</Limit>
+				<Lock>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</Lock>
+			</Joint>
+			<Joint>
+				<Stiffness>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</Stiffness>
+				<Limit>
+					<x min = "0" max = "0" />
+					<y min = "0" max = "0" />
+					<z min = "0" max = "0" />
+				</Limit>
+				<Lock>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</Lock>
+			</Joint>
+			<Joint>
+				<Stiffness>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</Stiffness>
+				<Limit>
+					<x min = "0" max = "0" />
+					<y min = "0" max = "0" />
+					<z min = "0" max = "0" />
+				</Limit>
+				<Lock>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</Lock>
+			</Joint>
+		</IK_Chain>
 	</Source>
 
 	<Pair from = "Entity"			to = "MakeHuman-default-skeleton" />
