@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
-<MotionPipe m11="1" m12="0" m13="0"
-			m21="0" m22="0" m23="1"
-			m31="0" m32="1" m33="0">
+<MotionPipe sync = "cross" 	m11="1" m12="0" m13="0"
+							m21="0" m22="0" m23="1"
+							m31="0" m32="1" m33="0">
 
 	<Destination file = "fbx/MakeHuman_163_cm_T.fbx">
 		<!-- fbx skeletal structure:
