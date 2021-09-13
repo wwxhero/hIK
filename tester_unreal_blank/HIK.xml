@@ -2,7 +2,6 @@
 <MotionPipe sync = "cross" 	m11="1" m12="0" m13="0"
 							m21="0" m22="0" m23="1"
 							m31="0" m32="1" m33="0">
-
 	<Destination file = "fbx/MakeHuman_163_cm_T.fbx">
 		<!-- fbx skeletal structure:
 			MakeHuman-default-skeleton
@@ -367,26 +366,9 @@
 				}
 			}
 		-->
-		<IK_Chain eef = "Hips"			len = "1"	algor = "Proj"	weight_p = "1"	weight_r = "0"	n_iter = "20" P_Graph = "hips.pg">
-			<Joint name = "Entity">
-				<Stiffness>
-					<x>0</x>
-					<y>0</y>
-					<z>0</z>
-				</Stiffness>
-				<Limit>
-					<x min = "0" max = "0" />
-					<y min = "0" max = "0" />
-					<z min = "0" max = "0" />
-				</Limit>
-				<Lock>
-					<x>0</x>
-					<y>0</y>
-					<z>0</z>
-				</Lock>
-			</Joint>
+		<IK_Chain eef = "Hips"			len = "1"	algor = "Proj"	up_x = "0"	up_y = "1"	up_z = "0">
 		</IK_Chain>
-		<IK_Chain eef = "LeftLeg"		len = "2"	algor = "SDLS"	weight_p = "1"	weight_r = "0">
+		<IK_Chain eef = "LeftLeg"		len = "2"	algor = "SDLS"	weight_p = "1"	weight_r = "0"	n_iter = "20" P_Graph = "LeftLeg.pg">
 			<Joint name = "LeftLeg-1">
 				<Stiffness>
 					<x>0</x>
@@ -439,13 +421,13 @@
 				</Lock>
 			</Joint>
 		</IK_Chain>
-		<IK_Chain eef = "RightLeg"		len = "2"	algor = "SDLS"	weight_p = "1"	weight_r = "0">
+		<IK_Chain eef = "RightLeg"		len = "2"	algor = "SDLS"	weight_p = "1"	weight_r = "0"	n_iter = "20" P_Graph = "RightLeg.pg">
 		</IK_Chain>
-		<IK_Chain eef = "LeftForeArm"	len = "2"	algor = "SDLS"	weight_p = "1"	weight_r = "0">
+		<IK_Chain eef = "LeftForeArm"	len = "2"	algor = "SDLS"	weight_p = "1"	weight_r = "0"	n_iter = "20" P_Graph = "LeftForeArm.pg">
 		</IK_Chain>
-		<IK_Chain eef = "RightForeArm"	len = "2"	algor = "SDLS"	weight_p = "1"	weight_r = "0">
+		<IK_Chain eef = "RightForeArm"	len = "2"	algor = "SDLS"	weight_p = "1"	weight_r = "0"	n_iter = "20" P_Graph = "RightForeArm.pg">
 		</IK_Chain>
-		<IK_Chain eef = "Head"			len = "3"	algor = "SDLS"	weight_p = "1"	weight_r = "0">
+		<IK_Chain eef = "Head"			len = "3"	algor = "SDLS"	weight_p = "1"	weight_r = "0"	n_iter = "20" P_Graph = "Head.pg">
 		</IK_Chain>
 	</Source>
 
