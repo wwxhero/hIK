@@ -368,66 +368,19 @@
 		-->
 		<IK_Chain eef = "Hips"			len = "1"	algor = "Proj"	up_x = "0"	up_y = "1"	up_z = "0">
 		</IK_Chain>
-		<IK_Chain eef = "LeftLeg"		len = "2"	algor = "SDLS"	weight_p = "1"	weight_r = "0"	n_iter = "20" P_Graph = "LeftLeg.pg">
-			<Joint name = "LeftLeg-1">
-				<Stiffness>
-					<x>0</x>
-					<y>0</y>
-					<z>0</z>
-				</Stiffness>
-				<Limit>
-					<x min = "0" max = "0" />
-					<y min = "0" max = "0" />
-					<z min = "0" max = "0" />
-				</Limit>
-				<Lock>
-					<x>0</x>
-					<y>0</y>
-					<z>0</z>
-				</Lock>
+		<IK_Chain eef = "LeftLeg"		len = "1"	algor = "SDLS"	weight_p = "1"	weight_r = "0"	n_iter = "20" P_Graph = "LeftLeg.pg">
+			<Joint name = "LHipJoint" type = "R_xyz" Stiffness_x = "0" Stiffness_y = "0" Stiffness_z = "0">
 			</Joint>
-			<Joint name = "LeftLeg-2">
-				<Stiffness>
-					<x>0</x>
-					<y>0</y>
-					<z>0</z>
-				</Stiffness>
-				<Limit>
-					<x min = "0" max = "0" />
-					<y min = "0" max = "0" />
-					<z min = "0" max = "0" />
-				</Limit>
-				<Lock>
-					<x>0</x>
-					<y>0</y>
-					<z>0</z>
-				</Lock>
-			</Joint>
-			<Joint name = "LeftLeg-3">
-				<Stiffness>
-					<x>0</x>
-					<y>0</y>
-					<z>0</z>
-				</Stiffness>
-				<Limit>
-					<x min = "0" max = "0" />
-					<y min = "0" max = "0" />
-					<z min = "0" max = "0" />
-				</Limit>
-				<Lock>
-					<x>0</x>
-					<y>0</y>
-					<z>0</z>
-				</Lock>
+			<Joint name = "LeftUpLeg" type = "R_xyz">
 			</Joint>
 		</IK_Chain>
-		<IK_Chain eef = "RightLeg"		len = "2"	algor = "SDLS"	weight_p = "1"	weight_r = "0"	n_iter = "20" P_Graph = "RightLeg.pg">
+		<IK_Chain eef = "RightLeg"		len = "1"	algor = "SDLS"	weight_p = "1"	weight_r = "0"	n_iter = "20" P_Graph = "RightLeg.pg">
 		</IK_Chain>
-		<IK_Chain eef = "LeftForeArm"	len = "2"	algor = "SDLS"	weight_p = "1"	weight_r = "0"	n_iter = "20" P_Graph = "LeftForeArm.pg">
+		<IK_Chain eef = "LeftForeArm"	len = "1"	algor = "SDLS"	weight_p = "1"	weight_r = "0"	n_iter = "20" P_Graph = "LeftForeArm.pg">
 		</IK_Chain>
-		<IK_Chain eef = "RightForeArm"	len = "2"	algor = "SDLS"	weight_p = "1"	weight_r = "0"	n_iter = "20" P_Graph = "RightForeArm.pg">
+		<IK_Chain eef = "RightForeArm"	len = "1"	algor = "SDLS"	weight_p = "1"	weight_r = "0"	n_iter = "20" P_Graph = "RightForeArm.pg">
 		</IK_Chain>
-		<IK_Chain eef = "Head"			len = "3"	algor = "SDLS"	weight_p = "1"	weight_r = "0"	n_iter = "20" P_Graph = "Head.pg">
+		<IK_Chain eef = "Head"			len = "4"	algor = "SDLS"	weight_p = "1"	weight_r = "0"	n_iter = "100" P_Graph = "Head.pg">
 		</IK_Chain>
 	</Source>
 
