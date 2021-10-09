@@ -172,14 +172,14 @@
 		<Scale b_name = "upperarm01_L" x = "1.0" y = "1.0" z = "1.0" />
 		<Scale b_name = "upperarm01_R" x = "1.0" y = "1.0" z = "1.0" />
 		<Target b_name = "root" />
-		<Target b_name = "lowerleg01_L" />
+		<Target b_name = "foot_L" />
 		<Target b_name = "lowerleg01_R" />
-		<Target b_name = "lowerarm01_L" />
+		<Target b_name = "wrist_L" />
 		<Target b_name = "lowerarm01_R" />
 		<Target b_name = "head" />
 	</Destination>
 
-	<Source file = "htr/01_01_1_s6.htr">
+	<Source file = "htr/01_01_1_s6.htr" record = "htr/01.htr">
 		<!-- bvh skeletal structure:
 			HIERARCHY
 			ROOT Hips
@@ -368,19 +368,25 @@
 		-->
 		<IK_Chain eef = "Hips"			len = "1"	algor = "Proj"	up_x = "0"	up_y = "1"	up_z = "0">
 		</IK_Chain>
-		<IK_Chain eef = "LeftLeg"		len = "1"	algor = "SDLS"	weight_p = "1"	weight_r = "0"	n_iter = "20" P_Graph = "LeftLeg.pg">
-			<Joint name = "LHipJoint" type = "R_xyz" Stiffness_x = "0" Stiffness_y = "0" Stiffness_z = "0">
+		<IK_Chain eef = "LeftFoot"		len = "2"	algor = "SDLS"	weight_p = "1"	weight_r = "0.25"	n_iter = "50" P_Graph = "LeftLeg.pg">
+			<Joint name = "LHipJoint" type = "R_xyz" Dexterity_x = "1" Dexterity_y = "1" Dexterity_z = "1">
 			</Joint>
 			<Joint name = "LeftUpLeg" type = "R_xyz">
 			</Joint>
 		</IK_Chain>
-		<IK_Chain eef = "RightLeg"		len = "1"	algor = "SDLS"	weight_p = "1"	weight_r = "0"	n_iter = "20" P_Graph = "RightLeg.pg">
+		<IK_Chain eef = "RightLeg"		len = "1"	algor = "SDLS"	weight_p = "1"	weight_r = "0"	n_iter = "50" P_Graph = "RightLeg.pg">
 		</IK_Chain>
-		<IK_Chain eef = "LeftForeArm"	len = "1"	algor = "SDLS"	weight_p = "1"	weight_r = "0"	n_iter = "20" P_Graph = "LeftForeArm.pg">
+		<IK_Chain eef = "LeftHand"	len = "2"	algor = "SDLS"	weight_p = "1"	weight_r = "0.25"	n_iter = "50" P_Graph = "LeftForeArm.pg">
+			<Joint name = "LeftArm" type = "R_Spherical">
+			</Joint>
+			<Joint name = "LeftShoulder" type = "R_xyz" Dexterity_x = "0.01" Dexterity_y = "0.01" Dexterity_z = "0.01">
+			</Joint>
+			<Joint name = "Spine" type = "R_xyz" Dexterity_x = "0.01" Dexterity_y = "0.01" Dexterity_z = "0.01">
+			</Joint>
 		</IK_Chain>
-		<IK_Chain eef = "RightForeArm"	len = "1"	algor = "SDLS"	weight_p = "1"	weight_r = "0"	n_iter = "20" P_Graph = "RightForeArm.pg">
+		<IK_Chain eef = "RightForeArm"	len = "1"	algor = "SDLS"	weight_p = "1"	weight_r = "0"	n_iter = "50" P_Graph = "RightForeArm.pg">
 		</IK_Chain>
-		<IK_Chain eef = "Head"			len = "4"	algor = "SDLS"	weight_p = "1"	weight_r = "0"	n_iter = "100" P_Graph = "Head.pg">
+		<IK_Chain eef = "Head"			len = "4"	algor = "SDLS"	weight_p = "1"	weight_r = "1"	n_iter = "50" P_Graph = "Head.pg">
 		</IK_Chain>
 	</Source>
 
