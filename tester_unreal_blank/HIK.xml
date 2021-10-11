@@ -169,14 +169,15 @@
 												toe5-2_R
 													toe5-3_R
 		-->
-		<Scale b_name = "upperarm01_L" x = "1.0" y = "1.0" z = "1.0" />
-		<Scale b_name = "upperarm01_R" x = "1.0" y = "1.0" z = "1.0" />
-		<Target b_name = "root" />
-		<Target b_name = "foot_L" />
-		<Target b_name = "lowerleg01_R" />
-		<Target b_name = "wrist_L" />
-		<Target b_name = "lowerarm01_R" />
-		<Target b_name = "head" />
+		<!-- <Scale name = "root" x = "1.2" y = "1.2" z = "1.2" />
+		<Scale name = "upperarm01_L" x = "1.0" y = "1.2" z = "1.0" />
+		<Scale name = "upperarm01_R" x = "1.0" y = "1.2" z = "1.0" /> -->
+		<Target name = "root" />
+		<Target name = "foot_L" />
+		<Target name = "lowerleg01_R" />
+		<Target name = "wrist_L" />
+		<Target name = "lowerarm01_R" />
+		<Target name = "head" />
 	</Destination>
 
 	<Source file = "htr/01_01_1_s6.htr" record = "htr/01.htr">
