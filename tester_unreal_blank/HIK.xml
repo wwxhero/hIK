@@ -180,7 +180,7 @@
 		<Target name = "head" />
 	</Destination>
 
-	<Source file = "htr/01_01_1_s6.htr" record = "htr/01.htr">
+	<Source record = "record/01.htr">
 		<!-- bvh skeletal structure:
 			HIERARCHY
 			ROOT Hips
