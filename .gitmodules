@@ -5,6 +5,11 @@
 [submodule "Externals/lib_hIK"]
 	path = Externals/lib_hIK
 	url = https://github.com/wwxhero/lib_hIK.git
+
 [submodule "Externals/bvh_posture_reset"]
 	path = Externals/bvh_posture_reset
-	url = https://github.com/wwxhero/bvh11
+	url = https://github.com/wwxhero/Posture_Graph.git
+
+[submodule "Externals/logger"]
+	path = Externals/logger
+	url = https://github.com/wwxhero/alogger_unity.git
