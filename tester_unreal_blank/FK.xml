@@ -174,9 +174,9 @@
 		<Scale name = "upperarm01_R" x = "1.0" y = "1.2" z = "1.0" /> -->
 		<Target name = "root" />
 		<Target name = "foot_L" />
-		<Target name = "lowerleg01_R" />
+		<Target name = "foot_R" />
 		<Target name = "wrist_L" />
-		<Target name = "lowerarm01_R" />
+		<Target name = "wrist_R" />
 		<Target name = "head" />
 	</Destination>
 
