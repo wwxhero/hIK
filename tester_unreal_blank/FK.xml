@@ -180,7 +180,7 @@
 		<Target name = "head" />
 	</Destination>
 
-	<Source file = "bvh/01_01_1_s6.bvh">
+	<Source file = "bvh/01_07_1_s6.bvh"> <!-- bvh/01_0103_1_s6.bvh -->
 		<!-- bvh skeletal structure:
 			HIERARCHY
 			ROOT Hips
@@ -376,7 +376,8 @@
 	<Pair from = "LowerBack"		to = "spine05" />
 	<Pair from = "LeftUpLeg"		to = "upperleg01_L" />
 	<Pair from = "RightUpLeg"		to = "upperleg01_R" />
-	<Pair from = "Spine"			to = "spine01" />
+	<Pair from = "Spine"			to = "spine02" />
+	<Pair from = "Spine1"			to = "spine01" />
 	<Pair from = "LeftLeg"			to = "lowerleg01_L" />
 	<Pair from = "RightLeg"			to = "lowerleg01_R" />
 	<Pair from = "Neck"				to = "neck01" />
