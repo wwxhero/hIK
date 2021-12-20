@@ -2,7 +2,7 @@
 	"source": "UE",
 	"applications": [
 		{
-			"app_key": "application.generated.ue.virtual-reality-bp-game-template-15973114.ue4editor.exe",
+			"app_key": "application.generated.ue.virtual-reality-bp-game-template-15973114.ue4editor-win64-debuggame.exe",
 			"launch_type": "url",
 			"url": "steam://launch/",
 			"action_manifest_path": "C:/Users/wwxhe/unrealProjects/hIK/tester_unreal_VR/Config/SteamVRBindings/steamvr_manifest.json",
