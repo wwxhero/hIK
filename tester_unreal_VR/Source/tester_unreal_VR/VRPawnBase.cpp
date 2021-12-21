@@ -23,8 +23,129 @@ void AVRPawnBase::BeginPlay()
 void AVRPawnBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+#if 0 //defined _DEBUG
 	for (auto tracker_i : Trackers_)
 	{
+		DBG_VisTransform(tracker_i->GetComponentTransform(), 10, 1);
+	}
+#endif
+}
+
+
+bool AVRPawnBase::Proc_SortTrackers(const FTransform& hmd2world)
+{
+	UE_LOG(TESTER_UNREAL_VR, Display, TEXT("AVRPawnBase::Proc_SortTrackers"));
+	
+	struct Tagger
+	{
+		USceneComponent* t;
+		int id_y;
+		int id_z;
+		float y;
+		float z;
+		TRACKER_ID tid;
+	};
+	
+	FVector axis_y = hmd2world.TransformVector(FVector(0, 1, 0));
+	FVector axis_z = hmd2world.TransformVector(FVector(0, 0, 1));
+	FVector org = hmd2world.GetLocation();
+
+	int32 n_trackers = Trackers_.Num();
+	TArray<Tagger> taggers;
+	taggers.Reset(n_trackers);
+	for (int i_tracker = 0; i_tracker < n_trackers; i_tracker ++)
+	{
+		auto& tagger_i = taggers[i_tracker];
+		tagger_i.t = Trackers_[i_tracker];
+		tagger_i.id_y = -1;
+		tagger_i.id_z = -1;
+		FVector org_t_i = tagger_i.t->GetComponentTransform().GetLocation();
+		FVector hmd2t_i = org_t_i - org;
+		tagger_i.y = FVector::DotProduct(hmd2t_i, axis_y);
+		tagger_i.z = FVector::DotProduct(hmd2t_i, axis_z);
+		tagger_i.tid = Unknown;
+	}
+
+	auto & taggers_y = taggers;
+	struct FCompare_y
+	{
+		FORCEINLINE bool operator()(const Tagger& A, const Tagger& B) const
+		{
+			return A.y < B.y;
+		}
+	};
+	taggers_y.Sort(FCompare_y());
+	for (int i_tagger = 0; i_tagger < n_trackers; i_tagger ++)
+		taggers_y[i_tagger].id_y = i_tagger;
+
+	auto & taggers_z = taggers;
+	struct FCompare_z
+	{
+		FORCEINLINE bool operator()(const Tagger& A, const Tagger& B) const
+		{
+			return A.z < B.z;
+		}
+	};
+	taggers_z.Sort(FCompare_z());
+	for (int i_tagger = 0; i_tagger < n_trackers; i_tagger ++)
+		taggers_z[i_tagger].id_z = i_tagger;
+
+	struct Identifier
+	{
+		int id_y;
+		int id_z;
+	};
+
+	TArray<Identifier> rh = {{4, 3}, {4, 4}};
+	TArray<Identifier> lh = {{0, 3}, {0, 4}};
+	TArray<Identifier> rf = {{2, 0}, {2, 1}, {3, 0}, {3, 1}};
+	TArray<Identifier> lf = {{1, 0}, {1, 1}, {2, 0}, {2, 1}};
+	TArray<Identifier> pw = {{1, 2}, {2, 2}, {3, 2}};
+	auto Is_a = [](const TArray<Identifier>& identifier, const Tagger& tagger) -> bool
+		{
+			bool positive = false;
+			for (auto id : identifier)
+			{
+				positive = (id.id_y == tagger.id_y
+							&& id.id_z == tagger.id_z);
+				if (positive)
+					break;
+			}
+			return positive;
+		};
+
+	TArray<Identifier>* identifiers[] = {&rh, &lh, &rf, &lf, &pw};
+	
+	// one_on_one: (forall identifiers exists_a_tagger: tagger is not tagged and tagger is identfied)
+	bool one_on_one = true;
+	for (int i_predicate = RH; i_predicate < Total && one_on_one; i_predicate ++)
+	{
+		TArray<Identifier>* identfier_i = identifiers[i_predicate];
+		for (auto tagger_i : taggers)
+		{
+			one_on_one = (Unknown == tagger_i.tid
+						&& Is_a(*identfier_i, tagger_i));
+			if (one_on_one)
+			{
+				tagger_i.tid = (TRACKER_ID)i_predicate;
+				break;
+			}
+		}
+	}
+
+	if (one_on_one)
+	{
+		for (auto tagger_i : taggers)
+			Trackers_[tagger_i.tid] = tagger_i.t;
+	}
+	return one_on_one;	
+}
+
+void AVRPawnBase::VerifyTracker(int32 tid)
+{
+	if (-1 < tid && tid < Total)
+	{
+		auto tracker_i = Trackers_[tid];
 		DBG_VisTransform(tracker_i->GetComponentTransform(), 10, 1);
 	}
 }
