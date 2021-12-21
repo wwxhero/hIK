@@ -7,6 +7,7 @@
 
 // Sets default values
 AVRPawnBase::AVRPawnBase()
+	: m_verifying(RH)
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -23,19 +24,18 @@ void AVRPawnBase::BeginPlay()
 void AVRPawnBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-#if 0 //defined _DEBUG
-	for (auto tracker_i : Trackers_)
+#if defined _DEBUG
+	if (-1 < m_verifying && m_verifying < Total)
 	{
+		auto tracker_i = Trackers_[m_verifying];
 		DBG_VisTransform(tracker_i->GetComponentTransform(), 10, 1);
-	}
+	}	
 #endif
 }
 
 
 bool AVRPawnBase::Proc_SortTrackers(const FTransform& hmd2world)
 {
-	UE_LOG(TESTER_UNREAL_VR, Display, TEXT("AVRPawnBase::Proc_SortTrackers"));
-	
 	struct Tagger
 	{
 		USceneComponent* t;
@@ -52,7 +52,7 @@ bool AVRPawnBase::Proc_SortTrackers(const FTransform& hmd2world)
 
 	int32 n_trackers = Trackers_.Num();
 	TArray<Tagger> taggers;
-	taggers.Reset(n_trackers);
+	taggers.SetNum(n_trackers);
 	for (int i_tracker = 0; i_tracker < n_trackers; i_tracker ++)
 	{
 		auto& tagger_i = taggers[i_tracker];
@@ -121,7 +121,7 @@ bool AVRPawnBase::Proc_SortTrackers(const FTransform& hmd2world)
 	for (int i_predicate = RH; i_predicate < Total && one_on_one; i_predicate ++)
 	{
 		TArray<Identifier>* identfier_i = identifiers[i_predicate];
-		for (auto tagger_i : taggers)
+		for (auto& tagger_i : taggers)
 		{
 			one_on_one = (Unknown == tagger_i.tid
 						&& Is_a(*identfier_i, tagger_i));
@@ -137,17 +137,23 @@ bool AVRPawnBase::Proc_SortTrackers(const FTransform& hmd2world)
 	{
 		for (auto tagger_i : taggers)
 			Trackers_[tagger_i.tid] = tagger_i.t;
+
+		UE_LOG(TESTER_UNREAL_VR, Display, TEXT("AVRPawnBase::Proc_SortTrackers: SUCCESSFUL"));
+		m_verifying = RH;
 	}
+	else
+	{
+		UE_LOG(TESTER_UNREAL_VR, Display, TEXT("AVRPawnBase::Proc_SortTrackers: FAILED"));
+	}
+
 	return one_on_one;	
 }
 
-void AVRPawnBase::VerifyTracker(int32 tid)
+void AVRPawnBase::VerifyTracker()
 {
-	if (-1 < tid && tid < Total)
-	{
-		auto tracker_i = Trackers_[tid];
-		DBG_VisTransform(tracker_i->GetComponentTransform(), 10, 1);
-	}
+	int verifying = m_verifying;
+	verifying ++;
+	m_verifying = (TRACKER_ID)(verifying % Total);
 }
 
 // Called to bind functionality to input
@@ -156,8 +162,6 @@ void AVRPawnBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 }
-
-// #if defined _DEBUG
 
 void AVRPawnBase::DBG_VisTransform(const FTransform& tm_l2w, float axis_len, float thickness) const
 {
@@ -189,6 +193,3 @@ void AVRPawnBase::DBG_VisTransform(const FTransform& tm_l2w, float axis_len, flo
 		 			, thickness);
 	}
 }
-
-
-// #endif

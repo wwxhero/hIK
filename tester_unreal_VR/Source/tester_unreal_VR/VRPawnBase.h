@@ -33,7 +33,8 @@ public:
 	bool Proc_SortTrackers(const FTransform& hmd2world);
 
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Verify Trackers", CompactNodeTitle = "Verify trackers", Keywords = "Verify trackers"), Category = Settings)
-	void VerifyTracker(int32 tid);
+	void VerifyTracker();
+
 public:
 	// Sets default values for this pawn's properties
 	AVRPawnBase();
@@ -49,8 +50,9 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-// #if defined _DEBUG
 	void DBG_VisTransform(const FTransform& tm_l2w, float axis_len, float thickness) const;
-// #endif
+
+private:
+	TRACKER_ID m_verifying;
 
 };
