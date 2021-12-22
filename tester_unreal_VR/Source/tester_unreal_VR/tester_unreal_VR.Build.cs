@@ -7,6 +7,19 @@ public class tester_unreal_VR : ModuleRules
 	public tester_unreal_VR(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
+		PublicIncludePaths.AddRange(
+			new string[] {
+				// ... add public include paths required here ...
+				//"$(EIGEN)\\",
+				"$(LIB_VRLOG_INC)\\"
+			}
+			);
+
+		PublicAdditionalLibraries.AddRange(
+			new string [] {
+				"$(LIB_HIK_BIN)\\lib_VRLog.lib"
+			}
+			);
 	
 		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore" });
 
