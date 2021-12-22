@@ -1,13 +1,17 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "VRPawnBase.h"
 #include "DrawDebugHelpers.h"
 #include "Engine/World.h"
+#include "vrLog.h"
 
 // Sets default values
 AVRPawnBase::AVRPawnBase()
-	: m_verifying(RH)
+	: VROrg_(NULL)
+	, HMD_(NULL)
+	, Ctrller_L_(NULL)
+	, Ctrller_R_(NULL)
+	, m_verifying(RH)
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -18,6 +22,9 @@ AVRPawnBase::AVRPawnBase()
 void AVRPawnBase::BeginPlay()
 {
 	Super::BeginPlay();
+	int test = 0;
+	int test_p = ik_test(test);
+	check(test_p == test + 1);
 }
 
 // Called every frame
@@ -33,9 +40,21 @@ void AVRPawnBase::Tick(float DeltaTime)
 #endif
 }
 
-
-bool AVRPawnBase::Proc_SortTrackers(const FTransform& hmd2world)
+void AVRPawnBase::Proc_FloorCali(float z_floor)
 {
+	float z0_floor = GetActorLocation().Z;
+	FTransform tm_v(FVector(0, 0, z0_floor-z_floor));
+	const FTransform& tm_r2v = VROrg_->GetComponentTransform();
+	const FTransform& tm_c2v = GetActorTransform();
+	FTransform tm_v2c = tm_c2v.Inverse();
+	FTransform tm_r2c_prime = tm_r2v * tm_v * tm_v2c;
+	VROrg_->SetRelativeTransform(tm_r2c_prime);
+}
+
+bool AVRPawnBase::Proc_SortTrackers()
+{
+	check(NULL != HMD_);
+	const FTransform& hmd2world = HMD_->GetComponentTransform();
 	struct Tagger
 	{
 		USceneComponent* t;

@@ -25,14 +25,29 @@ class TESTER_UNREAL_VR_API AVRPawnBase : public APawn
 {
 	GENERATED_BODY()
 	
-public:	
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings, meta = (PinShownByDefault))
+	USceneComponent* VROrg_;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings, meta = (PinShownByDefault))
+	USceneComponent* HMD_;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings, meta = (PinShownByDefault))
+	AActor* Ctrller_L_;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings, meta = (PinShownByDefault))
+	AActor* Ctrller_R_;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings, meta = (PinShownByDefault))
 	TArray<USceneComponent*> Trackers_;
 
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Sort Trackers WRT IDs", CompactNodeTitle = "Identify trackers", Keywords = "Identify trackers"), Category = Settings)
-	bool Proc_SortTrackers(const FTransform& hmd2world);
+	UFUNCTION(BlueprintCallable, Category = Settings)
+	void Proc_FloorCali(float z_floor);
 
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Verify Trackers", CompactNodeTitle = "Verify trackers", Keywords = "Verify trackers"), Category = Settings)
+	UFUNCTION(BlueprintCallable, Category = Settings)
+	bool Proc_SortTrackers();
+
+	UFUNCTION(BlueprintCallable, Category = Settings)
 	void VerifyTracker();
 
 public:
