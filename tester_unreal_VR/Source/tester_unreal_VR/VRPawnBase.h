@@ -42,7 +42,7 @@ public:
 	TArray<USceneComponent*> Trackers_;
 
 	UFUNCTION(BlueprintCallable, Category = Settings)
-	void Proc_FloorCali(float z_floor);
+	void Proc_FloorCali(const FVector& p_v);
 
 	UFUNCTION(BlueprintCallable, Category = Settings)
 	bool Proc_SortTrackers();

@@ -40,10 +40,9 @@ void AVRPawnBase::Tick(float DeltaTime)
 #endif
 }
 
-void AVRPawnBase::Proc_FloorCali(float z_floor)
+void AVRPawnBase::Proc_FloorCali(const FVector& p_v)
 {
-	float z0_floor = GetActorLocation().Z;
-	FTransform tm_v(FVector(0, 0, z0_floor-z_floor));
+	FTransform tm_v(GetActorLocation() - p_v);
 	const FTransform& tm_r2v = VROrg_->GetComponentTransform();
 	const FTransform& tm_c2v = GetActorTransform();
 	FTransform tm_v2c = tm_c2v.Inverse();
