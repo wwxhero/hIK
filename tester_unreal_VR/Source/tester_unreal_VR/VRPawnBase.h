@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 #include "tester_unreal_VR.h"
+#include "AnimInstance_HIKDrivee.h"
 #include "VRPawnBase.generated.h"
 
 UENUM()
@@ -25,7 +26,7 @@ class TESTER_UNREAL_VR_API AVRPawnBase : public APawn
 {
 	GENERATED_BODY()
 	
-public:
+protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings, meta = (PinShownByDefault))
 	USceneComponent* VROrg_;
 
@@ -49,6 +50,10 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = Settings)
 	void VerifyTracker();
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings, meta = (PinShownByDefault))
+	UAnimInstance_HIKDrivee* AvatarIKDrivee_;
 
 public:
 	// Sets default values for this pawn's properties
