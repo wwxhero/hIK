@@ -7,12 +7,12 @@
 
 // Sets default values
 AVRPawnBase::AVRPawnBase()
-	: VROrg_(NULL)
-	, HMD_(NULL)
-	, Ctrller_L_(NULL)
-	, Ctrller_R_(NULL)
-	, m_verifying(RH)
+	: m_vrOrg(NULL)
+	, m_hmd(NULL)
+	, m_ctrllerL(NULL)
+	, m_ctrllerR(NULL)
 	, m_actorIKDrivee(NULL)
+	, m_verifying(RH)
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -35,14 +35,24 @@ void AVRPawnBase::Tick(float DeltaTime)
 #if defined _DEBUG
 	if (-1 < m_verifying && m_verifying < Total)
 	{
-		auto tracker_i = Trackers_[m_verifying];
+		auto tracker_i = m_trackers[m_verifying];
 		DBG_VisTransform(tracker_i->GetComponentTransform(), 10, 1);
 	}	
 #endif
 }
 
-bool AVRPawnBase::InitVRPawn(ASkeletalMeshActor* avatarIKDrivee)
+bool AVRPawnBase::InitVRPawn(USceneComponent* org
+							, USceneComponent* hmd
+							, AActor* ctrller_l
+							, AActor* ctrller_r
+							, const TArray<USceneComponent*>& trackers
+							, ASkeletalMeshActor* avatarIKDrivee)
 {
+	m_vrOrg = org;
+	m_hmd = hmd;
+	m_ctrllerL = ctrller_l;
+	m_ctrllerR = ctrller_r;
+	m_trackers = trackers;
 	m_actorIKDrivee = avatarIKDrivee;
 	return true;
 }
@@ -50,17 +60,17 @@ bool AVRPawnBase::InitVRPawn(ASkeletalMeshActor* avatarIKDrivee)
 void AVRPawnBase::Proc_FloorCali(const FVector& p_v)
 {
 	FTransform tm_v(m_actorIKDrivee->GetActorLocation() - p_v);
-	const FTransform& tm_r2v = VROrg_->GetComponentTransform();
+	const FTransform& tm_r2v = m_vrOrg->GetComponentTransform();
 	const FTransform& tm_c2v = GetActorTransform();
 	FTransform tm_v2c = tm_c2v.Inverse();
 	FTransform tm_r2c_prime = tm_r2v * tm_v * tm_v2c;
-	VROrg_->SetRelativeTransform(tm_r2c_prime);
+	m_vrOrg->SetRelativeTransform(tm_r2c_prime);
 }
 
 bool AVRPawnBase::Proc_SortTrackers()
 {
-	check(NULL != HMD_);
-	const FTransform& hmd2world = HMD_->GetComponentTransform();
+	check(NULL != m_hmd);
+	const FTransform& hmd2world = m_hmd->GetComponentTransform();
 	struct Tagger
 	{
 		USceneComponent* t;
@@ -75,13 +85,13 @@ bool AVRPawnBase::Proc_SortTrackers()
 	FVector axis_z = hmd2world.TransformVector(FVector(0, 0, 1));
 	FVector org = hmd2world.GetLocation();
 
-	int32 n_trackers = Trackers_.Num();
+	int32 n_trackers = m_trackers.Num();
 	TArray<Tagger> taggers;
 	taggers.SetNum(n_trackers);
 	for (int i_tracker = 0; i_tracker < n_trackers; i_tracker ++)
 	{
 		auto& tagger_i = taggers[i_tracker];
-		tagger_i.t = Trackers_[i_tracker];
+		tagger_i.t = m_trackers[i_tracker];
 		tagger_i.id_y = -1;
 		tagger_i.id_z = -1;
 		FVector org_t_i = tagger_i.t->GetComponentTransform().GetLocation();
@@ -161,7 +171,7 @@ bool AVRPawnBase::Proc_SortTrackers()
 	if (one_on_one)
 	{
 		for (auto tagger_i : taggers)
-			Trackers_[tagger_i.tid] = tagger_i.t;
+			m_trackers[tagger_i.tid] = tagger_i.t;
 
 		UE_LOG(TESTER_UNREAL_VR, Display, TEXT("AVRPawnBase::Proc_SortTrackers: SUCCESSFUL"));
 		m_verifying = RH;
