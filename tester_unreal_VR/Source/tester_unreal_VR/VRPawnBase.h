@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 #include "tester_unreal_VR.h"
+#include "Animation/SkeletalMeshActor.h"
 #include "AnimInstance_HIKDrivee.h"
 #include "VRPawnBase.generated.h"
 
@@ -53,7 +54,7 @@ protected:
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings, meta = (PinShownByDefault))
-	UAnimInstance_HIKDrivee* AvatarIKDrivee_;
+	ASkeletalMeshActor* AvatarIKDrivee_;
 
 public:
 	// Sets default values for this pawn's properties
