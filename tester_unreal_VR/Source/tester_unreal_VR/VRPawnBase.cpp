@@ -12,6 +12,7 @@ AVRPawnBase::AVRPawnBase()
 	, Ctrller_L_(NULL)
 	, Ctrller_R_(NULL)
 	, m_verifying(RH)
+	, m_actorIKDrivee(NULL)
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -40,10 +41,15 @@ void AVRPawnBase::Tick(float DeltaTime)
 #endif
 }
 
+bool AVRPawnBase::InitVRPawn(ASkeletalMeshActor* avatarIKDrivee)
+{
+	m_actorIKDrivee = avatarIKDrivee;
+	return true;
+}
 
 void AVRPawnBase::Proc_FloorCali(const FVector& p_v)
 {
-	FTransform tm_v(AvatarIKDrivee_->GetActorLocation() - p_v);
+	FTransform tm_v(m_actorIKDrivee->GetActorLocation() - p_v);
 	const FTransform& tm_r2v = VROrg_->GetComponentTransform();
 	const FTransform& tm_c2v = GetActorTransform();
 	FTransform tm_v2c = tm_c2v.Inverse();

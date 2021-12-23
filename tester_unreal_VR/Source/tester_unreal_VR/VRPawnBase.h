@@ -44,6 +44,9 @@ protected:
 	TArray<USceneComponent*> Trackers_;
 
 	UFUNCTION(BlueprintCallable, Category = Settings)
+	bool InitVRPawn(ASkeletalMeshActor* avatarIKDrivee);
+
+	UFUNCTION(BlueprintCallable, Category = Settings)
 	void Proc_FloorCali(const FVector& p_v);
 
 	UFUNCTION(BlueprintCallable, Category = Settings)
@@ -52,9 +55,7 @@ protected:
 	UFUNCTION(BlueprintCallable, Category = Settings)
 	void VerifyTracker();
 
-public:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings, meta = (PinShownByDefault))
-	ASkeletalMeshActor* AvatarIKDrivee_;
+	
 
 public:
 	// Sets default values for this pawn's properties
@@ -75,5 +76,7 @@ public:
 
 private:
 	TRACKER_ID m_verifying;
+protected:
+	ASkeletalMeshActor* m_actorIKDrivee;
 
 };
