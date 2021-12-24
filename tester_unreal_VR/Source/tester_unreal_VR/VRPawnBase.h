@@ -9,19 +9,6 @@
 #include "AnimInstance_HIKDrivee.h"
 #include "VRPawnBase.generated.h"
 
-UENUM()
-enum TRACKER_ID
-{
-	RH = 0		UMETA(DisplayName = "RightHand"),
-	LH 			UMETA(DisplayName = "LeftHand"),
-	RF 			UMETA(DisplayName = "RightFoot"),
-	LF 			UMETA(DisplayName = "LeftFoot"),
-	PW 			UMETA(DisplayName = "Pelvis"),
-	Total,
-	Unknown = Total
-};
-
-
 UCLASS()
 class TESTER_UNREAL_VR_API AVRPawnBase : public APawn
 {
@@ -41,6 +28,9 @@ protected:
 
 	UFUNCTION(BlueprintCallable, Category = Settings)
 	bool Proc_SortTrackers();
+
+	UFUNCTION(BlueprintCallable, Category = Settings)
+	void Proc_ConnectIKTaget();
 
 	UFUNCTION(BlueprintCallable, Category = Settings)
 	void VerifyTracker();
@@ -64,12 +54,11 @@ public:
 
 protected:
 	USceneComponent* m_vrOrg;
-	USceneComponent* m_hmd;
 	AActor* m_ctrllerL;
 	AActor* m_ctrllerR;
 	TArray<USceneComponent*> m_trackers;
 	ASkeletalMeshActor* m_actorIKDrivee;
-
+	UAnimInstance_HIKDrivee* m_animIKDrivee;
 private:
 	TRACKER_ID m_verifying;
 

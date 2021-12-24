@@ -8,7 +8,6 @@
 // Sets default values
 AVRPawnBase::AVRPawnBase()
 	: m_vrOrg(NULL)
-	, m_hmd(NULL)
 	, m_ctrllerL(NULL)
 	, m_ctrllerR(NULL)
 	, m_actorIKDrivee(NULL)
@@ -33,12 +32,13 @@ void AVRPawnBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 #if defined _DEBUG
-	if (-1 < m_verifying && m_verifying < Total)
+	if (-1 < m_verifying && m_verifying < N_TRACKERS)
 	{
 		auto tracker_i = m_trackers[m_verifying];
 		DBG_VisTransform(tracker_i->GetComponentTransform(), 10, 1);
 	}	
 #endif
+	m_animIKDrivee->VRIK_Update();
 }
 
 bool AVRPawnBase::InitVRPawn(USceneComponent* org
@@ -49,12 +49,15 @@ bool AVRPawnBase::InitVRPawn(USceneComponent* org
 							, ASkeletalMeshActor* avatarIKDrivee)
 {
 	m_vrOrg = org;
-	m_hmd = hmd;
 	m_ctrllerL = ctrller_l;
 	m_ctrllerR = ctrller_r;
 	m_trackers = trackers;
+	m_trackers.Add(hmd);
 	m_actorIKDrivee = avatarIKDrivee;
-	return true;
+	USkeletalMeshComponent* skm_comp = avatarIKDrivee->GetSkeletalMeshComponent();
+	UAnimInstance* anim_inst = skm_comp->GetAnimInstance();
+	m_animIKDrivee = Cast<UAnimInstance_HIKDrivee, UAnimInstance>(anim_inst);
+	return NULL != m_animIKDrivee;
 }
 
 void AVRPawnBase::Proc_FloorCali(const FVector& p_v)
@@ -69,8 +72,9 @@ void AVRPawnBase::Proc_FloorCali(const FVector& p_v)
 
 bool AVRPawnBase::Proc_SortTrackers()
 {
-	check(NULL != m_hmd);
-	const FTransform& hmd2world = m_hmd->GetComponentTransform();
+	auto hmd = m_trackers[HMD];
+	check(NULL != hmd);
+	const FTransform& hmd2world = hmd->GetComponentTransform();
 	struct Tagger
 	{
 		USceneComponent* t;
@@ -85,10 +89,9 @@ bool AVRPawnBase::Proc_SortTrackers()
 	FVector axis_z = hmd2world.TransformVector(FVector(0, 0, 1));
 	FVector org = hmd2world.GetLocation();
 
-	int32 n_trackers = m_trackers.Num();
 	TArray<Tagger> taggers;
-	taggers.SetNum(n_trackers);
-	for (int i_tracker = 0; i_tracker < n_trackers; i_tracker ++)
+	taggers.SetNum(N_TRACKERS);
+	for (int i_tracker = 0; i_tracker < N_TRACKERS; i_tracker ++)
 	{
 		auto& tagger_i = taggers[i_tracker];
 		tagger_i.t = m_trackers[i_tracker];
@@ -110,7 +113,7 @@ bool AVRPawnBase::Proc_SortTrackers()
 		}
 	};
 	taggers_y.Sort(FCompare_y());
-	for (int i_tagger = 0; i_tagger < n_trackers; i_tagger ++)
+	for (int i_tagger = 0; i_tagger < N_TRACKERS; i_tagger ++)
 		taggers_y[i_tagger].id_y = i_tagger;
 
 	auto & taggers_z = taggers;
@@ -122,7 +125,7 @@ bool AVRPawnBase::Proc_SortTrackers()
 		}
 	};
 	taggers_z.Sort(FCompare_z());
-	for (int i_tagger = 0; i_tagger < n_trackers; i_tagger ++)
+	for (int i_tagger = 0; i_tagger < N_TRACKERS; i_tagger ++)
 		taggers_z[i_tagger].id_z = i_tagger;
 
 	struct Identifier
@@ -150,10 +153,9 @@ bool AVRPawnBase::Proc_SortTrackers()
 		};
 
 	TArray<Identifier>* identifiers[] = {&rh, &lh, &rf, &lf, &pw};
-	
 	// one_on_one: (forall identifiers exists_a_tagger: tagger is not tagged and tagger is identfied)
 	bool one_on_one = true;
-	for (int i_predicate = RH; i_predicate < Total && one_on_one; i_predicate ++)
+	for (int i_predicate = RH; i_predicate < N_TRACKERS && one_on_one; i_predicate ++)
 	{
 		TArray<Identifier>* identfier_i = identifiers[i_predicate];
 		for (auto& tagger_i : taggers)
@@ -184,11 +186,16 @@ bool AVRPawnBase::Proc_SortTrackers()
 	return one_on_one;	
 }
 
+void AVRPawnBase::Proc_ConnectIKTaget()
+{
+	m_animIKDrivee->VRIK_Connect(m_trackers);
+}
+
 void AVRPawnBase::VerifyTracker()
 {
 	int verifying = m_verifying;
 	verifying ++;
-	m_verifying = (TRACKER_ID)(verifying % Total);
+	m_verifying = (TRACKER_ID)(verifying % N_TRACKERS);
 }
 
 // Called to bind functionality to input
