@@ -38,7 +38,7 @@ void AVRPawnBase::Tick(float DeltaTime)
 		DBG_VisTransform(tracker_i->GetComponentTransform(), 10, 1);
 	}	
 #endif
-	m_animIKDrivee->VRIK_Update();
+	m_animIKDrivee->VRIK_UpdateTargets();
 }
 
 bool AVRPawnBase::InitVRPawn(USceneComponent* org
