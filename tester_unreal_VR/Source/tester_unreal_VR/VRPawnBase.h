@@ -9,6 +9,19 @@
 #include "AnimInstance_HIKDrivee.h"
 #include "VRPawnBase.generated.h"
 
+UENUM(BlueprintType)
+enum VREVT
+{
+	NONE,
+
+	GRIP_PRESS,
+	GRIP_RELEASE,
+	
+	TRIGGER_PRESS,
+	TRIGGER_RELEASE
+};
+
+
 UCLASS()
 class TESTER_UNREAL_VR_API AVRPawnBase : public APawn
 {
@@ -18,8 +31,8 @@ protected:
 	UFUNCTION(BlueprintCallable, Category = Settings)
 	bool InitVRPawn(USceneComponent* org
 					, USceneComponent* hmd
-					, AActor* ctrller_l
-					, AActor* ctrller_r
+					, USceneComponent* ctrller_l
+					, USceneComponent* ctrller_r
 					, const TArray<USceneComponent*>& trackers
 					, ASkeletalMeshActor* avatarIKDrivee);
 
@@ -34,6 +47,9 @@ protected:
 
 	UFUNCTION(BlueprintCallable, Category = Settings)
 	void VerifyTracker();
+
+	UFUNCTION(BlueprintCallable, Category = Settings)
+	void Proc_VRMsg(TRACKER_ID tracker_id, VREVT evt);
 
 public:
 	// Sets default values for this pawn's properties
@@ -54,8 +70,6 @@ public:
 
 protected:
 	USceneComponent* m_vrOrg;
-	AActor* m_ctrllerL;
-	AActor* m_ctrllerR;
 	TArray<USceneComponent*> m_trackers;
 	ASkeletalMeshActor* m_actorIKDrivee;
 	UAnimInstance_HIKDrivee* m_animIKDrivee;
