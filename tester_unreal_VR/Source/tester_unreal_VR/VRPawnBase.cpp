@@ -8,8 +8,6 @@
 // Sets default values
 AVRPawnBase::AVRPawnBase()
 	: m_vrOrg(NULL)
-	, m_ctrllerL(NULL)
-	, m_ctrllerR(NULL)
 	, m_actorIKDrivee(NULL)
 	, m_verifying(RH)
 {
@@ -22,9 +20,6 @@ AVRPawnBase::AVRPawnBase()
 void AVRPawnBase::BeginPlay()
 {
 	Super::BeginPlay();
-	int test = 0;
-	int test_p = ik_test(test);
-	check(test_p == test + 1);
 }
 
 // Called every frame
@@ -32,7 +27,7 @@ void AVRPawnBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 #if defined _DEBUG
-	if (-1 < m_verifying && m_verifying < N_TRACKERS)
+	if (-1 < m_verifying && m_verifying < N_SPECTRAKS)
 	{
 		auto tracker_i = m_trackers[m_verifying];
 		DBG_VisTransform(tracker_i->GetComponentTransform(), 10, 1);
@@ -43,16 +38,17 @@ void AVRPawnBase::Tick(float DeltaTime)
 
 bool AVRPawnBase::InitVRPawn(USceneComponent* org
 							, USceneComponent* hmd
-							, AActor* ctrller_l
-							, AActor* ctrller_r
+							, USceneComponent* ctrller_l
+							, USceneComponent* ctrller_r
 							, const TArray<USceneComponent*>& trackers
 							, ASkeletalMeshActor* avatarIKDrivee)
 {
 	m_vrOrg = org;
-	m_ctrllerL = ctrller_l;
-	m_ctrllerR = ctrller_r;
 	m_trackers = trackers;
-	m_trackers.Add(hmd);
+	m_trackers.SetNumUninitialized(N_TRACKERS);
+	m_trackers[HMD] = hmd;
+	m_trackers[RCTRL] = ctrller_r;
+	m_trackers[LCTRL] = ctrller_l;
 	m_actorIKDrivee = avatarIKDrivee;
 	USkeletalMeshComponent* skm_comp = avatarIKDrivee->GetSkeletalMeshComponent();
 	UAnimInstance* anim_inst = skm_comp->GetAnimInstance();
@@ -90,8 +86,8 @@ bool AVRPawnBase::Proc_SortTrackers()
 	FVector org = hmd2world.GetLocation();
 
 	TArray<Tagger> taggers;
-	taggers.SetNum(N_TRACKERS);
-	for (int i_tracker = 0; i_tracker < N_TRACKERS; i_tracker ++)
+	taggers.SetNum(N_SPECTRAKS);
+	for (int i_tracker = 0; i_tracker < N_SPECTRAKS; i_tracker ++)
 	{
 		auto& tagger_i = taggers[i_tracker];
 		tagger_i.t = m_trackers[i_tracker];
@@ -113,7 +109,7 @@ bool AVRPawnBase::Proc_SortTrackers()
 		}
 	};
 	taggers_y.Sort(FCompare_y());
-	for (int i_tagger = 0; i_tagger < N_TRACKERS; i_tagger ++)
+	for (int i_tagger = 0; i_tagger < N_SPECTRAKS; i_tagger ++)
 		taggers_y[i_tagger].id_y = i_tagger;
 
 	auto & taggers_z = taggers;
@@ -125,7 +121,7 @@ bool AVRPawnBase::Proc_SortTrackers()
 		}
 	};
 	taggers_z.Sort(FCompare_z());
-	for (int i_tagger = 0; i_tagger < N_TRACKERS; i_tagger ++)
+	for (int i_tagger = 0; i_tagger < N_SPECTRAKS; i_tagger ++)
 		taggers_z[i_tagger].id_z = i_tagger;
 
 	struct Identifier
@@ -155,7 +151,7 @@ bool AVRPawnBase::Proc_SortTrackers()
 	TArray<Identifier>* identifiers[] = {&rh, &lh, &rf, &lf, &pw};
 	// one_on_one: (forall identifiers exists_a_tagger: tagger is not tagged and tagger is identfied)
 	bool one_on_one = true;
-	for (int i_predicate = RH; i_predicate < N_TRACKERS && one_on_one; i_predicate ++)
+	for (int i_predicate = RH; i_predicate < N_SPECTRAKS && one_on_one; i_predicate ++)
 	{
 		TArray<Identifier>* identfier_i = identifiers[i_predicate];
 		for (auto& tagger_i : taggers)
@@ -191,11 +187,43 @@ void AVRPawnBase::Proc_ConnectIKTaget()
 	m_animIKDrivee->VRIK_Connect(m_trackers);
 }
 
+void AVRPawnBase::OnVRMsg(TRACKER_ID tracker_id, VR_EVT vrEvt)
+{
+	static FString tracker_id_str[] = {
+		TEXT("RH"),
+		TEXT("LH"),
+		TEXT("RF"),
+		TEXT("LF"),
+		TEXT("PW"),
+		TEXT("HMD"),
+		TEXT("RCTRL"),
+		TEXT("LCTRL")
+	};
+
+	static FString vrEvt_str[] = {
+		TEXT("NONE"),
+		TEXT("GRIP_PRESS"),
+		TEXT("GRIP_RELEASE"),
+		TEXT("TRIGGER_PRESS"),
+		TEXT("TRIGGER_RELEASE")
+	};
+
+	FTransform tm_l2p = m_trackers[tracker_id]->GetRelativeTransform();
+	FString tm_l2p_str = tm_l2p.ToString();
+
+	UE_LOG(TESTER_UNREAL_VR, Display, TEXT("(%s, %s): %s"), *tracker_id_str[tracker_id], *vrEvt_str[vrEvt], *tm_l2p_str);
+}
+
+void AVRPawnBase::Proc_VRMsg(TRACKER_ID tracker_id, VR_EVT vrEvt)
+{
+	OnVRMsg(tracker_id, vrEvt);
+}
+
 void AVRPawnBase::VerifyTracker()
 {
 	int verifying = m_verifying;
 	verifying ++;
-	m_verifying = (TRACKER_ID)(verifying % N_TRACKERS);
+	m_verifying = (TRACKER_ID)(verifying % N_SPECTRAKS);
 }
 
 // Called to bind functionality to input
