@@ -10,7 +10,7 @@
 #include "VRPawnBase.generated.h"
 
 UENUM(BlueprintType)
-enum VREVT
+enum VR_EVT
 {
 	NONE,
 
@@ -48,8 +48,7 @@ protected:
 	UFUNCTION(BlueprintCallable, Category = Settings)
 	void VerifyTracker();
 
-	UFUNCTION(BlueprintCallable, Category = Settings)
-	void Proc_VRMsg(TRACKER_ID tracker_id, VREVT evt);
+	void Proc_VRMsg(TRACKER_ID tracker_id, VR_EVT evt);
 
 public:
 	// Sets default values for this pawn's properties

@@ -20,9 +20,6 @@ AVRPawnBase::AVRPawnBase()
 void AVRPawnBase::BeginPlay()
 {
 	Super::BeginPlay();
-	int test = 0;
-	int test_p = ik_test(test);
-	check(test_p == test + 1);
 }
 
 // Called every frame
@@ -190,7 +187,7 @@ void AVRPawnBase::Proc_ConnectIKTaget()
 	m_animIKDrivee->VRIK_Connect(m_trackers);
 }
 
-void AVRPawnBase::Proc_VRMsg(TRACKER_ID tracker_id, VREVT vrEvt)
+void AVRPawnBase::Proc_VRMsg(TRACKER_ID tracker_id, VR_EVT vrEvt)
 {
 	static FString tracker_id_str[] = {
 		TEXT("RH"),
