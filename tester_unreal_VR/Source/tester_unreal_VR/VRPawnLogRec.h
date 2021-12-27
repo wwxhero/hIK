@@ -13,13 +13,12 @@ class TESTER_UNREAL_VR_API AVRPawnLogRec : public AVRPawnBase
 {
 	GENERATED_BODY()
 public:
-	UFUNCTION(BlueprintCallable, Category = VRLOG)
-	void Proc_VRMsg(TRACKER_ID tracker_id, VR_EVT evt);
 public:
 	// Sets default values for this pawn's properties
 	AVRPawnLogRec();
 	~AVRPawnLogRec();
-
+protected:
+	virtual void OnVRMsg(TRACKER_ID tracker_id, VR_EVT evt) override;
 private:
 	HLOG m_hLog;
 	uint32 c_frameID0;

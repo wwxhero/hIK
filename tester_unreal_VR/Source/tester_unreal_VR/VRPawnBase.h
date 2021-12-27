@@ -48,6 +48,7 @@ protected:
 	UFUNCTION(BlueprintCallable, Category = Settings)
 	void VerifyTracker();
 
+	UFUNCTION(BlueprintCallable, Category = Settings)
 	void Proc_VRMsg(TRACKER_ID tracker_id, VR_EVT evt);
 
 public:
@@ -61,6 +62,8 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	virtual void OnVRMsg(TRACKER_ID tracker_id, VR_EVT evt);
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;

@@ -31,7 +31,7 @@ AVRPawnLogRec::~AVRPawnLogRec()
 	m_hLog = H_INVALID;
 }
 
-void AVRPawnLogRec::Proc_VRMsg(TRACKER_ID tracker_id, VR_EVT vrEvt)
+void AVRPawnLogRec::OnVRMsg(TRACKER_ID tracker_id, VR_EVT vrEvt)
 {
 	// UE_LOG(TESTER_UNREAL_VR, Display, TEXT("AVRPawnLogRec::Proc_VRMsg"));
 	// UE_LOG(TESTER_UNREAL_VR, Display, TEXT("Couter: %d, Number: %d"), GFrameCounter, GFrameNumber);
@@ -42,5 +42,5 @@ void AVRPawnLogRec::Proc_VRMsg(TRACKER_ID tracker_id, VR_EVT vrEvt)
 	Convert(tracker_i->GetRelativeTransform(), tm_l2p);
 	VRMSG msg = { tracker_id, vrEvt, tm_l2p };
 	appenditem(log_i, &msg);
-	AVRPawnBase::Proc_VRMsg(tracker_id, vrEvt);
+	AVRPawnBase::OnVRMsg(tracker_id, vrEvt);
 }

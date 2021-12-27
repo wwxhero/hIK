@@ -187,7 +187,7 @@ void AVRPawnBase::Proc_ConnectIKTaget()
 	m_animIKDrivee->VRIK_Connect(m_trackers);
 }
 
-void AVRPawnBase::Proc_VRMsg(TRACKER_ID tracker_id, VR_EVT vrEvt)
+void AVRPawnBase::OnVRMsg(TRACKER_ID tracker_id, VR_EVT vrEvt)
 {
 	static FString tracker_id_str[] = {
 		TEXT("RH"),
@@ -212,6 +212,11 @@ void AVRPawnBase::Proc_VRMsg(TRACKER_ID tracker_id, VR_EVT vrEvt)
 	FString tm_l2p_str = tm_l2p.ToString();
 
 	UE_LOG(TESTER_UNREAL_VR, Display, TEXT("(%s, %s): %s"), *tracker_id_str[tracker_id], *vrEvt_str[vrEvt], *tm_l2p_str);
+}
+
+void AVRPawnBase::Proc_VRMsg(TRACKER_ID tracker_id, VR_EVT vrEvt)
+{
+	OnVRMsg(tracker_id, vrEvt);
 }
 
 void AVRPawnBase::VerifyTracker()
