@@ -19,6 +19,8 @@ public:
 	~AVRPawnLogRec();
 protected:
 	virtual void OnVRMsg(TRACKER_ID tracker_id, VR_EVT evt) override;
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
 private:
 	HLOG m_hLog;
 	uint32 c_frameID0;

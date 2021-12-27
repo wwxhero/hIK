@@ -44,3 +44,9 @@ void AVRPawnLogRec::OnVRMsg(TRACKER_ID tracker_id, VR_EVT vrEvt)
 	appenditem(log_i, &msg);
 	AVRPawnBase::OnVRMsg(tracker_id, vrEvt);
 }
+
+void AVRPawnLogRec::Tick(float DeltaTime)
+{
+	for (int i_tracker = 0; i_tracker < N_TRACKERS; i_tracker ++)
+		OnVRMsg((TRACKER_ID)i_tracker, VR_EVT::NONE);
+}
