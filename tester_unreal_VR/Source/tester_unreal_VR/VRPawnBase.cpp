@@ -4,12 +4,14 @@
 #include "DrawDebugHelpers.h"
 #include "Engine/World.h"
 #include "vrLog.h"
+#include "Widgets/SWindow.h"
 
 // Sets default values
 AVRPawnBase::AVRPawnBase()
 	: m_vrOrg(NULL)
 	, m_actorIKDrivee(NULL)
 	, m_verifying(RH)
+	, m_slateWin(nullptr)
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -20,6 +22,35 @@ AVRPawnBase::AVRPawnBase()
 void AVRPawnBase::BeginPlay()
 {
 	Super::BeginPlay();
+	TSharedRef<SWindow> SlateWin = SNew(SWindow)
+     								.AutoCenter(EAutoCenter::None)
+     								.Title(FText::FromString(TEXT("VR Message Window")))
+     								.IsInitiallyMaximized(false)
+     								.ScreenPosition(FVector2D(0, 0))
+     								.ClientSize(FVector2D(500, 800))
+     								.CreateTitleBar(true)
+     								.SizingRule(ESizingRule::UserSized)
+     								.SupportsMaximize(false)
+     								.SupportsMinimize(true)
+     								.HasCloseButton(false);
+ 
+ 	FSlateApplication & SlateApp = FSlateApplication::Get();
+ 
+	SlateApp.AddWindow(SlateWin, true);
+
+	m_slateWin = SlateWin;
+ 
+ 	// SlateWinRef->SetContent(SNew(SControlWidget));
+}
+
+void AVRPawnBase::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+	if (m_slateWin)
+	{
+		m_slateWin->RequestDestroyWindow();
+		m_slateWin = nullptr;
+	}
+	Super::EndPlay(EndPlayReason);
 }
 
 // Called every frame

@@ -58,6 +58,7 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason);
 
 public:	
 	// Called every frame
@@ -76,6 +77,7 @@ protected:
 	ASkeletalMeshActor* m_actorIKDrivee;
 	UAnimInstance_HIKDrivee* m_animIKDrivee;
 private:
+	TSharedPtr<SWindow> m_slateWin;
 	TRACKER_ID m_verifying;
 
 };
