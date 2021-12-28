@@ -7,6 +7,7 @@
 #include "tester_unreal_VR.h"
 #include "Animation/SkeletalMeshActor.h"
 #include "AnimInstance_HIKDrivee.h"
+#include "WidgetsVRFSA.h"
 #include "VRPawnBase.generated.h"
 
 UENUM(BlueprintType)
@@ -77,7 +78,7 @@ protected:
 	ASkeletalMeshActor* m_actorIKDrivee;
 	UAnimInstance_HIKDrivee* m_animIKDrivee;
 private:
-	TSharedPtr<SWindow> m_slateWin;
+	TSharedPtr<SWindowVRFSA> m_slateWin;
 	TRACKER_ID m_verifying;
 
 };

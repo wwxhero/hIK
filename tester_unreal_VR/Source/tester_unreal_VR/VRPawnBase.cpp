@@ -4,8 +4,7 @@
 #include "DrawDebugHelpers.h"
 #include "Engine/World.h"
 #include "vrLog.h"
-#include "Widgets/SWindow.h"
-#include "SVRInfoWidget.h"
+#include "WidgetsVRFSA.h"
 
 // Sets default values
 AVRPawnBase::AVRPawnBase()
@@ -23,7 +22,7 @@ AVRPawnBase::AVRPawnBase()
 void AVRPawnBase::BeginPlay()
 {
 	Super::BeginPlay();
-	TSharedRef<SWindow> SlateWin = SNew(SWindow)
+	TSharedRef<SWindowVRFSA> SlateWin = SNew(SWindowVRFSA)
      								.AutoCenter(EAutoCenter::None)
      								.Title(FText::FromString(TEXT("VR Message Window")))
      								.IsInitiallyMaximized(false)
@@ -40,8 +39,6 @@ void AVRPawnBase::BeginPlay()
 	SlateApp.AddWindow(SlateWin, true);
 
 	m_slateWin = SlateWin;
- 
-	SlateWin->SetContent(SNew(SVRInfoWidget));
 }
 
 void AVRPawnBase::EndPlay(const EEndPlayReason::Type EndPlayReason)
@@ -63,8 +60,13 @@ void AVRPawnBase::Tick(float DeltaTime)
 	{
 		auto tracker_i = m_trackers[m_verifying];
 		DBG_VisTransform(tracker_i->GetComponentTransform(), 10, 1);
-	}	
+	}
+
+	
 #endif
+	/*static int s_frame_id = 0;
+	FString info = FString::Printf(TEXT("Hello_world_%d"), s_frame_id ++);
+	m_slateWin->UpdateInstruction(info);*/
 	m_animIKDrivee->VRIK_UpdateTargets();
 }
 

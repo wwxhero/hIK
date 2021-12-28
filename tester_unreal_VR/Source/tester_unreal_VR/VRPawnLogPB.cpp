@@ -26,6 +26,7 @@ AVRPawnLogPB::~AVRPawnLogPB()
 
 void AVRPawnLogPB::Tick(float DeltaTime)
 {
+	Super::Tick(DeltaTime);	
 	if (VALID_HANDLE(m_hLog))
 	{
 		uint32 logframe_id = GFrameNumber - m_frameid0;
@@ -58,5 +59,4 @@ void AVRPawnLogPB::Tick(float DeltaTime)
 			UE_LOG(TESTER_UNREAL_VR, Display, TEXT("PlayBack DONE"));
 		}
 	}
-	
 }

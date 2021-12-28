@@ -1,4 +1,6 @@
-#include "SVRInfoWidget.h"
+#pragma once
+#include "Widgets/SWindow.h"
+#include "Widgets/SUserWidget.h"
 /* See SUserWidgetExample
  *
  * SMyWidget.h
@@ -44,17 +46,26 @@
  * }
  */
 
-void SVRInfoWidget::Construct(const FArguments& InArgs)
-{
-    SUserWidget::Construct( SUserWidget::FArguments()
-        [
-           SNew(STextBlock)
-           // .Text( NSLOCTEXT("x", "x", "My Widget's Content") )
-           .Text(FText::FromString(FString("Implementation Details!\nHello,world_0\nHello,world_1\nHello,world_2\nHello,world_3\n" )))
-        ]);
-}
+class SPanelTextWidget : public SUserWidget
+{ 
+public:
+	SLATE_USER_ARGS( SPanelTextWidget )
+		{}
+	SLATE_END_ARGS()
+	// MUST Provide this function for SNew to call!
+	virtual void Construct( const FArguments& InArgs );
+	void UpdateInstruction(const FString &info);
+private:
+	TSharedPtr<STextBlock> m_textBox;
+};
 
-TSharedRef<SVRInfoWidget> SVRInfoWidget::New()
+class SWindowVRFSA : public SWindow
 {
-	return MakeShareable(new SVRInfoWidget());
-}
+public:
+	// MUST Provide this function for SNew to call!
+	virtual void Construct( const FArguments& InArgs );
+
+	void UpdateInstruction(const FString& info);
+private:
+	TSharedPtr<SPanelTextWidget> m_paneInstruction;
+};

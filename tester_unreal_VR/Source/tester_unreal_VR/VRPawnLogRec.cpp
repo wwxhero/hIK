@@ -47,6 +47,7 @@ void AVRPawnLogRec::OnVRMsg(TRACKER_ID tracker_id, VR_EVT vrEvt)
 
 void AVRPawnLogRec::Tick(float DeltaTime)
 {
+	Super::Tick(DeltaTime);
 	for (int i_tracker = 0; i_tracker < N_TRACKERS; i_tracker ++)
 		OnVRMsg((TRACKER_ID)i_tracker, VR_EVT::NONE);
 }
