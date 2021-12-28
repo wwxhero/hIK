@@ -42,7 +42,7 @@ void AVRPawnLogRec::OnVRMsg(TRACKER_ID tracker_id, VR_EVT vrEvt)
 	Convert(tracker_i->GetRelativeTransform(), tm_l2p);
 	VRMSG msg = { tracker_id, vrEvt, tm_l2p };
 	appenditem(log_i, &msg);
-	AVRPawnBase::OnVRMsg(tracker_id, vrEvt);
+	Super::OnVRMsg(tracker_id, vrEvt);
 }
 
 void AVRPawnLogRec::Tick(float DeltaTime)

@@ -5,13 +5,14 @@
 #include "Engine/World.h"
 #include "vrLog.h"
 #include "Widgets/SWindow.h"
+#include "SVRInfoWidget.h"
 
 // Sets default values
 AVRPawnBase::AVRPawnBase()
 	: m_vrOrg(NULL)
 	, m_actorIKDrivee(NULL)
-	, m_verifying(RH)
 	, m_slateWin(nullptr)
+	, m_verifying(RH)
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -33,14 +34,14 @@ void AVRPawnBase::BeginPlay()
      								.SupportsMaximize(false)
      								.SupportsMinimize(true)
      								.HasCloseButton(false);
- 
- 	FSlateApplication & SlateApp = FSlateApplication::Get();
+
+    FSlateApplication & SlateApp = FSlateApplication::Get();
  
 	SlateApp.AddWindow(SlateWin, true);
 
 	m_slateWin = SlateWin;
  
- 	// SlateWinRef->SetContent(SNew(SControlWidget));
+	SlateWin->SetContent(SNew(SVRInfoWidget));
 }
 
 void AVRPawnBase::EndPlay(const EEndPlayReason::Type EndPlayReason)
