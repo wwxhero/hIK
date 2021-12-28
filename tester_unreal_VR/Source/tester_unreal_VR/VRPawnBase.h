@@ -114,13 +114,7 @@ public:
 	bool actDisConnectIK();
 	bool actQuit();
 private:
-
-	void Proc_FloorCali(const FVector& p_v);
-
-	bool Proc_SortTrackers();
-
-	void Proc_ConnectIKTaget();
-
+	void FloorCali_x(const FVector& p_v);
 	void VerifyTracker();
 
 protected:

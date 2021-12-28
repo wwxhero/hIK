@@ -140,21 +140,14 @@ bool AVRPawnBase::InitVRPawn(USceneComponent* org
 bool AVRPawnBase::actFloorCali_L()
 {
 	FVector p_v = m_trackers[LCTRL]->GetComponentLocation();
-	Proc_FloorCali(p_v);
+	FloorCali_x(p_v);
 	return true;
 }
 
 bool AVRPawnBase::actFloorCali_R()
 {
 	FVector p_v = m_trackers[RCTRL]->GetComponentLocation();
-	Proc_FloorCali(p_v);
-	return true;
-}
-
-bool AVRPawnBase::actConnectIK()
-{
-	Proc_SortTrackers();
-	Proc_ConnectIKTaget();
+	FloorCali_x(p_v);
 	return true;
 }
 
@@ -170,7 +163,7 @@ bool AVRPawnBase::actQuit()
 	return false;
 }
 
-void AVRPawnBase::Proc_FloorCali(const FVector& p_v)
+void AVRPawnBase::FloorCali_x(const FVector& p_v)
 {
 	FTransform tm_v(m_actorIKDrivee->GetActorLocation() - p_v);
 	const FTransform& tm_r2v = m_vrOrg->GetComponentTransform();
@@ -180,7 +173,7 @@ void AVRPawnBase::Proc_FloorCali(const FVector& p_v)
 	m_vrOrg->SetRelativeTransform(tm_r2c_prime);
 }
 
-bool AVRPawnBase::Proc_SortTrackers()
+bool AVRPawnBase::actConnectIK()
 {
 	auto hmd = m_trackers[HMD];
 	check(NULL != hmd);
@@ -287,6 +280,7 @@ bool AVRPawnBase::Proc_SortTrackers()
 
 		UE_LOG(TESTER_UNREAL_VR, Display, TEXT("AVRPawnBase::Proc_SortTrackers: SUCCESSFUL"));
 		m_verifying = RH;
+		m_animIKDrivee->VRIK_Connect(m_trackers);
 	}
 	else
 	{
@@ -294,11 +288,6 @@ bool AVRPawnBase::Proc_SortTrackers()
 	}
 
 	return one_on_one;	
-}
-
-void AVRPawnBase::Proc_ConnectIKTaget()
-{
-	m_animIKDrivee->VRIK_Connect(m_trackers);
 }
 
 void AVRPawnBase::OnVRMsg(TRACKER_ID tracker_id, VR_EVT vrEvt)
