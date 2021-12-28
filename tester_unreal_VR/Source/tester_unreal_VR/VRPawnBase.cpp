@@ -6,11 +6,60 @@
 #include "vrLog.h"
 #include "WidgetsVRFSA.h"
 
+VRCaliFSA::VRCaliFSA()
+	: m_actState(MapLoaded)
+	, m_refPawn(NULL)
+{
+	m_stateStr = {
+		TEXT("The map is loaded: \n\tPut a motion controller on the floor and press 'trigger' to caliberate the floor evaluation \n\tPress 'grip' to quit!"),
+		TEXT("VR is aligned with the floor elevaution: \n\tPress 'trigger' to connect IK, \n\tPress 'grip' to quit!"),
+		TEXT("VR and IK are connected, \n\tPress 'trigger' to disconnect IK for a start over,\n\tPress 'grip' to quit!"),
+		TEXT("VR IK tester is quitted!")
+	};
+}
+
+void VRCaliFSA::Initialize(AVRPawnBase& refPawn)
+{
+	m_transitions = {
+		new Transition(refPawn, MapLoaded, Landed, LCTRL, TRIGGER_RELEASE, &AVRPawnBase::actFloorCali_L),
+		new Transition(refPawn, MapLoaded, Landed, RCTRL, TRIGGER_RELEASE, &AVRPawnBase::actFloorCali_R),
+		new Transition(refPawn, Landed, IKConnected, LCTRL, TRIGGER_RELEASE, &AVRPawnBase::actConnectIK),
+		new Transition(refPawn, Landed, IKConnected, RCTRL, TRIGGER_RELEASE, &AVRPawnBase::actConnectIK),
+		new Transition(refPawn, IKConnected, Landed, LCTRL, TRIGGER_RELEASE, &AVRPawnBase::actDisConnectIK),
+		new Transition(refPawn, IKConnected, Landed, RCTRL, TRIGGER_RELEASE, &AVRPawnBase::actDisConnectIK),
+		new Transition(refPawn, Any, Exit, LCTRL, GRIP_RELEASE, &AVRPawnBase::actQuit),
+		new Transition(refPawn, Any, Exit, RCTRL, GRIP_RELEASE, &AVRPawnBase::actQuit),
+	};
+	m_refPawn = &refPawn;
+	m_refPawn->m_winVRFSA->UpdateInstruction(m_stateStr[m_actState]);
+}
+
+VRCaliFSA::~VRCaliFSA()
+{
+	for (auto transi_i : m_transitions)
+		delete transi_i;
+	m_refPawn = NULL;
+}
+
+void VRCaliFSA::UpdateState(TRACKER_ID tracker_id, VR_EVT vrEvt)
+{
+	State actState_p = m_actState;
+	for (auto transi_i : m_transitions)
+	{
+		if (transi_i->Execute(m_actState, tracker_id, vrEvt, actState_p))
+		{
+			m_actState = actState_p;
+			m_refPawn->m_winVRFSA->UpdateInstruction(m_stateStr[m_actState]);
+			break;
+		}
+	}
+}
+
 // Sets default values
 AVRPawnBase::AVRPawnBase()
 	: m_vrOrg(NULL)
 	, m_actorIKDrivee(NULL)
-	, m_slateWin(nullptr)
+	, m_winVRFSA(nullptr)
 	, m_verifying(RH)
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
@@ -38,15 +87,16 @@ void AVRPawnBase::BeginPlay()
  
 	SlateApp.AddWindow(SlateWin, true);
 
-	m_slateWin = SlateWin;
+	m_winVRFSA = SlateWin;
+	m_caliFSA.Initialize(*this);
 }
 
 void AVRPawnBase::EndPlay(const EEndPlayReason::Type EndPlayReason)
 {
-	if (m_slateWin)
+	if (m_winVRFSA)
 	{
-		m_slateWin->RequestDestroyWindow();
-		m_slateWin = nullptr;
+		m_winVRFSA->RequestDestroyWindow();
+		m_winVRFSA = nullptr;
 	}
 	Super::EndPlay(EndPlayReason);
 }
@@ -64,9 +114,6 @@ void AVRPawnBase::Tick(float DeltaTime)
 
 	
 #endif
-	/*static int s_frame_id = 0;
-	FString info = FString::Printf(TEXT("Hello_world_%d"), s_frame_id ++);
-	m_slateWin->UpdateInstruction(info);*/
 	m_animIKDrivee->VRIK_UpdateTargets();
 }
 
@@ -88,6 +135,39 @@ bool AVRPawnBase::InitVRPawn(USceneComponent* org
 	UAnimInstance* anim_inst = skm_comp->GetAnimInstance();
 	m_animIKDrivee = Cast<UAnimInstance_HIKDrivee, UAnimInstance>(anim_inst);
 	return NULL != m_animIKDrivee;
+}
+
+bool AVRPawnBase::actFloorCali_L()
+{
+	FVector p_v = m_trackers[LCTRL]->GetComponentLocation();
+	Proc_FloorCali(p_v);
+	return true;
+}
+
+bool AVRPawnBase::actFloorCali_R()
+{
+	FVector p_v = m_trackers[RCTRL]->GetComponentLocation();
+	Proc_FloorCali(p_v);
+	return true;
+}
+
+bool AVRPawnBase::actConnectIK()
+{
+	Proc_SortTrackers();
+	Proc_ConnectIKTaget();
+	return true;
+}
+
+bool AVRPawnBase::actDisConnectIK()
+{
+	UE_LOG(TESTER_UNREAL_VR, Display, TEXT("AVRPawnBase::actDisConnectIK"));
+	return false;
+}
+
+bool AVRPawnBase::actQuit()
+{
+	UE_LOG(TESTER_UNREAL_VR, Display, TEXT("AVRPawnBase::actQuit"));
+	return false;
 }
 
 void AVRPawnBase::Proc_FloorCali(const FVector& p_v)
@@ -250,6 +330,7 @@ void AVRPawnBase::OnVRMsg(TRACKER_ID tracker_id, VR_EVT vrEvt)
 
 void AVRPawnBase::Proc_VRMsg(TRACKER_ID tracker_id, VR_EVT vrEvt)
 {
+	m_caliFSA.UpdateState(tracker_id, vrEvt);
 	OnVRMsg(tracker_id, vrEvt);
 }
 
