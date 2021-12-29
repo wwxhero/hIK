@@ -4,11 +4,63 @@
 #include "DrawDebugHelpers.h"
 #include "Engine/World.h"
 #include "vrLog.h"
+#include "WidgetsVRFSA.h"
+#include "Kismet/KismetSystemLibrary.h"
+
+VRCaliFSA::VRCaliFSA()
+	: m_actState(MapLoaded)
+	, m_refPawn(NULL)
+{
+	m_stateStr = {
+		TEXT("The map is loaded: \n\tPut a motion controller on the floor and press 'trigger' to caliberate the floor evaluation \n\tPress 'grip' to quit!"),
+		TEXT("VR is aligned with the floor elevaution: \n\tPress 'trigger' to connect IK, \n\tPress 'grip' to quit!"),
+		TEXT("VR and IK are connected, \n\tPress 'trigger' to disconnect IK for a start over,\n\tPress 'grip' to quit!"),
+		TEXT("VR IK tester is quitted!")
+	};
+}
+
+void VRCaliFSA::Initialize(AVRPawnBase& refPawn)
+{
+	m_transitions = {
+		new Transition(refPawn, MapLoaded, Landed, LCTRL, TRIGGER_RELEASE, &AVRPawnBase::actFloorCali_L),
+		new Transition(refPawn, MapLoaded, Landed, RCTRL, TRIGGER_RELEASE, &AVRPawnBase::actFloorCali_R),
+		new Transition(refPawn, Landed, IKConnected, LCTRL, TRIGGER_RELEASE, &AVRPawnBase::actConnectIK),
+		new Transition(refPawn, Landed, IKConnected, RCTRL, TRIGGER_RELEASE, &AVRPawnBase::actConnectIK),
+		new Transition(refPawn, IKConnected, Landed, LCTRL, TRIGGER_RELEASE, &AVRPawnBase::actDisConnectIK),
+		new Transition(refPawn, IKConnected, Landed, RCTRL, TRIGGER_RELEASE, &AVRPawnBase::actDisConnectIK),
+		new Transition(refPawn, Any, Exit, LCTRL, GRIP_RELEASE, &AVRPawnBase::actQuit),
+		new Transition(refPawn, Any, Exit, RCTRL, GRIP_RELEASE, &AVRPawnBase::actQuit),
+	};
+	m_refPawn = &refPawn;
+	m_refPawn->m_winVRFSA->UpdateInstruction(m_stateStr[m_actState]);
+}
+
+VRCaliFSA::~VRCaliFSA()
+{
+	for (auto transi_i : m_transitions)
+		delete transi_i;
+	m_refPawn = NULL;
+}
+
+void VRCaliFSA::UpdateState(TRACKER_ID tracker_id, VR_EVT vrEvt)
+{
+	State actState_p = m_actState;
+	for (auto transi_i : m_transitions)
+	{
+		if (transi_i->Execute(m_actState, tracker_id, vrEvt, actState_p))
+		{
+			m_actState = actState_p;
+			m_refPawn->m_winVRFSA->UpdateInstruction(m_stateStr[m_actState]);
+			break;
+		}
+	}
+}
 
 // Sets default values
 AVRPawnBase::AVRPawnBase()
 	: m_vrOrg(NULL)
 	, m_actorIKDrivee(NULL)
+	, m_winVRFSA(nullptr)
 	, m_verifying(RH)
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
@@ -20,6 +72,34 @@ AVRPawnBase::AVRPawnBase()
 void AVRPawnBase::BeginPlay()
 {
 	Super::BeginPlay();
+	TSharedRef<SWindowVRFSA> SlateWin = SNew(SWindowVRFSA)
+     								.AutoCenter(EAutoCenter::None)
+     								.Title(FText::FromString(TEXT("VR Message Window")))
+     								.IsInitiallyMaximized(false)
+     								.ScreenPosition(FVector2D(0, 0))
+     								.ClientSize(FVector2D(500, 800))
+     								.CreateTitleBar(true)
+     								.SizingRule(ESizingRule::UserSized)
+     								.SupportsMaximize(false)
+     								.SupportsMinimize(true)
+     								.HasCloseButton(false);
+
+    FSlateApplication & SlateApp = FSlateApplication::Get();
+ 
+	SlateApp.AddWindow(SlateWin, true);
+
+	m_winVRFSA = SlateWin;
+	m_caliFSA.Initialize(*this);
+}
+
+void AVRPawnBase::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+	if (m_winVRFSA)
+	{
+		m_winVRFSA->RequestDestroyWindow();
+		m_winVRFSA = nullptr;
+	}
+	Super::EndPlay(EndPlayReason);
 }
 
 // Called every frame
@@ -31,9 +111,11 @@ void AVRPawnBase::Tick(float DeltaTime)
 	{
 		auto tracker_i = m_trackers[m_verifying];
 		DBG_VisTransform(tracker_i->GetComponentTransform(), 10, 1);
-	}	
+	}
+
 #endif
-	m_animIKDrivee->VRIK_UpdateTargets();
+	if (VRCaliFSA::IKConnected == m_caliFSA.actState())
+		m_animIKDrivee->VRIK_PushUpdateTargets();
 }
 
 bool AVRPawnBase::InitVRPawn(USceneComponent* org
@@ -56,7 +138,33 @@ bool AVRPawnBase::InitVRPawn(USceneComponent* org
 	return NULL != m_animIKDrivee;
 }
 
-void AVRPawnBase::Proc_FloorCali(const FVector& p_v)
+bool AVRPawnBase::actFloorCali_L()
+{
+	FVector p_v = m_trackers[LCTRL]->GetComponentLocation();
+	FloorCali_x(p_v);
+	return true;
+}
+
+bool AVRPawnBase::actFloorCali_R()
+{
+	FVector p_v = m_trackers[RCTRL]->GetComponentLocation();
+	FloorCali_x(p_v);
+	return true;
+}
+
+bool AVRPawnBase::actDisConnectIK()
+{
+	m_animIKDrivee->VRIK_Disconnect();
+	return true;
+}
+
+bool AVRPawnBase::actQuit()
+{
+	UKismetSystemLibrary::QuitGame(GetWorld(), NULL, EQuitPreference::Quit, true);
+	return true;
+}
+
+void AVRPawnBase::FloorCali_x(const FVector& p_v)
 {
 	FTransform tm_v(m_actorIKDrivee->GetActorLocation() - p_v);
 	const FTransform& tm_r2v = m_vrOrg->GetComponentTransform();
@@ -66,7 +174,7 @@ void AVRPawnBase::Proc_FloorCali(const FVector& p_v)
 	m_vrOrg->SetRelativeTransform(tm_r2c_prime);
 }
 
-bool AVRPawnBase::Proc_SortTrackers()
+bool AVRPawnBase::actConnectIK()
 {
 	auto hmd = m_trackers[HMD];
 	check(NULL != hmd);
@@ -173,6 +281,7 @@ bool AVRPawnBase::Proc_SortTrackers()
 
 		UE_LOG(TESTER_UNREAL_VR, Display, TEXT("AVRPawnBase::Proc_SortTrackers: SUCCESSFUL"));
 		m_verifying = RH;
+		m_animIKDrivee->VRIK_Connect(m_trackers);
 	}
 	else
 	{
@@ -180,11 +289,6 @@ bool AVRPawnBase::Proc_SortTrackers()
 	}
 
 	return one_on_one;	
-}
-
-void AVRPawnBase::Proc_ConnectIKTaget()
-{
-	m_animIKDrivee->VRIK_Connect(m_trackers);
 }
 
 void AVRPawnBase::OnVRMsg(TRACKER_ID tracker_id, VR_EVT vrEvt)
@@ -216,6 +320,7 @@ void AVRPawnBase::OnVRMsg(TRACKER_ID tracker_id, VR_EVT vrEvt)
 
 void AVRPawnBase::Proc_VRMsg(TRACKER_ID tracker_id, VR_EVT vrEvt)
 {
+	m_caliFSA.UpdateState(tracker_id, vrEvt);
 	OnVRMsg(tracker_id, vrEvt);
 }
 
