@@ -112,9 +112,9 @@ void AVRPawnBase::Tick(float DeltaTime)
 		DBG_VisTransform(tracker_i->GetComponentTransform(), 10, 1);
 	}
 
-	
 #endif
-	m_animIKDrivee->VRIK_UpdateTargets();
+	if (VRCaliFSA::IKConnected == m_caliFSA.actState())
+		m_animIKDrivee->VRIK_PushUpdateTargets();
 }
 
 bool AVRPawnBase::InitVRPawn(USceneComponent* org
@@ -153,7 +153,7 @@ bool AVRPawnBase::actFloorCali_R()
 
 bool AVRPawnBase::actDisConnectIK()
 {
-	UE_LOG(TESTER_UNREAL_VR, Display, TEXT("AVRPawnBase::actDisConnectIK"));
+	m_animIKDrivee->VRIK_Disconnect();
 	return false;
 }
 

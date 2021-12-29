@@ -78,6 +78,10 @@ public:
 	~VRCaliFSA();
 	void Initialize(AVRPawnBase& refPawn);
 	void UpdateState(TRACKER_ID tracker_id, VR_EVT vrEvt);
+	State actState() const
+	{
+		return m_actState;
+	}
 private:
 	State m_actState;
 	TArray<FString> m_stateStr;
