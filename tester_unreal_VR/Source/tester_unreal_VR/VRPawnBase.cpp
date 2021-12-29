@@ -5,6 +5,7 @@
 #include "Engine/World.h"
 #include "vrLog.h"
 #include "WidgetsVRFSA.h"
+#include "Kismet/KismetSystemLibrary.h"
 
 VRCaliFSA::VRCaliFSA()
 	: m_actState(MapLoaded)
@@ -154,13 +155,13 @@ bool AVRPawnBase::actFloorCali_R()
 bool AVRPawnBase::actDisConnectIK()
 {
 	m_animIKDrivee->VRIK_Disconnect();
-	return false;
+	return true;
 }
 
 bool AVRPawnBase::actQuit()
 {
-	UE_LOG(TESTER_UNREAL_VR, Display, TEXT("AVRPawnBase::actQuit"));
-	return false;
+	UKismetSystemLibrary::QuitGame(GetWorld(), NULL, EQuitPreference::Quit, true);
+	return true;
 }
 
 void AVRPawnBase::FloorCali_x(const FVector& p_v)
