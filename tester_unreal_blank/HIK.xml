@@ -180,7 +180,7 @@
 		<Target name = "head" />
 	</Destination>
 
-	<Source PG_dir = "pg_eps_15_noisefree"> <!-- PG_dir = "pg_eps_15"  PG_dir = "pgs" record = "record/01.htr" -->
+	<Source> <!--  PG_dir = "pg_eps_15_noisefree" PG_dir = "pg_eps_15"  PG_dir = "pgs" record = "record/01.htr" -->
 		<!-- bvh skeletal structure:
 			HIERARCHY
 			ROOT Hips
@@ -370,22 +370,54 @@
 		<IK_Chain eef = "Hips" len = "1" algor = "Proj"	up_x = "0"	up_y = "1"	up_z = "0">
 		</IK_Chain>
 		<IK_Chain eef = "LeftFoot" len = "2" algor = "SDLS"	weight_p = "1"	weight_r = "0.25"	n_iter = "20" >
-			<Joint name = "LHipJoint" type = "R_Spherical" Dexterity_x = "1" Dexterity_y = "1" Dexterity_z = "1">
+			<Joint name = "LeftLeg" type = "R_Spherical">
+				<Limit name = "R_theta" min = "6" max = "173" />
+				<Limit name = "R_tau" min = "-1" max = "+1" />
+				<Limit name = "R_phi" min = "88" max = "90" />
 			</Joint>
 			<Joint name = "LeftUpLeg" type = "R_Spherical">
+				<Limit name = "R_theta" min = "3" max = "160" />
+				<!-- <Limit name = "R_tau" min = "-1" max = "+1" /> -->
+				<Limit name = "R_phi" min = "11" max = "170" />
 			</Joint>
 		</IK_Chain>
 		<IK_Chain eef = "RightFoot"	 len = "2" algor = "SDLS" weight_p = "1" weight_r = "0.25" n_iter = "20" >
+			<Joint name = "RightLeg" type = "R_Spherical">
+				<Limit name = "R_theta" min = "6" max = "174" />
+				<Limit name = "R_tau" min = "-1" max = "+1" />
+				<Limit name = "R_phi" min = "89" max = "90" />
+			</Joint>
+			<Joint name = "RightUpLeg" type = "R_Spherical">
+				<Limit name = "R_theta" min = "9" max = "170" />
+				<!-- <Limit name = "R_tau" min = "-1" max = "+1" /> -->
+				<Limit name = "R_phi" min = "49" max = "168" />
+			</Joint>
 		</IK_Chain>
 		<IK_Chain eef = "LeftHand" len = "2" algor = "SDLS" weight_p = "1" weight_r = "0.25" n_iter = "20" >
 			<Joint name = "LeftForeArm" type = "R_Spherical">
+				<Limit name = "R_theta" min = "10" max = "95" />
+				<Limit name = "R_tau" min = "-1" max = "+1" />
+				<Limit name = "R_phi" min = "60" max = "93" />
 			</Joint>
 			<Joint name = "LeftArm" type = "R_Spherical">
+				<Limit name = "R_theta" min = "21" max = "158" />
+				<!-- <Limit name = "R_tau" min = "-150" max = "150" /> -->
+				<Limit name = "R_phi" min = "39" max = "146" />
 			</Joint>
 			<Joint name = "LeftShoulder" type = "R_Spherical" Dexterity_x = "0.01" Dexterity_y = "0.01" Dexterity_z = "0.01">
 			</Joint>
 		</IK_Chain>
 		<IK_Chain eef = "RightHand" len = "2" algor = "SDLS" weight_p = "1" weight_r = "0.25" n_iter = "20" >
+			<Joint name = "RightForeArm" type = "R_Spherical">
+				<Limit name = "R_theta" min = "10" max = "95" />
+				<Limit name = "R_tau" min = "-1" max = "+1" />
+				<Limit name = "R_phi" min = "88" max = "120" />
+			</Joint>
+			<Joint name = "RightArm" type = "R_Spherical">
+				<Limit name = "R_theta" min = "23" max = "145" />
+				<!-- <Limit name = "R_tau" min = "-150" max = "150" /> -->
+				<Limit name = "R_phi" min = "27" max = "142" />
+			</Joint>
 		</IK_Chain>
 		<IK_Chain eef = "Head" len = "5" algor = "SDLS" weight_p = "1" weight_r = "1" n_iter = "20" >
 			<Joint name = "LowerBack" type = "R_Spherical" Dexterity_x = "0.5" Dexterity_y = "0.5" Dexterity_z = "0.5"> <!-- Dexterity_x = "0.5" Dexterity_y = "0.5" Dexterity_z = "0.5" -->
