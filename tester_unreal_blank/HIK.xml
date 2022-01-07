@@ -435,9 +435,15 @@
 				<Limit name = "R_tau" min = "-10" max = "10" />
 				<Limit name = "R_phi" min = "76" max = "106" />
 			</Joint>
-			<Joint name = "Neck" type = "R_Spherical" Dexterity_x = "2" Dexterity_y = "2" Dexterity_z = "2">
+			<Joint name = "Neck" type = "R_Spherical" clamp = "C_Spherical" Dexterity_x = "2" Dexterity_y = "2" Dexterity_z = "2">
+				<Limit name = "R_theta" min = "65" max = "110" />
+				<Limit name = "R_tau" min = "-40" max = "40" />
+				<Limit name = "R_phi" min = "60" max = "120" />
 			</Joint>
-			<Joint name = "Neck1" type = "R_Spherical" Dexterity_x = "2" Dexterity_y = "2" Dexterity_z = "2">
+			<Joint name = "Neck1" type = "R_Spherical" clamp = "C_Spherical" Dexterity_x = "2" Dexterity_y = "2" Dexterity_z = "2">
+				<Limit name = "R_theta" min = "64" max = "130" />
+				<Limit name = "R_tau" min = "-90" max = "90" />
+				<Limit name = "R_phi" min = "64" max = "114" />
 			</Joint>
 		</IK_Chain>
 	</Source>
