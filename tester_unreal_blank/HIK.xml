@@ -180,7 +180,7 @@
 		<Target name = "head" />
 	</Destination>
 
-	<Source PG_dir = "pg_eps_15"> <!--  PG_dir = "pgs" record = "record/01.htr" -->
+	<Source PG_dir = "pg_eps_15_noisefree"> <!-- PG_dir = "pg_eps_15"  PG_dir = "pgs" record = "record/01.htr" -->
 		<!-- bvh skeletal structure:
 			HIERARCHY
 			ROOT Hips
@@ -384,12 +384,29 @@
 			</Joint>
 			<Joint name = "LeftShoulder" type = "R_Spherical" Dexterity_x = "0.01" Dexterity_y = "0.01" Dexterity_z = "0.01">
 			</Joint>
-			<Joint name = "Spine" type = "R_Spherical" Dexterity_x = "0.01" Dexterity_y = "0.01" Dexterity_z = "0.01">
-			</Joint>
 		</IK_Chain>
 		<IK_Chain eef = "RightHand" len = "2" algor = "SDLS" weight_p = "1" weight_r = "0.25" n_iter = "20" >
 		</IK_Chain>
 		<IK_Chain eef = "Head" len = "5" algor = "SDLS" weight_p = "1" weight_r = "1" n_iter = "20" >
+			<Joint name = "LowerBack" type = "R_Spherical" Dexterity_x = "0.5" Dexterity_y = "0.5" Dexterity_z = "0.5">
+				<Limit name = "theta" min = "43" max = "111" />
+				<Limit name = "tau" min = "-20" max = "15" />
+				<Limit name = "phi" min = "72" max = "107" />
+			</Joint>
+			<Joint name = "Spine" type = "R_Spherical" Dexterity_x = "0.01" Dexterity_y = "0.01" Dexterity_z = "0.01">
+				<Limit name = "theta" min = "76" max = "101" />
+				<Limit name = "tau" min = "-20" max = "20" />
+				<Limit name = "phi" min = "80" max = "100" />
+			</Joint>
+			<Joint name = "Spine1" type = "R_Spherical" Dexterity_x = "0.01" Dexterity_y = "0.01" Dexterity_z = "0.01">
+				<Limit name = "theta" min = "79" max = "106" />
+				<Limit name = "tau" min = "-10" max = "10" />
+				<Limit name = "phi" min = "76" max = "106" />
+			</Joint>
+			<Joint name = "Neck" type = "R_Spherical" Dexterity_x = "2" Dexterity_y = "2" Dexterity_z = "2">
+			</Joint>
+			<Joint name = "Neck1" type = "R_Spherical" Dexterity_x = "2" Dexterity_y = "2" Dexterity_z = "2">
+			</Joint>
 		</IK_Chain>
 	</Source>
 
