@@ -169,9 +169,9 @@
 												toe5-2_R
 													toe5-3_R
 		-->
-		<!-- <Scale name = "root" x = "1.2" y = "1.2" z = "1.2" />
-		<Scale name = "upperarm01_L" x = "1.0" y = "1.2" z = "1.0" />
-		<Scale name = "upperarm01_R" x = "1.0" y = "1.2" z = "1.0" /> -->
+		<!-- <Scale name = "root" x = "1.2" y = "1.2" z = "1.2" />-->
+		<Scale name = "upperarm01_L" x = "1.0" y = "0.9643" z = "1.0" />
+		<Scale name = "upperarm01_R" x = "1.0" y = "0.9643" z = "1.0" />
 		<Target name = "root" />
 		<Target name = "foot_L" />
 		<Target name = "foot_R" />
@@ -404,10 +404,10 @@
 				<!-- <Limit name = "R_tau" min = "-150" max = "150" /> -->
 				<Limit name = "R_phi" min = "39" max = "146" />
 			</Joint>
-			<Joint name = "LeftShoulder" type = "R_Spherical" clamp = "C_Direct" Dexterity_x = "0.05" Dexterity_y = "0.05" Dexterity_z = "0.05">
-				<Limit name = "R_theta" min = "-10" max = "+10" />
-				<Limit name = "R_tau" min = "-1" max = "+1" />
-				<Limit name = "R_phi" min = "-10" max = "+15" />
+			<Joint name = "LeftShoulder" type = "R_Spherical" clamp = "C_Direct" Dexterity_x = "1" Dexterity_y = "1" Dexterity_z = "1">
+				<Limit name = "R_theta" min = "-20" max = "+20" />
+				<Limit name = "R_tau" min = "-5" max = "+5" />
+				<Limit name = "R_phi" min = "-20" max = "+60" />
 			</Joint>
 		</IK_Chain>
 		<IK_Chain eef = "RightHand" len = "3" algor = "SDLS" weight_p = "1" weight_r = "0.25" n_iter = "20" >
@@ -421,10 +421,10 @@
 				<!-- <Limit name = "R_tau" min = "-150" max = "150" /> -->
 				<Limit name = "R_phi" min = "27" max = "142" />
 			</Joint>
-			<Joint name = "RightShoulder" type = "R_Spherical" clamp = "C_Direct" Dexterity_x = "0.05" Dexterity_y = "0.05" Dexterity_z = "0.05">
-				<Limit name = "R_theta" min = "-10" max = "+10" />
-				<Limit name = "R_tau" min = "-1" max = "+1" />
-				<Limit name = "R_phi" min = "-15" max = "+10" />
+			<Joint name = "RightShoulder" type = "R_Spherical" clamp = "C_Direct" Dexterity_x = "1" Dexterity_y = "1" Dexterity_z = "1">
+				<Limit name = "R_theta" min = "-20" max = "+20" />
+				<Limit name = "R_tau" min = "-5" max = "+5" />
+				<Limit name = "R_phi" min = "-60" max = "+20" />
 			</Joint>
 		</IK_Chain>
 		<IK_Chain eef = "Head" len = "5" algor = "DLS" weight_p = "1" weight_r = "1" n_iter = "20" >
