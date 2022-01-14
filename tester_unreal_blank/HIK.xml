@@ -180,7 +180,7 @@
 		<Target name = "head" />
 	</Destination>
 
-	<Source PG_dir = "pg_eps_20_noisefree"> <!--   PG_dir = "pg_eps_15_noisefree" PG_dir = "pg_eps_15"  PG_dir = "pgs" record = "record/01.htr" -->
+	<Source PG_dir = "pg_eps_20_noisefree" PG_radius = "1000"> <!--   PG_radius = "100000" PG_dir = "pg_eps_15_noisefree" PG_dir = "pg_eps_15"  PG_dir = "pgs" record = "record/01.htr" -->
 		<!-- bvh skeletal structure:
 			HIERARCHY
 			ROOT Hips
@@ -369,7 +369,7 @@
 		-->
 		<IK_Chain eef = "Hips" len = "1" algor = "Proj"	up_x = "0"	up_y = "1"	up_z = "0">
 		</IK_Chain>
-		<IK_Chain eef = "LeftFoot" len = "2" algor = "SDLS"	weight_p = "1"	weight_r = "0.25"	n_iter = "20" >
+		<IK_Chain eef = "LeftFoot" len = "2" algor = "SDLS"	weight_p = "1" weight_r = "0.25" n_iter = "20" >
 			<Joint name = "LeftLeg" type = "R_Spherical" clamp = "C_Direct">
 				<Limit name = "R_theta" min = "-180" max = "+1" />
 				<Limit name = "R_tau" min = "-1" max = "+1" />
@@ -404,10 +404,10 @@
 				<!-- <Limit name = "R_tau" min = "-150" max = "150" /> -->
 				<Limit name = "R_phi" min = "39" max = "146" />
 			</Joint>
-			<Joint name = "LeftShoulder" type = "R_Spherical" clamp = "C_Direct" Dexterity_x = "1" Dexterity_y = "1" Dexterity_z = "1">
-				<Limit name = "R_theta" min = "-20" max = "+20" />
+			<Joint name = "LeftShoulder" type = "R_Spherical" clamp = "C_Direct" Dexterity_x = "0.5" Dexterity_y = "0.5" Dexterity_z = "0.5">
+				<Limit name = "R_theta" min = "-10" max = "+10" />
 				<Limit name = "R_tau" min = "-5" max = "+5" />
-				<Limit name = "R_phi" min = "-20" max = "+60" />
+				<Limit name = "R_phi" min = "-10" max = "+30" />
 			</Joint>
 		</IK_Chain>
 		<IK_Chain eef = "RightHand" len = "3" algor = "SDLS" weight_p = "1" weight_r = "0.25" n_iter = "20" >
@@ -421,10 +421,10 @@
 				<!-- <Limit name = "R_tau" min = "-150" max = "150" /> -->
 				<Limit name = "R_phi" min = "27" max = "142" />
 			</Joint>
-			<Joint name = "RightShoulder" type = "R_Spherical" clamp = "C_Direct" Dexterity_x = "1" Dexterity_y = "1" Dexterity_z = "1">
-				<Limit name = "R_theta" min = "-20" max = "+20" />
+			<Joint name = "RightShoulder" type = "R_Spherical" clamp = "C_Direct" Dexterity_x = "0.5" Dexterity_y = "0.5" Dexterity_z = "0.5">
+				<Limit name = "R_theta" min = "-10" max = "+10" />
 				<Limit name = "R_tau" min = "-5" max = "+5" />
-				<Limit name = "R_phi" min = "-60" max = "+20" />
+				<Limit name = "R_phi" min = "-30" max = "+10" />
 			</Joint>
 		</IK_Chain>
 		<IK_Chain eef = "Head" len = "5" algor = "DLS" weight_p = "1" weight_r = "1" n_iter = "20" >
