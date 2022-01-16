@@ -293,29 +293,29 @@ bool AVRPawnBase::actConnectIK()
 
 void AVRPawnBase::OnVRMsg(TRACKER_ID tracker_id, VR_EVT vrEvt)
 {
-	static FString tracker_id_str[] = {
-		TEXT("RH"),
-		TEXT("LH"),
-		TEXT("RF"),
-		TEXT("LF"),
-		TEXT("PW"),
-		TEXT("HMD"),
-		TEXT("RCTRL"),
-		TEXT("LCTRL")
-	};
+	// static FString tracker_id_str[] = {
+	// 	TEXT("RH"),
+	// 	TEXT("LH"),
+	// 	TEXT("RF"),
+	// 	TEXT("LF"),
+	// 	TEXT("PW"),
+	// 	TEXT("HMD"),
+	// 	TEXT("RCTRL"),
+	// 	TEXT("LCTRL")
+	// };
 
-	static FString vrEvt_str[] = {
-		TEXT("NONE"),
-		TEXT("GRIP_PRESS"),
-		TEXT("GRIP_RELEASE"),
-		TEXT("TRIGGER_PRESS"),
-		TEXT("TRIGGER_RELEASE")
-	};
+	// static FString vrEvt_str[] = {
+	// 	TEXT("NONE"),
+	// 	TEXT("GRIP_PRESS"),
+	// 	TEXT("GRIP_RELEASE"),
+	// 	TEXT("TRIGGER_PRESS"),
+	// 	TEXT("TRIGGER_RELEASE")
+	// };
 
-	FTransform tm_l2p = m_trackers[tracker_id]->GetRelativeTransform();
-	FString tm_l2p_str = tm_l2p.ToString();
+	// FTransform tm_l2p = m_trackers[tracker_id]->GetRelativeTransform();
+	// FString tm_l2p_str = tm_l2p.ToString();
 
-	UE_LOG(TESTER_UNREAL_VR, Display, TEXT("(%s, %s): %s"), *tracker_id_str[tracker_id], *vrEvt_str[vrEvt], *tm_l2p_str);
+	// UE_LOG(TESTER_UNREAL_VR, Display, TEXT("(%s, %s): %s"), *tracker_id_str[tracker_id], *vrEvt_str[vrEvt], *tm_l2p_str);
 }
 
 void AVRPawnBase::Proc_VRMsg(TRACKER_ID tracker_id, VR_EVT vrEvt)
