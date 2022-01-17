@@ -2,6 +2,7 @@
 
 
 #include "SceneCapture2DActorVRSpec.h"
+#include "Kismet/KismetMathLibrary.h"
 
 void ASceneCapture2DActorVRSpec::Initialize(USceneComponent* mirror)
 {
@@ -26,4 +27,33 @@ void ASceneCapture2DActorVRSpec::AdjustMirrorOri(float ground_z)
 	FTransform tm_dl = tm_l2w * tm_0_l2w.Inverse();	//tm_dl * tm_0_l2w = tm_l2w => tm_dl = tm_l2w*(tm_0_l2w)^-1
 	const FTransform& tm_0_l2p = m_mirror->GetRelativeTransform();
 	m_mirror->SetRelativeTransform(tm_dl*tm_0_l2p);
+}
+
+void ASceneCapture2DActorVRSpec::CameraInstall(const FVector& from, const FVector& to, const FVector& up)
+{
+	FVector forward = to - from;
+	FRotator rot = UKismetMathLibrary::MakeRotFromXZ(forward, up);
+	FTransform l2w(rot, from);
+	m_installed = SetActorTransform(l2w);
+	m_dir = forward;
+}
+
+void ASceneCapture2DActorVRSpec::CameraCloser()
+{
+	if (m_installed)
+	{
+		FVector tt = GetActorLocation();
+		tt += 10 * m_dir;
+		SetActorLocation(tt);
+	}
+}
+
+void ASceneCapture2DActorVRSpec::CameraFarther()
+{
+	if (m_installed)
+	{
+		FVector tt = GetActorLocation();
+		tt += -10 * m_dir;
+		SetActorLocation(tt);
+	}
 }

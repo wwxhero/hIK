@@ -173,24 +173,44 @@ bool AVRPawnBase::actFloorCali_R()
 bool AVRPawnBase::actCameraCali_L()
 {
 	UE_LOG(TESTER_UNREAL_VR, Display, TEXT("AVRPawnBase::actCameraCali_L"));
+	if (m_spector)
+	{
+		FVector from = m_trackers[LCTRL]->GetComponentLocation();
+		FVector to = m_trackers[HMD]->GetComponentLocation();
+		m_spector->CameraInstall(from, to, FVector::ZAxisVector);
+	}
 	return true;
 }
 
 bool AVRPawnBase::actCameraCali_R()
 {
 	UE_LOG(TESTER_UNREAL_VR, Display, TEXT("AVRPawnBase::actCameraCali_R"));
+	if (m_spector)
+	{
+		FVector from = m_trackers[RCTRL]->GetComponentLocation();
+		FVector to = m_trackers[HMD]->GetComponentLocation();
+		m_spector->CameraInstall(from, to, FVector::ZAxisVector);
+	}
 	return true;
 }
 
 bool AVRPawnBase::actCameraCloser()
 {
 	UE_LOG(TESTER_UNREAL_VR, Display, TEXT("AVRPawnBase::actCameraCloser"));
+	if (m_spector)
+	{
+		m_spector->CameraCloser();
+	}
 	return true;
 }
 
 bool AVRPawnBase::actCameraFarther()
 {
 	UE_LOG(TESTER_UNREAL_VR, Display, TEXT("AVRPawnBase::actCameraFarther"));
+	if (m_spector)
+	{
+		m_spector->CameraFarther();
+	}
 	return true;
 }
 
@@ -325,6 +345,9 @@ bool AVRPawnBase::actConnectIK()
 		UE_LOG(TESTER_UNREAL_VR, Display, TEXT("AVRPawnBase::Proc_SortTrackers: SUCCESSFUL"));
 		m_verifying = RH;
 		connected = m_animIKDrivee->VRIK_Connect(m_trackers);
+		const wchar_t* cnn_res[] = {TEXT("FAILED"), TEXT("SUCCESSFUL")};
+		int i_cnn_res = connected ? 1 : 0;
+		UE_LOG(TESTER_UNREAL_VR, Display, TEXT("AVRPawnBase::Proc_SortTrackers: %s"), cnn_res[i_cnn_res]);
 	}
 	else
 	{
