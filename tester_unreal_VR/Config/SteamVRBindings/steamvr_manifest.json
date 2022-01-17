@@ -172,6 +172,22 @@
 			"type": "boolean"
 		},
 		{
+			"name": "/actions/main/in/Camera_closer_left",
+			"type": "boolean"
+		},
+		{
+			"name": "/actions/main/in/Camera_farther_left",
+			"type": "boolean"
+		},
+		{
+			"name": "/actions/main/in/Camera_closer_right",
+			"type": "boolean"
+		},
+		{
+			"name": "/actions/main/in/Camera_farther_right",
+			"type": "boolean"
+		},
+		{
 			"name": "/actions/main/in/TeleportDirectionUp axis",
 			"type": "vector1"
 		},
@@ -450,6 +466,10 @@
 			"/actions/main/in/GrabRight": "GrabRight",
 			"/actions/main/in/GripLeft": "GripLeft",
 			"/actions/main/in/GripRight": "GripRight",
+			"/actions/main/in/Camera_closer_left": "Camera_closer_left",
+			"/actions/main/in/Camera_farther_left": "Camera_farther_left",
+			"/actions/main/in/Camera_closer_right": "Camera_closer_right",
+			"/actions/main/in/Camera_farther_right": "Camera_farther_right",
 			"/actions/main/in/TeleportDirectionUp axis": "TeleportDirectionUp",
 			"/actions/main/in/TeleportDirectionRight axis": "TeleportDirectionRight",
 			"/actions/main/in/MotionControllerThumbLeft_Y axis": "MotionControllerThumbLeft_Y",

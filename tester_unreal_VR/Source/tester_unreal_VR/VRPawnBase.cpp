@@ -26,12 +26,16 @@ void VRCaliFSA::Initialize(AVRPawnBase& refPawn)
 	m_transitions = {
 		new Transition(refPawn, MapLoaded, Landed, LCTRL, TRIGGER_RELEASE, &AVRPawnBase::actFloorCali_L),
 		new Transition(refPawn, MapLoaded, Landed, RCTRL, TRIGGER_RELEASE, &AVRPawnBase::actFloorCali_R),
-		new Transition(refPawn, MapLoaded, CameraOn, LCTRL, TRIGGER_RELEASE, &AVRPawnBase::actCameraCali_L),
-		new Transition(refPawn, MapLoaded, CameraOn, RCTRL, TRIGGER_RELEASE, &AVRPawnBase::actCameraCali_R),
+		new Transition(refPawn, Landed, CameraOn, LCTRL, TRIGGER_RELEASE, &AVRPawnBase::actCameraCali_L),
+		new Transition(refPawn, Landed, CameraOn, RCTRL, TRIGGER_RELEASE, &AVRPawnBase::actCameraCali_R),
 		new Transition(refPawn, CameraOn, IKConnected, LCTRL, TRIGGER_RELEASE, &AVRPawnBase::actConnectIK),
 		new Transition(refPawn, CameraOn, IKConnected, RCTRL, TRIGGER_RELEASE, &AVRPawnBase::actConnectIK),
 		new Transition(refPawn, CameraOn, CameraOn, LCTRL, TRIGGER_RELEASE, &AVRPawnBase::actCameraCali_L),
 		new Transition(refPawn, CameraOn, CameraOn, RCTRL, TRIGGER_RELEASE, &AVRPawnBase::actCameraCali_R),
+		new Transition(refPawn, CameraOn, CameraOn, LCTRL, TOUCHPAD_DOWN_PRESS, &AVRPawnBase::actCameraCloser),
+		new Transition(refPawn, CameraOn, CameraOn, RCTRL, TOUCHPAD_DOWN_PRESS, &AVRPawnBase::actCameraCloser),
+		new Transition(refPawn, CameraOn, CameraOn, LCTRL, TOUCHPAD_UP_PRESS, &AVRPawnBase::actCameraFarther),
+		new Transition(refPawn, CameraOn, CameraOn, RCTRL, TOUCHPAD_UP_PRESS, &AVRPawnBase::actCameraFarther),
 		new Transition(refPawn, IKConnected, CameraOn, LCTRL, TRIGGER_RELEASE, &AVRPawnBase::actDisConnectIK),
 		new Transition(refPawn, IKConnected, CameraOn, RCTRL, TRIGGER_RELEASE, &AVRPawnBase::actDisConnectIK),
 		new Transition(refPawn, Any, Exit, LCTRL, GRIP_RELEASE, &AVRPawnBase::actQuit),
@@ -178,6 +182,18 @@ bool AVRPawnBase::actCameraCali_R()
 	return true;
 }
 
+bool AVRPawnBase::actCameraCloser()
+{
+	UE_LOG(TESTER_UNREAL_VR, Display, TEXT("AVRPawnBase::actCameraCloser"));
+	return true;
+}
+
+bool AVRPawnBase::actCameraFarther()
+{
+	UE_LOG(TESTER_UNREAL_VR, Display, TEXT("AVRPawnBase::actCameraFarther"));
+	return true;
+}
+
 bool AVRPawnBase::actDisConnectIK()
 {
 	m_animIKDrivee->VRIK_Disconnect();
@@ -300,6 +316,7 @@ bool AVRPawnBase::actConnectIK()
 		}
 	}
 
+	bool connected = false;
 	if (one_on_one)
 	{
 		for (auto tagger_i : taggers)
@@ -307,14 +324,14 @@ bool AVRPawnBase::actConnectIK()
 
 		UE_LOG(TESTER_UNREAL_VR, Display, TEXT("AVRPawnBase::Proc_SortTrackers: SUCCESSFUL"));
 		m_verifying = RH;
-		m_animIKDrivee->VRIK_Connect(m_trackers);
+		connected = m_animIKDrivee->VRIK_Connect(m_trackers);
 	}
 	else
 	{
 		UE_LOG(TESTER_UNREAL_VR, Display, TEXT("AVRPawnBase::Proc_SortTrackers: FAILED"));
 	}
 
-	return one_on_one;	
+	return connected;
 }
 
 void AVRPawnBase::OnVRMsg(TRACKER_ID tracker_id, VR_EVT vrEvt)

@@ -20,7 +20,13 @@ enum VR_EVT
 	GRIP_RELEASE,
 	
 	TRIGGER_PRESS,
-	TRIGGER_RELEASE
+	TRIGGER_RELEASE,
+
+	TOUCHPAD_UP_PRESS,
+	TOUCHPAD_UP_RELEASE,
+
+	TOUCHPAD_DOWN_PRESS,
+	TOUCHPAD_DOWN_RELEASE,
 };
 
 class AVRPawnBase;
@@ -118,6 +124,8 @@ public:
 	bool actFloorCali_R();
 	bool actCameraCali_L();
 	bool actCameraCali_R();
+	bool actCameraCloser();
+	bool actCameraFarther();
 	bool actConnectIK();
 	bool actDisConnectIK();
 	bool actQuit();
