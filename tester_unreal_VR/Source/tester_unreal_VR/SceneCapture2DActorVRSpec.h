@@ -21,7 +21,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Settings)
 	void Initialize(USceneComponent* mirror);
 
-	void AdjustMirrorOri();
+	void AdjustMirrorOri(float ground_z);
 private:
 	USceneComponent* m_mirror;
 };

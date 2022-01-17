@@ -14,7 +14,8 @@ VRCaliFSA::VRCaliFSA()
 {
 	m_stateStr = {
 		TEXT("The map is loaded: \n\tPut a motion controller on the floor and press 'trigger' to caliberate the floor evaluation \n\tPress 'grip' to quit!"),
-		TEXT("VR is aligned with the floor elevaution: \n\tPress 'trigger' to connect IK, \n\tPress 'grip' to quit!"),
+		TEXT("VR is aligned with the floor elevaution: \n\tPress 'trigger' to align camera, \n\tPress 'grip' to quit!"),
+		TEXT("Camera is aligned: \n\tPut the controller on camera and press 'trigger' to re-align camera, \n\tWalk into the model and press 'trigger' to connectIK, \n\tpress on pad to move camera away or closer\n\tPress 'grip' to quit!"),
 		TEXT("VR and IK are connected, \n\tPress 'trigger' to disconnect IK for a start over,\n\tPress 'grip' to quit!"),
 		TEXT("VR IK tester is quitted!")
 	};
@@ -25,10 +26,14 @@ void VRCaliFSA::Initialize(AVRPawnBase& refPawn)
 	m_transitions = {
 		new Transition(refPawn, MapLoaded, Landed, LCTRL, TRIGGER_RELEASE, &AVRPawnBase::actFloorCali_L),
 		new Transition(refPawn, MapLoaded, Landed, RCTRL, TRIGGER_RELEASE, &AVRPawnBase::actFloorCali_R),
-		new Transition(refPawn, Landed, IKConnected, LCTRL, TRIGGER_RELEASE, &AVRPawnBase::actConnectIK),
-		new Transition(refPawn, Landed, IKConnected, RCTRL, TRIGGER_RELEASE, &AVRPawnBase::actConnectIK),
-		new Transition(refPawn, IKConnected, Landed, LCTRL, TRIGGER_RELEASE, &AVRPawnBase::actDisConnectIK),
-		new Transition(refPawn, IKConnected, Landed, RCTRL, TRIGGER_RELEASE, &AVRPawnBase::actDisConnectIK),
+		new Transition(refPawn, MapLoaded, CameraOn, LCTRL, TRIGGER_RELEASE, &AVRPawnBase::actCameraCali_L),
+		new Transition(refPawn, MapLoaded, CameraOn, RCTRL, TRIGGER_RELEASE, &AVRPawnBase::actCameraCali_R),
+		new Transition(refPawn, CameraOn, IKConnected, LCTRL, TRIGGER_RELEASE, &AVRPawnBase::actConnectIK),
+		new Transition(refPawn, CameraOn, IKConnected, RCTRL, TRIGGER_RELEASE, &AVRPawnBase::actConnectIK),
+		new Transition(refPawn, CameraOn, CameraOn, LCTRL, TRIGGER_RELEASE, &AVRPawnBase::actCameraCali_L),
+		new Transition(refPawn, CameraOn, CameraOn, RCTRL, TRIGGER_RELEASE, &AVRPawnBase::actCameraCali_R),
+		new Transition(refPawn, IKConnected, CameraOn, LCTRL, TRIGGER_RELEASE, &AVRPawnBase::actDisConnectIK),
+		new Transition(refPawn, IKConnected, CameraOn, RCTRL, TRIGGER_RELEASE, &AVRPawnBase::actDisConnectIK),
 		new Transition(refPawn, Any, Exit, LCTRL, GRIP_RELEASE, &AVRPawnBase::actQuit),
 		new Transition(refPawn, Any, Exit, RCTRL, GRIP_RELEASE, &AVRPawnBase::actQuit),
 	};
@@ -142,6 +147,7 @@ bool AVRPawnBase::InitVRPawn(USceneComponent* org
 	TActorIterator<ASceneCapture2DActorVRSpec> ActorItr = TActorIterator<ASceneCapture2DActorVRSpec>(GetWorld());
 	m_spector = *ActorItr;
 	check(nullptr != m_spector);
+	// m_spector->AdjustMirrorOri(GetTransform().GetTranslation().Z);
 
 	return NULL != m_animIKDrivee;
 }
@@ -157,6 +163,18 @@ bool AVRPawnBase::actFloorCali_R()
 {
 	FVector p_v = m_trackers[RCTRL]->GetComponentLocation();
 	FloorCali_x(p_v);
+	return true;
+}
+
+bool AVRPawnBase::actCameraCali_L()
+{
+	UE_LOG(TESTER_UNREAL_VR, Display, TEXT("AVRPawnBase::actCameraCali_L"));
+	return true;
+}
+
+bool AVRPawnBase::actCameraCali_R()
+{
+	UE_LOG(TESTER_UNREAL_VR, Display, TEXT("AVRPawnBase::actCameraCali_R"));
 	return true;
 }
 

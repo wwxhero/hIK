@@ -32,6 +32,7 @@ public:
 	{
 		MapLoaded = 0,
 		Landed,
+		CameraOn,
 		IKConnected,
 		Exit,
 		Any
@@ -115,6 +116,8 @@ public:
 
 	bool actFloorCali_L();
 	bool actFloorCali_R();
+	bool actCameraCali_L();
+	bool actCameraCali_R();
 	bool actConnectIK();
 	bool actDisConnectIK();
 	bool actQuit();
