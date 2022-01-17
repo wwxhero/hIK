@@ -8,6 +8,7 @@
 #include "Animation/SkeletalMeshActor.h"
 #include "AnimInstance_HIKDrivee.h"
 #include "WidgetsVRFSA.h"
+#include "SceneCapture2DActorVRSpec.h"
 #include "VRPawnBase.generated.h"
 
 UENUM(BlueprintType)
@@ -141,6 +142,9 @@ protected:
 	TArray<USceneComponent*> m_trackers;
 	ASkeletalMeshActor* m_actorIKDrivee;
 	UAnimInstance_HIKDrivee* m_animIKDrivee;
+
+protected:
+	ASceneCapture2DActorVRSpec* m_spector;
 private:
 	TSharedPtr<SWindowVRFSA> m_winVRFSA;
 	VRCaliFSA m_caliFSA;

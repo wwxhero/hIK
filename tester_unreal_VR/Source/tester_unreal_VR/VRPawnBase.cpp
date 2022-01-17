@@ -6,6 +6,7 @@
 #include "vrLog.h"
 #include "WidgetsVRFSA.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "EngineUtils.h"
 
 VRCaliFSA::VRCaliFSA()
 	: m_actState(MapLoaded)
@@ -62,6 +63,7 @@ AVRPawnBase::AVRPawnBase()
 	, m_actorIKDrivee(NULL)
 	, m_winVRFSA(nullptr)
 	, m_verifying(RH)
+	, m_spector(nullptr)
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -135,6 +137,11 @@ bool AVRPawnBase::InitVRPawn(USceneComponent* org
 	USkeletalMeshComponent* skm_comp = avatarIKDrivee->GetSkeletalMeshComponent();
 	UAnimInstance* anim_inst = skm_comp->GetAnimInstance();
 	m_animIKDrivee = Cast<UAnimInstance_HIKDrivee, UAnimInstance>(anim_inst);
+
+	TActorIterator<ASceneCapture2DActorVRSpec> ActorItr = TActorIterator<ASceneCapture2DActorVRSpec>(GetWorld());
+	m_spector = *ActorItr;
+	check(nullptr != m_spector);
+
 	return NULL != m_animIKDrivee;
 }
 
