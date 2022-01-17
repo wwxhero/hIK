@@ -13,7 +13,15 @@ UCLASS()
 class TESTER_UNREAL_VR_API ASceneCapture2DActorVRSpec : public ASceneCapture2D
 {
 	GENERATED_BODY()
-protected:
+public:
+	ASceneCapture2DActorVRSpec()
+		: m_mirror(nullptr)
+	{
+	}
 	UFUNCTION(BlueprintCallable, Category = Settings)
-	void AdjustMirrorOri(USceneComponent* mirror);
+	void Initialize(USceneComponent* mirror);
+
+	void AdjustMirrorOri();
+private:
+	USceneComponent* m_mirror;
 };

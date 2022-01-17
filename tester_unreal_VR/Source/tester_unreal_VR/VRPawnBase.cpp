@@ -61,9 +61,10 @@ void VRCaliFSA::UpdateState(TRACKER_ID tracker_id, VR_EVT vrEvt)
 AVRPawnBase::AVRPawnBase()
 	: m_vrOrg(NULL)
 	, m_actorIKDrivee(NULL)
+	, m_spector(nullptr)
 	, m_winVRFSA(nullptr)
 	, m_verifying(RH)
-	, m_spector(nullptr)
+
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;

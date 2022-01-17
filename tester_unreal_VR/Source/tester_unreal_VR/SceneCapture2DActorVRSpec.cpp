@@ -3,9 +3,17 @@
 
 #include "SceneCapture2DActorVRSpec.h"
 
-void ASceneCapture2DActorVRSpec::AdjustMirrorOri(USceneComponent* mirror)
+void ASceneCapture2DActorVRSpec::Initialize(USceneComponent* mirror)
 {
-	const FTransform& tm_0_l2w = mirror->GetComponentToWorld();
+	m_mirror = mirror;
+	AdjustMirrorOri();
+}
+
+void ASceneCapture2DActorVRSpec::AdjustMirrorOri()
+{
+	if (nullptr == m_mirror)
+		return;
+	const FTransform& tm_0_l2w = m_mirror->GetComponentToWorld();
 	FVector x_0 = tm_0_l2w.TransformVector(FVector::XAxisVector);
 	FVector y_0 = tm_0_l2w.TransformVector(FVector::YAxisVector);
 	FVector z_0 = tm_0_l2w.TransformVector(FVector::ZAxisVector);
@@ -15,6 +23,6 @@ void ASceneCapture2DActorVRSpec::AdjustMirrorOri(USceneComponent* mirror)
 	FVector z = FVector::CrossProduct(y, x).GetUnsafeNormal()*s_0.Z; // make sure it is a left handed cross
 	FTransform tm_l2w(x, y, z, tm_0_l2w.GetTranslation());
 	FTransform tm_dl = tm_l2w * tm_0_l2w.Inverse();	//tm_dl * tm_0_l2w = tm_l2w => tm_dl = tm_l2w*(tm_0_l2w)^-1
-	const FTransform& tm_0_l2p = mirror->GetRelativeTransform();
-	mirror->SetRelativeTransform(tm_dl*tm_0_l2p);
+	const FTransform& tm_0_l2p = m_mirror->GetRelativeTransform();
+	m_mirror->SetRelativeTransform(tm_dl*tm_0_l2p);
 }
