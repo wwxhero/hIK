@@ -35,7 +35,7 @@ void ASceneCapture2DActorVRSpec::CameraInstall(const FVector& from, const FVecto
 	FRotator rot = UKismetMathLibrary::MakeRotFromXZ(forward, up);
 	FTransform l2w(rot, from);
 	m_installed = SetActorTransform(l2w);
-	m_dir = forward;
+	m_dir = forward.GetSafeNormal();
 }
 
 void ASceneCapture2DActorVRSpec::CameraCloser()

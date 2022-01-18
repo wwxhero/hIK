@@ -148,9 +148,11 @@ bool AVRPawnBase::InitVRPawn(USceneComponent* org
 	UAnimInstance* anim_inst = skm_comp->GetAnimInstance();
 	m_animIKDrivee = Cast<UAnimInstance_HIKDrivee, UAnimInstance>(anim_inst);
 
-	TActorIterator<ASceneCapture2DActorVRSpec> ActorItr = TActorIterator<ASceneCapture2DActorVRSpec>(GetWorld());
-	m_spector = *ActorItr;
-	check(nullptr != m_spector);
+	TActorIterator<ASceneCapture2DActorVRSpec> actorItr = TActorIterator<ASceneCapture2DActorVRSpec>(GetWorld());
+	if (actorItr)
+		m_spector = *actorItr;
+	else
+		m_spector = nullptr;
 	// m_spector->AdjustMirrorOri(GetTransform().GetTranslation().Z);
 
 	return NULL != m_animIKDrivee;
@@ -347,7 +349,7 @@ bool AVRPawnBase::actConnectIK()
 		connected = m_animIKDrivee->VRIK_Connect(m_trackers);
 		const wchar_t* cnn_res[] = {TEXT("FAILED"), TEXT("SUCCESSFUL")};
 		int i_cnn_res = connected ? 1 : 0;
-		UE_LOG(TESTER_UNREAL_VR, Display, TEXT("AVRPawnBase::Proc_SortTrackers: %s"), cnn_res[i_cnn_res]);
+		UE_LOG(TESTER_UNREAL_VR, Display, TEXT("AVRPawnBase::Proc_CnnTrackers: %s"), cnn_res[i_cnn_res]);
 	}
 	else
 	{
@@ -375,7 +377,11 @@ void AVRPawnBase::OnVRMsg(TRACKER_ID tracker_id, VR_EVT vrEvt)
 	// 	TEXT("GRIP_PRESS"),
 	// 	TEXT("GRIP_RELEASE"),
 	// 	TEXT("TRIGGER_PRESS"),
-	// 	TEXT("TRIGGER_RELEASE")
+	// 	TEXT("TRIGGER_RELEASE"),
+	// 	TEXT("TOUCHPAD_UP_PRESS"),
+	// 	TEXT("TOUCHPAD_UP_RELEASE"),
+	// 	TEXT("TOUCHPAD_DOWN_PRESS"),
+	// 	TEXT("TOUCHPAD_DOWN_RELEASE"),
 	// };
 
 	// FTransform tm_l2p = m_trackers[tracker_id]->GetRelativeTransform();
