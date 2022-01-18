@@ -33,8 +33,6 @@ AVRPawnLogRec::~AVRPawnLogRec()
 
 void AVRPawnLogRec::OnVRMsg(TRACKER_ID tracker_id, VR_EVT vrEvt)
 {
-	// UE_LOG(TESTER_UNREAL_VR, Display, TEXT("AVRPawnLogRec::Proc_VRMsg"));
-	// UE_LOG(TESTER_UNREAL_VR, Display, TEXT("Couter: %d, Number: %d"), GFrameCounter, GFrameNumber);
 	HLOG_i log_i = getlog_i(m_hLog, GFrameNumber - c_frameID0);
 	auto tracker_i = m_trackers[tracker_id];
 	check(NULL != tracker_i);

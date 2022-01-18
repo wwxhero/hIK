@@ -1,5 +1,6 @@
 #include "WidgetsVRFSA.h"
 #include "tester_unreal_VR.h"
+#include "ik_logger_unreal.h"
 /* See SUserWidgetExample
  *
  * SMyWidget.h
@@ -48,7 +49,7 @@
 void SPanelTextWidget::UpdateInstruction(const FString& info)
 {
 	m_textBox->SetText(FText::FromString(info));
-	UE_LOG(TESTER_UNREAL_VR, Display, TEXT("%s: %s"), TEXT("FSA"), *info);
+	LOGIKVar(LogInfoWCharPtr, *info);
 }
 
 void SPanelTextWidget::Construct(const FArguments& InArgs)
