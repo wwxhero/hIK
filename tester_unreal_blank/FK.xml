@@ -169,9 +169,9 @@
 											toe5-2_R
 												toe5-3_R
 		-->
-		<!-- <Scale name = "root" x = "1.2" y = "1.2" z = "1.2" />
-		<Scale name = "upperarm01_L" x = "1.0" y = "1.2" z = "1.0" />
-		<Scale name = "upperarm01_R" x = "1.0" y = "1.2" z = "1.0" /> -->
+		<!-- <Scale name = "root" x = "1.2" y = "1.2" z = "1.2" />-->
+		<Scale name = "upperarm01_L" x = "1.0" y = "0.9643" z = "1.0" />
+		<Scale name = "upperarm01_R" x = "1.0" y = "0.9643" z = "1.0" />
 		<Target name = "root" />
 		<Target name = "foot_L" />
 		<Target name = "foot_R" />
