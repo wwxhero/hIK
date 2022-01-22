@@ -2,185 +2,86 @@
 <MotionPipe sync = "cross" 	m11="1" m12="0" m13="0"
 							m21="0" m22="0" m23="1"
 							m31="0" m32="1" m33="0">
-	<Destination file = "fbx/MakeHuman_163_cm_T.fbx">
+	<Destination file = "fbx/Mixamo_65">
 		<!-- fbx skeletal structure:
-			MakeHuman-default-skeleton
-				root
-					spine05
-						spine04
-							spine03
-								spine02
-									breast_L
-									breast_R
-									spine01
-										clavicle_L
-											shoulder01_L
-												upperarm01_L
-													upperarm02_L
-														lowerarm01_L
-															lowerarm02_L
-																wrist_L
-																	finger1-1_L
-																		finger1-2_L
-																			finger1-3_L
-																	metacarpal1_L
-																		finger2-1_L
-																			finger2-2_L
-																				finger2-3_L
-																	metacarpal2_L
-																		finger3-1_L
-																			finger3-2_L
-																				finger3-3_L
-																	metacarpal3_L
-																		finger4-1_L
-																			finger4-2_L
-																				finger4-3_L
-																	metacarpal4_L
-																		finger5-1_L
-																			finger5-2_L
-																				finger5-3_L
-										clavicle_R
-											shoulder01_R
-												upperarm01_R
-													upperarm02_R
-														lowerarm01_R
-															lowerarm02_R
-																wrist_R
-																	finger1-1_R
-																		finger1-2_R
-																			finger1-3_R
-																	metacarpal1_R
-																		finger2-1_R
-																			finger2-2_R
-																				finger2-3_R
-																	metacarpal2_R
-																		finger3-1_R
-																			finger3-2_R
-																				finger3-3_R
-																	metacarpal3_R
-																		finger4-1_R
-																			finger4-2_R
-																				finger4-3_R
-																	metacarpal4_R
-																		finger5-1_R
-																			finger5-2_R
-																				finger5-3_R
-										neck01
-											neck02
-												neck03
-													head
-														jaw
-															special04
-																oris02
-																	oris01
-																oris06_L
-																	oris07_L
-																oris06_R
-																	oris07_R
-															tongue00
-																tongue01
-																	tongue02
-																		tongue03
-																			tongue04
-																			tongue07_L
-																			tongue07_R
-																		tongue06_L
-																		tongue06_R
-																	tongue05_L
-																	tongue05_R
-														levator02_L
-															levator03_L
-																levator04_L
-																	levator05_L
-														levator02_R
-															levator03_R
-																levator04_R
-																	levator05_R
-														special01
-															oris04_L
-																oris03_L
-															oris04_R
-																oris03_R
-															oris06
-																oris05
-														special03
-															levator06_L
-															levator06_R
-														special06_L
-															special05_L
-																eye_L
-																orbicularis03_L
-																orbicularis04_L
-														special06_R
-															special05_R
-																eye_R
-																orbicularis03_R
-																orbicularis04_R
-														temporalis01_L
-															oculi02_L
-																oculi01_L
-														temporalis01_R
-															oculi02_R
-																oculi01_R
-														temporalis02_L
-															risorius02_L
-																risorius03_L
-														temporalis02_R
-															risorius02_R
-																risorius03_R
-					pelvis_L
-						upperleg01_L
-							upperleg02_L
-								lowerleg01_L
-									lowerleg02_L
-										foot_L
-											toe1-1_L
-												toe1-2_L
-											toe2-1_L
-												toe2-2_L
-													toe2-3_L
-											toe3-1_L
-												toe3-2_L
-													toe3-3_L
-											toe4-1_L
-												toe4-2_L
-													toe4-3_L
-											toe5-1_L
-												toe5-2_L
-													toe5-3_L
-					pelvis_R
-						upperleg01_R
-							upperleg02_R
-								lowerleg01_R
-									lowerleg02_R
-										foot_R
-											toe1-1_R
-												toe1-2_R
-											toe2-1_R
-												toe2-2_R
-													toe2-3_R
-											toe3-1_R
-												toe3-2_R
-													toe3-3_R
-											toe4-1_R
-												toe4-2_R
-													toe4-3_R
-											toe5-1_R
-												toe5-2_R
-													toe5-3_R
+			Hips
+			    Spine
+			          Spine1
+			               Spine2
+			                    Neck
+			                         Head
+			                              HeadTop_End
+			                    LeftShoulder
+			                         LeftArm
+			                              LeftForeArm
+			                                   LeftHand
+			                                        LeftHandThumb1
+			                                             LeftHandThumb2
+			                                                  LeftHandThumb3
+			                                                       LeftHandThumb4
+			                                        LeftHandIndex1
+			                                             LeftHandIndex2
+			                                                  LeftHandIndex3
+			                                                       LeftHandIndex4
+			                                        LeftHandMiddle1
+			                                             LeftHandMiddle2
+			                                                  LeftHandMiddle3
+			                                                       LeftHandMiddle4
+			                                        LeftHandRing1
+			                                             LeftHandRing2
+			                                                  LeftHandRing3
+			                                                       LeftHandRing4
+			                                        LeftHandPinky1
+			                                             LeftHandPinky2
+			                                                  LeftHandPinky3
+			                                                       LeftHandPinky4
+			                    RightShoulder
+			                         RightArm
+			                              RightForeArm
+			                                   RightHand
+			                                        RightHandThumb1
+			                                             RightHandThumb2
+			                                                  RightHandThumb3
+			                                                       RightHandThumb4
+			                                        RightHandIndex1
+			                                             RightHandIndex2
+			                                                  RightHandIndex3
+			                                                       RightHandIndex4
+			                                        RightHandMiddle1
+			                                             RightHandMiddle2
+			                                                  RightHandMiddle3
+			                                                       RightHandMiddle4
+			                                        RightHandRing1
+			                                             RightHandRing2
+			                                                  RightHandRing3
+			                                                       RightHandRing4
+			                                        RightHandPinky1
+			                                             RightHandPinky2
+			                                                  RightHandPinky3
+			                                                       RightHandPinky4
+			     LeftUpLeg
+			          LeftLeg
+			               LeftFoot
+			                    LeftToeBase
+			                         LeftToe_End
+			     RightUpLeg
+			          RightLeg
+			               RightFoot
+			                    RightToeBase
+			                         RightToe_End
 		-->
-		<!-- <Scale name = "root" x = "1.2" y = "1.2" z = "1.2" />-->
-		<Scale name = "upperarm01_L" x = "1.0" y = "0.9643" z = "1.0" />
-		<Scale name = "upperarm01_R" x = "1.0" y = "0.9643" z = "1.0" />
-		<Target name = "root" />
-		<Target name = "foot_L" />
-		<Target name = "foot_R" />
-		<Target name = "wrist_L" />
-		<Target name = "wrist_R" />
-		<Target name = "head" />
+		<!-- <Scale name = "Hips" x = "1.2" y = "1.2" z = "1.2" />
+		<Scale name = "upperarm01_L" x = "1.0" y = "1.2" z = "1.0" />
+		<Scale name = "upperarm01_R" x = "1.0" y = "1.2" z = "1.0" /> -->
+		<Target name = "Hips" />
+		<Target name = "LeftFoot" />
+		<Target name = "RightFoot" />
+		<Target name = "LeftHand" />
+		<Target name = "RightHand" />
+		<Target name = "Head" />
 	</Destination>
 
-	<Source PG_dir = "pg_eps_20_noisefree" PG_radius = "1000" PG_restart_concurrency = "4" PG_restart_attempts = "8"> <!--   PG_radius = "100000" record = "record/01.htr" -->
+	<Source PG_dir = "pg_eps_20_noisefree" PG_radius = "1000" PG_restart_concurrency = "4" PG_restart_attempts = "8"> <!-- record = "record/01.htr" -->
 		<!-- bvh skeletal structure:
 			HIERARCHY
 			ROOT Hips
@@ -367,7 +268,7 @@
 				}
 			}
 		-->
-		<IK_Chain eef = "Hips" len = "1" algor = "Proj"	up_x = "0"	up_y = "1"	up_z = "0">
+		<IK_Chain eef = "Hips" len = "0" algor = "None">
 		</IK_Chain>
 		<IK_Chain eef = "LeftFoot" len = "2" algor = "SDLS"	weight_p = "1" weight_r = "0.25" n_iter = "20" >
 			<Joint name = "LeftLeg" type = "R_Spherical" clamp = "C_Direct">
@@ -427,7 +328,7 @@
 				<Limit name = "R_phi" min = "-30" max = "+10" />
 			</Joint>
 		</IK_Chain>
-		<IK_Chain eef = "Head" len = "5" algor = "DLS" weight_p = "1" weight_r = "1" n_iter = "20" >
+		<IK_Chain eef = "Head" len = "4" algor = "DLS" weight_p = "1" weight_r = "1" n_iter = "20" >
 			<Joint name = "LowerBack" type = "R_Spherical" clamp = "C_Spherical" Dexterity_x = "1" Dexterity_y = "1" Dexterity_z = "1">
 				<Limit name = "R_theta" min = "43" max = "111" />
 				<Limit name = "R_tau" min = "-20" max = "15" />
@@ -456,32 +357,28 @@
 		</IK_Chain>
 	</Source>
 
-	<Pair from = "Entity"			force_root = "1"	to = "MakeHuman-default-skeleton" />
-	<Pair from = "Hips"				force_root = "1"	to = "root" />
-	<Pair from = "LHipJoint"		force_root = "0"	to = "pelvis_L" />
-	<Pair from = "RHipJoint"		force_root = "0"	to = "pelvis_R" />
-	<Pair from = "LowerBack"		force_root = "0"	to = "spine05" />
-	<Pair from = "LeftUpLeg"		force_root = "0"	to = "upperleg01_L" />
-	<Pair from = "RightUpLeg"		force_root = "0"	to = "upperleg01_R" />
-	<Pair from = "Spine"			force_root = "0"	to = "spine02" />
-	<Pair from = "Spine1"			force_root = "0"	to = "spine01" />
-	<Pair from = "LeftLeg"			force_root = "0"	to = "lowerleg01_L" />
-	<Pair from = "RightLeg"			force_root = "0"	to = "lowerleg01_R" />
-	<Pair from = "Neck"				force_root = "0"	to = "neck01" />
-	<Pair from = "LeftShoulder"		force_root = "0"	to = "clavicle_L" />
-	<Pair from = "RightShoulder"	force_root = "0"	to = "clavicle_R" />
-	<Pair from = "LeftFoot"			force_root = "0"	to = "foot_L" />
-	<Pair from = "RightFoot"		force_root = "0"	to = "foot_R" />
-	<Pair from = "Neck1"			force_root = "0"	to = "neck02" />
-	<Pair from = "LeftArm"			force_root = "0"	to = "upperarm01_L" />
-	<Pair from = "RightArm"			force_root = "0"	to = "upperarm01_R" />
-	<Pair from = "LeftToeBase"		force_root = "0"	to = "toe1-1_L" />
-	<Pair from = "RightToeBase"		force_root = "0"	to = "toe1-1_R" />
-	<Pair from = "Head"				force_root = "0"	to = "head" />
-	<Pair from = "LeftForeArm"		force_root = "0"	to = "lowerarm01_L" />
-	<Pair from = "RightForeArm"		force_root = "0"	to = "lowerarm01_R" />
-	<Pair from = "LeftHand"			force_root = "0"	to = "wrist_L" />
-	<Pair from = "RightHand"		force_root = "0"	to = "wrist_R" />
+	<Pair from = "Hips"				to = "Hips" />
+	<Pair from = "LowerBack"		to = "Spine" />
+	<Pair from = "LeftUpLeg"		to = "LeftUpLeg" />
+	<Pair from = "RightUpLeg"		to = "RightUpLeg" />
+	<Pair from = "Spine"			to = "Spine1" />
+	<Pair from = "Spine1"			to = "Spine2" />
+	<Pair from = "LeftLeg"			to = "LeftLeg" />
+	<Pair from = "RightLeg"			to = "RightLeg" />
+	<Pair from = "Neck"				to = "Neck" />
+	<Pair from = "LeftShoulder"		to = "LeftShoulder" />
+	<Pair from = "RightShoulder"	to = "RightShoulder" />
+	<Pair from = "LeftFoot"			to = "LeftFoot" />
+	<Pair from = "RightFoot"		to = "RightFoot" />
+	<Pair from = "LeftArm"			to = "LeftArm" />
+	<Pair from = "RightArm"			to = "RightArm" />
+	<Pair from = "LeftToeBase"		to = "LeftToeBase" />
+	<Pair from = "RightToeBase"		to = "RightToeBase" />
+	<Pair from = "Head"				to = "Head" />
+	<Pair from = "LeftForeArm"		to = "LeftForeArm" />
+	<Pair from = "RightForeArm"		to = "RightForeArm" />
+	<Pair from = "LeftHand"			to = "LeftHand" />
+	<Pair from = "RightHand"		to = "RightHand" />
 
 </MotionPipe>
 
