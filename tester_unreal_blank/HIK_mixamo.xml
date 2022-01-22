@@ -1,0 +1,384 @@
+<?xml version="1.0" ?>
+<MotionPipe sync = "cross" 	m11="1" m12="0" m13="0"
+							m21="0" m22="0" m23="1"
+							m31="0" m32="1" m33="0">
+	<Destination file = "fbx/Mixamo_65">
+		<!-- fbx skeletal structure:
+			Hips
+			    Spine
+			          Spine1
+			               Spine2
+			                    Neck
+			                         Head
+			                              HeadTop_End
+			                    LeftShoulder
+			                         LeftArm
+			                              LeftForeArm
+			                                   LeftHand
+			                                        LeftHandThumb1
+			                                             LeftHandThumb2
+			                                                  LeftHandThumb3
+			                                                       LeftHandThumb4
+			                                        LeftHandIndex1
+			                                             LeftHandIndex2
+			                                                  LeftHandIndex3
+			                                                       LeftHandIndex4
+			                                        LeftHandMiddle1
+			                                             LeftHandMiddle2
+			                                                  LeftHandMiddle3
+			                                                       LeftHandMiddle4
+			                                        LeftHandRing1
+			                                             LeftHandRing2
+			                                                  LeftHandRing3
+			                                                       LeftHandRing4
+			                                        LeftHandPinky1
+			                                             LeftHandPinky2
+			                                                  LeftHandPinky3
+			                                                       LeftHandPinky4
+			                    RightShoulder
+			                         RightArm
+			                              RightForeArm
+			                                   RightHand
+			                                        RightHandThumb1
+			                                             RightHandThumb2
+			                                                  RightHandThumb3
+			                                                       RightHandThumb4
+			                                        RightHandIndex1
+			                                             RightHandIndex2
+			                                                  RightHandIndex3
+			                                                       RightHandIndex4
+			                                        RightHandMiddle1
+			                                             RightHandMiddle2
+			                                                  RightHandMiddle3
+			                                                       RightHandMiddle4
+			                                        RightHandRing1
+			                                             RightHandRing2
+			                                                  RightHandRing3
+			                                                       RightHandRing4
+			                                        RightHandPinky1
+			                                             RightHandPinky2
+			                                                  RightHandPinky3
+			                                                       RightHandPinky4
+			     LeftUpLeg
+			          LeftLeg
+			               LeftFoot
+			                    LeftToeBase
+			                         LeftToe_End
+			     RightUpLeg
+			          RightLeg
+			               RightFoot
+			                    RightToeBase
+			                         RightToe_End
+		-->
+		<!-- <Scale name = "Hips" x = "1.2" y = "1.2" z = "1.2" />
+		<Scale name = "upperarm01_L" x = "1.0" y = "1.2" z = "1.0" />
+		<Scale name = "upperarm01_R" x = "1.0" y = "1.2" z = "1.0" /> -->
+		<Target name = "Hips" />
+		<Target name = "LeftFoot" />
+		<Target name = "RightFoot" />
+		<Target name = "LeftHand" />
+		<Target name = "RightHand" />
+		<Target name = "Head" />
+	</Destination>
+
+	<Source PG_dir = "pg_eps_20_noisefree" PG_radius = "1000" PG_restart_concurrency = "4" PG_restart_attempts = "8"> <!-- record = "record/01.htr" -->
+		<!-- bvh skeletal structure:
+			HIERARCHY
+			ROOT Hips
+			{
+				OFFSET 0.00000 0.00000 0.00000
+				CHANNELS 6 Xposition Yposition Zposition Zrotation Yrotation Xrotation
+				JOINT LHipJoint
+				{
+					OFFSET 0 0 0
+					CHANNELS 3 Zrotation Yrotation Xrotation
+					JOINT LeftUpLeg
+					{
+						OFFSET 1.36306 -1.79463 0.83929
+						CHANNELS 3 Zrotation Yrotation Xrotation
+						JOINT LeftLeg
+						{
+							OFFSET 2.44811 -6.72613 0.00000
+							CHANNELS 3 Zrotation Yrotation Xrotation
+							JOINT LeftFoot
+							{
+								OFFSET 2.56220 -7.03959 0.00000
+								CHANNELS 3 Zrotation Yrotation Xrotation
+								JOINT LeftToeBase
+								{
+									OFFSET 0.15764 -0.43311 2.32255
+									CHANNELS 3 Zrotation Yrotation Xrotation
+									End Site
+									{
+										OFFSET 0.00000 -0.00000 1.18966
+									}
+								}
+							}
+						}
+					}
+				}
+				JOINT RHipJoint
+				{
+					OFFSET 0 0 0
+					CHANNELS 3 Zrotation Yrotation Xrotation
+					JOINT RightUpLeg
+					{
+						OFFSET -1.30552 -1.79463 0.83929
+						CHANNELS 3 Zrotation Yrotation Xrotation
+						JOINT RightLeg
+						{
+							OFFSET -2.54253 -6.98555 0.00000
+							CHANNELS 3 Zrotation Yrotation Xrotation
+							JOINT RightFoot
+							{
+								OFFSET -2.56826 -7.05623 0.00000
+								CHANNELS 3 Zrotation Yrotation Xrotation
+								JOINT RightToeBase
+								{
+									OFFSET -0.16473 -0.45259 2.36315
+									CHANNELS 3 Zrotation Yrotation Xrotation
+									End Site
+									{
+										OFFSET -0.00000 -0.00000 1.21082
+									}
+								}
+							}
+						}
+					}
+				}
+				JOINT LowerBack
+				{
+					OFFSET 0 0 0
+					CHANNELS 3 Zrotation Yrotation Xrotation
+					JOINT Spine
+					{
+						OFFSET 0.02827 2.03559 -0.19338
+						CHANNELS 3 Zrotation Yrotation Xrotation
+						JOINT Spine1
+						{
+							OFFSET 0.05672 2.04885 -0.04275
+							CHANNELS 3 Zrotation Yrotation Xrotation
+							JOINT Neck
+							{
+								OFFSET 0 0 0
+								CHANNELS 3 Zrotation Yrotation Xrotation
+								JOINT Neck1
+								{
+									OFFSET -0.05417 1.74624 0.17202
+									CHANNELS 3 Zrotation Yrotation Xrotation
+									JOINT Head
+									{
+										OFFSET 0.10407 1.76136 -0.12397
+										CHANNELS 3 Zrotation Yrotation Xrotation
+										End Site
+										{
+											OFFSET 0.03720 1.77044 -0.06241
+										}
+									}
+								}
+							}
+							JOINT LeftShoulder
+							{
+								OFFSET 0 0 0
+								CHANNELS 3 Zrotation Yrotation Xrotation
+								JOINT LeftArm
+								{
+									OFFSET 3.36241 1.20089 -0.31121
+									CHANNELS 3 Zrotation Yrotation Xrotation
+									JOINT LeftForeArm
+									{
+										OFFSET 4.98300 -0.00000 -0.00000
+										CHANNELS 3 Zrotation Yrotation Xrotation
+										JOINT LeftHand
+										{
+											OFFSET 3.48356 -0.00000 -0.00000
+											CHANNELS 3 Zrotation Yrotation Xrotation
+											JOINT LeftFingerBase
+											{
+												OFFSET 0 0 0
+												CHANNELS 3 Zrotation Yrotation Xrotation
+												JOINT LFingers
+												{
+													OFFSET 0.71526 -0.00000 -0.00000
+													CHANNELS 3 Zrotation Yrotation Xrotation
+													End Site
+													{
+														OFFSET 0.57666 -0.00000 -0.00000
+													}
+												}
+											}
+											JOINT LThumb
+											{
+												OFFSET 0 0 0
+												CHANNELS 3 Zrotation Yrotation Xrotation
+												End Site
+												{
+													OFFSET 0.58547 -0.00000 0.58547
+												}
+											}
+										}
+									}
+								}
+							}
+							JOINT RightShoulder
+							{
+								OFFSET 0 0 0
+								CHANNELS 3 Zrotation Yrotation Xrotation
+								JOINT RightArm
+								{
+									OFFSET -3.13660 1.37405 -0.40465
+									CHANNELS 3 Zrotation Yrotation Xrotation
+									JOINT RightForeArm
+									{
+										OFFSET -5.24190 -0.00000 -0.00000
+										CHANNELS 3 Zrotation Yrotation Xrotation
+										JOINT RightHand
+										{
+											OFFSET -3.44417 -0.00000 -0.00000
+											CHANNELS 3 Zrotation Yrotation Xrotation
+											JOINT RightFingerBase
+											{
+												OFFSET 0 0 0
+												CHANNELS 3 Zrotation Yrotation Xrotation
+												JOINT RFingers
+												{
+													OFFSET -0.62253 -0.00000 -0.00000
+													CHANNELS 3 Zrotation Yrotation Xrotation
+													End Site
+													{
+														OFFSET -0.50190 -0.00000 -0.00000
+													}
+												}
+											}
+											JOINT RThumb
+											{
+												OFFSET 0 0 0
+												CHANNELS 3 Zrotation Yrotation Xrotation
+												End Site
+												{
+													OFFSET -0.50956 -0.00000 0.50956
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		-->
+		<IK_Chain eef = "Hips" len = "0" algor = "Direct">
+		</IK_Chain>
+		<IK_Chain eef = "LeftFoot" len = "2" algor = "SDLS"	weight_p = "1" weight_r = "0.25" n_iter = "20" >
+			<Joint name = "LeftLeg" type = "R_Spherical" clamp = "C_Direct">
+				<Limit name = "R_theta" min = "-180" max = "+1" />
+				<Limit name = "R_tau" min = "-1" max = "+1" />
+				<Limit name = "R_phi" min = "-1" max = "+1" />
+			</Joint>
+			<Joint name = "LeftUpLeg" type = "R_Spherical" clamp = "C_Spherical">
+				<Limit name = "R_theta" min = "3" max = "160" />
+				<!-- <Limit name = "R_tau" min = "-1" max = "+1" /> -->
+				<Limit name = "R_phi" min = "11" max = "170" />
+			</Joint>
+		</IK_Chain>
+		<IK_Chain eef = "RightFoot"	 len = "2" algor = "SDLS" weight_p = "1" weight_r = "0.25" n_iter = "20" >
+			<Joint name = "RightLeg" type = "R_Spherical" clamp = "C_Direct">
+				<Limit name = "R_theta" min = "-180" max = "+1" />
+				<Limit name = "R_tau" min = "-1" max = "+1" />
+				<Limit name = "R_phi" min = "-1" max = "+1" />
+			</Joint>
+			<Joint name = "RightUpLeg" type = "R_Spherical" clamp = "C_Spherical">
+				<Limit name = "R_theta" min = "9" max = "170" />
+				<!-- <Limit name = "R_tau" min = "-1" max = "+1" /> -->
+				<Limit name = "R_phi" min = "49" max = "168" />
+			</Joint>
+		</IK_Chain>
+		<IK_Chain eef = "LeftHand" len = "3" algor = "SDLS" weight_p = "1" weight_r = "0.25" n_iter = "20" >
+			<Joint name = "LeftForeArm" type = "R_Spherical" clamp = "C_Spherical">
+				<Limit name = "R_theta" min = "10" max = "95" />
+				<Limit name = "R_tau" min = "-1" max = "+1" />
+				<Limit name = "R_phi" min = "60" max = "93" />
+			</Joint>
+			<Joint name = "LeftArm" type = "R_Spherical" clamp = "C_Spherical">
+				<Limit name = "R_theta" min = "21" max = "158" />
+				<!-- <Limit name = "R_tau" min = "-150" max = "150" /> -->
+				<Limit name = "R_phi" min = "39" max = "146" />
+			</Joint>
+			<Joint name = "LeftShoulder" type = "R_Spherical" clamp = "C_Direct" Dexterity_x = "0.1" Dexterity_y = "0.1" Dexterity_z = "0.1">
+				<Limit name = "R_theta" min = "-10" max = "+10" />
+				<Limit name = "R_tau" min = "-5" max = "+5" />
+				<Limit name = "R_phi" min = "-10" max = "+30" />
+			</Joint>
+		</IK_Chain>
+		<IK_Chain eef = "RightHand" len = "3" algor = "SDLS" weight_p = "1" weight_r = "0.25" n_iter = "20" >
+			<Joint name = "RightForeArm" type = "R_Spherical" clamp = "C_Spherical">
+				<Limit name = "R_theta" min = "10" max = "95" />
+				<Limit name = "R_tau" min = "-1" max = "+1" />
+				<Limit name = "R_phi" min = "88" max = "120" />
+			</Joint>
+			<Joint name = "RightArm" type = "R_Spherical" clamp = "C_Spherical">
+				<Limit name = "R_theta" min = "23" max = "145" />
+				<!-- <Limit name = "R_tau" min = "-150" max = "150" /> -->
+				<Limit name = "R_phi" min = "27" max = "142" />
+			</Joint>
+			<Joint name = "RightShoulder" type = "R_Spherical" clamp = "C_Direct" Dexterity_x = "0.1" Dexterity_y = "0.1" Dexterity_z = "0.1">
+				<Limit name = "R_theta" min = "-10" max = "+10" />
+				<Limit name = "R_tau" min = "-5" max = "+5" />
+				<Limit name = "R_phi" min = "-30" max = "+10" />
+			</Joint>
+		</IK_Chain>
+		<IK_Chain eef = "Head" len = "4" algor = "DLS" weight_p = "1" weight_r = "1" n_iter = "20" >
+			<Joint name = "LowerBack" type = "R_Spherical" clamp = "C_Spherical" Dexterity_x = "1" Dexterity_y = "1" Dexterity_z = "1">
+				<Limit name = "R_theta" min = "43" max = "111" />
+				<Limit name = "R_tau" min = "-20" max = "15" />
+				<Limit name = "R_phi" min = "72" max = "107" />
+			</Joint>
+			<Joint name = "Spine" type = "R_Spherical" clamp = "C_Spherical" Dexterity_x = "0.25" Dexterity_y = "0.25" Dexterity_z = "0.25">
+				<Limit name = "R_theta" min = "76" max = "101" />
+				<Limit name = "R_tau" min = "-20" max = "20" />
+				<Limit name = "R_phi" min = "80" max = "100" />
+			</Joint>
+			<Joint name = "Spine1" type = "R_Spherical" clamp = "C_Spherical" Dexterity_x = "0.25" Dexterity_y = "0.25" Dexterity_z = "0.25">
+				<Limit name = "R_theta" min = "79" max = "106" />
+				<Limit name = "R_tau" min = "-10" max = "10" />
+				<Limit name = "R_phi" min = "76" max = "106" />
+			</Joint>
+			<Joint name = "Neck" type = "R_Spherical" clamp = "C_Spherical" Dexterity_x = "0" Dexterity_y = "0" Dexterity_z = "0">
+				<Limit name = "R_theta" min = "65" max = "110" />
+				<Limit name = "R_tau" min = "-40" max = "40" />
+				<Limit name = "R_phi" min = "60" max = "120" />
+			</Joint>
+			<Joint name = "Neck1" type = "R_Spherical" clamp = "C_Spherical" Dexterity_x = "2" Dexterity_y = "2" Dexterity_z = "2">
+				<Limit name = "R_theta" min = "64" max = "130" />
+				<Limit name = "R_tau" min = "-90" max = "90" />
+				<Limit name = "R_phi" min = "64" max = "114" />
+			</Joint>
+		</IK_Chain>
+	</Source>
+
+	<Pair from = "Hips"				to = "Hips" />
+	<Pair from = "LowerBack"		to = "Spine" />
+	<Pair from = "LeftUpLeg"		to = "LeftUpLeg" />
+	<Pair from = "RightUpLeg"		to = "RightUpLeg" />
+	<Pair from = "Spine"			to = "Spine1" />
+	<Pair from = "Spine1"			to = "Spine2" />
+	<Pair from = "LeftLeg"			to = "LeftLeg" />
+	<Pair from = "RightLeg"			to = "RightLeg" />
+	<Pair from = "Neck"				to = "Neck" />
+	<Pair from = "LeftShoulder"		to = "LeftShoulder" />
+	<Pair from = "RightShoulder"	to = "RightShoulder" />
+	<Pair from = "LeftFoot"			to = "LeftFoot" />
+	<Pair from = "RightFoot"		to = "RightFoot" />
+	<Pair from = "LeftArm"			to = "LeftArm" />
+	<Pair from = "RightArm"			to = "RightArm" />
+	<Pair from = "LeftToeBase"		to = "LeftToeBase" />
+	<Pair from = "RightToeBase"		to = "RightToeBase" />
+	<Pair from = "Head"				to = "Head" />
+	<Pair from = "LeftForeArm"		to = "LeftForeArm" />
+	<Pair from = "RightForeArm"		to = "RightForeArm" />
+	<Pair from = "LeftHand"			to = "LeftHand" />
+	<Pair from = "RightHand"		to = "RightHand" />
+
+</MotionPipe>
+
