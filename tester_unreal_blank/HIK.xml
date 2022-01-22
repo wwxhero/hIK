@@ -180,7 +180,7 @@
 		<Target name = "head" />
 	</Destination>
 
-	<Source PG_dir = "pg_eps_20_noisefree" PG_radius = "1000" PG_restart_concurrency = "4" PG_restart_attempts = "8"> <!--   PG_radius = "100000" PG_dir = "pg_eps_15_noisefree" PG_dir = "pg_eps_15"  PG_dir = "pgs" record = "record/01.htr" -->
+	<Source PG_dir = "pg_eps_20_noisefree" PG_radius = "1000" PG_restart_concurrency = "4" PG_restart_attempts = "8"> <!--   PG_radius = "100000" record = "record/01.htr" -->
 		<!-- bvh skeletal structure:
 			HIERARCHY
 			ROOT Hips
