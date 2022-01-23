@@ -397,11 +397,21 @@ void AVRPawnBase::VerifyTracker()
 	m_verifying = (TRACKER_ID)(verifying % N_SPECTRAKS);
 }
 
+ModelType AVRPawnBase::GetModelType()
+{
+	FString strMDType = FWindowsPlatformMisc::GetEnvironmentVariable(TEXT("IKMODEL"));
+	if (TEXT("ManMakeHuman163") == strMDType)
+		return ManMakeHuman163;
+	else if (TEXT("WomanMixamo65") == strMDType)
+		return WomanMixamo65;
+	else
+		return ManMakeHuman163;
+}
+
 // Called to bind functionality to input
 void AVRPawnBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
 }
 
 void AVRPawnBase::DBG_VisTransform(const FTransform& tm_l2w, float axis_len, float thickness) const

@@ -11,6 +11,14 @@
 #include "SceneCapture2DActorVRSpec.h"
 #include "VRPawnBase.generated.h"
 
+UENUM()
+enum ModelType
+{
+	ManMakeHuman163 = 0	UMETA(DisplayName = "MakeHuman163"),
+	WomanMixamo65		UMETA(DisplayName = "Mixamo65"),
+	Child
+};
+
 UENUM(BlueprintType)
 enum VR_EVT
 {
@@ -116,6 +124,8 @@ protected:
 	UFUNCTION(BlueprintCallable, Category = Settings)
 	void Proc_VRMsg(TRACKER_ID tracker_id, VR_EVT evt);
 
+	UFUNCTION(BlueprintCallable, Category = Settings, meta=(PinShownByDefault))
+	ModelType GetModelType();
 public:
 	// Sets default values for this pawn's properties
 	AVRPawnBase();
