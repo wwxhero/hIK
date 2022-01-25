@@ -73,12 +73,12 @@
 		<!-- <Scale name = "Hips" x = "1.2" y = "1.2" z = "1.2" />
 		<Scale name = "upperarm01_L" x = "1.0" y = "1.2" z = "1.0" />
 		<Scale name = "upperarm01_R" x = "1.0" y = "1.2" z = "1.0" /> -->
-		<Target name = "Hips" />
-		<Target name = "LeftFoot" />
-		<Target name = "RightFoot" />
-		<Target name = "LeftHand" />
-		<Target name = "RightHand" />
-		<Target name = "Head" />
+		<Target name = "hips" />
+		<Target name = "leftfoot" />
+		<Target name = "rightfoot" />
+		<Target name = "lefthand" />
+		<Target name = "righthand" />
+		<Target name = "head" />
 	</Destination>
 
 	<Source file = "bvh/01_07_1_s6.bvh">
@@ -270,27 +270,27 @@
 		-->
 	</Source>
 
-	<Pair from = "Hips"				to = "Hips" />
-	<Pair from = "LowerBack"		to = "Spine" />
-	<Pair from = "LeftUpLeg"		to = "LeftUpLeg" />
-	<Pair from = "RightUpLeg"		to = "RightUpLeg" />
-	<Pair from = "Spine"			to = "Spine1" />
-	<Pair from = "Spine1"			to = "Spine2" />
-	<Pair from = "LeftLeg"			to = "LeftLeg" />
-	<Pair from = "RightLeg"			to = "RightLeg" />
-	<Pair from = "Neck"				to = "Neck" />
-	<Pair from = "LeftShoulder"		to = "LeftShoulder" />
-	<Pair from = "RightShoulder"	to = "RightShoulder" />
-	<Pair from = "LeftFoot"			to = "LeftFoot" />
-	<Pair from = "RightFoot"		to = "RightFoot" />
-	<Pair from = "LeftArm"			to = "LeftArm" />
-	<Pair from = "RightArm"			to = "RightArm" />
-	<Pair from = "LeftToeBase"		to = "LeftToeBase" />
-	<Pair from = "RightToeBase"		to = "RightToeBase" />
-	<Pair from = "Head"				to = "Head" />
-	<Pair from = "LeftForeArm"		to = "LeftForeArm" />
-	<Pair from = "RightForeArm"		to = "RightForeArm" />
-	<Pair from = "LeftHand"			to = "LeftHand" />
-	<Pair from = "RightHand"		to = "RightHand" />
+	<Pair from = "Hips"				to = "hips" />
+	<Pair from = "LowerBack"		to = "spine" />
+	<Pair from = "LeftUpLeg"		to = "leftupleg" />
+	<Pair from = "RightUpLeg"		to = "rightupleg" />
+	<Pair from = "Spine"			to = "spine1" />
+	<Pair from = "Spine1"			to = "spine2" />
+	<Pair from = "LeftLeg"			to = "leftleg" />
+	<Pair from = "RightLeg"			to = "rightleg" />
+	<Pair from = "Neck"				to = "neck" />
+	<Pair from = "LeftShoulder"		to = "leftshoulder" />
+	<Pair from = "RightShoulder"	to = "rightshoulder" />
+	<Pair from = "LeftFoot"			to = "leftfoot" />
+	<Pair from = "RightFoot"		to = "rightfoot" />
+	<Pair from = "LeftArm"			to = "leftarm" />
+	<Pair from = "RightArm"			to = "rightarm" />
+	<Pair from = "LeftToeBase"		to = "lefttoebase" />
+	<Pair from = "RightToeBase"		to = "righttoebase" />
+	<Pair from = "Head"				to = "head" />
+	<Pair from = "LeftForeArm"		to = "leftforearm" />
+	<Pair from = "RightForeArm"		to = "rightforearm" />
+	<Pair from = "LeftHand"			to = "lefthand" />
+	<Pair from = "RightHand"		to = "righthand" />
 </MotionPipe>
 

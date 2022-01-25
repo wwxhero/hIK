@@ -170,13 +170,13 @@
 												toe5-3_R
 		-->
 		<!-- <Scale name = "root" x = "1.2" y = "1.2" z = "1.2" />-->
-		<Scale name = "upperarm01_L" x = "1.0" y = "0.9643" z = "1.0" />
-		<Scale name = "upperarm01_R" x = "1.0" y = "0.9643" z = "1.0" />
+		<Scale name = "upperarm01_l" x = "1.0" y = "0.9643" z = "1.0" />
+		<Scale name = "upperarm01_r" x = "1.0" y = "0.9643" z = "1.0" />
 		<Target name = "root" />
-		<Target name = "foot_L" />
-		<Target name = "foot_R" />
-		<Target name = "wrist_L" />
-		<Target name = "wrist_R" />
+		<Target name = "foot_l" />
+		<Target name = "foot_r" />
+		<Target name = "wrist_l" />
+		<Target name = "wrist_r" />
 		<Target name = "head" />
 	</Destination>
 
@@ -371,29 +371,29 @@
 
 
 	<Pair from = "Hips"				to = "root" />
-	<Pair from = "LHipJoint"		to = "pelvis_L" />
-	<Pair from = "RHipJoint"		to = "pelvis_R" />
+	<Pair from = "LHipJoint"		to = "pelvis_l" />
+	<Pair from = "RHipJoint"		to = "pelvis_r" />
 	<Pair from = "LowerBack"		to = "spine05" />
-	<Pair from = "LeftUpLeg"		to = "upperleg01_L" />
-	<Pair from = "RightUpLeg"		to = "upperleg01_R" />
+	<Pair from = "LeftUpLeg"		to = "upperleg01_l" />
+	<Pair from = "RightUpLeg"		to = "upperleg01_r" />
 	<Pair from = "Spine"			to = "spine02" />
 	<Pair from = "Spine1"			to = "spine01" />
-	<Pair from = "LeftLeg"			to = "lowerleg01_L" />
-	<Pair from = "RightLeg"			to = "lowerleg01_R" />
+	<Pair from = "LeftLeg"			to = "lowerleg01_l" />
+	<Pair from = "RightLeg"			to = "lowerleg01_r" />
 	<Pair from = "Neck"				to = "neck01" />
-	<Pair from = "LeftShoulder"		to = "clavicle_L" />
-	<Pair from = "RightShoulder"	to = "clavicle_R" />
-	<Pair from = "LeftFoot"			to = "foot_L" />
-	<Pair from = "RightFoot"		to = "foot_R" />
+	<Pair from = "LeftShoulder"		to = "clavicle_l" />
+	<Pair from = "RightShoulder"	to = "clavicle_r" />
+	<Pair from = "LeftFoot"			to = "foot_l" />
+	<Pair from = "RightFoot"		to = "foot_r" />
 	<Pair from = "Neck1"			to = "neck02" />
-	<Pair from = "LeftArm"			to = "upperarm01_L" />
-	<Pair from = "RightArm"			to = "upperarm01_R" />
-	<Pair from = "LeftToeBase"		to = "toe1-1_L" />
-	<Pair from = "RightToeBase"		to = "toe1-1_R" />
+	<Pair from = "LeftArm"			to = "upperarm01_l" />
+	<Pair from = "RightArm"			to = "upperarm01_r" />
+	<Pair from = "LeftToeBase"		to = "toe1-1_l" />
+	<Pair from = "RightToeBase"		to = "toe1-1_r" />
 	<Pair from = "Head"				to = "head" />
-	<Pair from = "LeftForeArm"		to = "lowerarm01_L" />
-	<Pair from = "RightForeArm"		to = "lowerarm01_R" />
-	<Pair from = "LeftHand"			to = "wrist_L" />
-	<Pair from = "RightHand"		to = "wrist_R" />
+	<Pair from = "LeftForeArm"		to = "lowerarm01_l" />
+	<Pair from = "RightForeArm"		to = "lowerarm01_r" />
+	<Pair from = "LeftHand"			to = "wrist_l" />
+	<Pair from = "RightHand"		to = "wrist_r" />
 </MotionPipe>
 

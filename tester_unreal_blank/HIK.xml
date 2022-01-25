@@ -170,13 +170,13 @@
 													toe5-3_R
 		-->
 		<!-- <Scale name = "root" x = "1.2" y = "1.2" z = "1.2" />-->
-		<Scale name = "upperarm01_L" x = "1.0" y = "0.9643" z = "1.0" />
-		<Scale name = "upperarm01_R" x = "1.0" y = "0.9643" z = "1.0" />
+		<Scale name = "upperarm01_l" x = "1.0" y = "0.9643" z = "1.0" />
+		<Scale name = "upperarm01_r" x = "1.0" y = "0.9643" z = "1.0" />
 		<Target name = "root" />
-		<Target name = "foot_L" />
-		<Target name = "foot_R" />
-		<Target name = "wrist_L" />
-		<Target name = "wrist_R" />
+		<Target name = "foot_l" />
+		<Target name = "foot_r" />
+		<Target name = "wrist_l" />
+		<Target name = "wrist_r" />
 		<Target name = "head" />
 	</Destination>
 
@@ -456,32 +456,32 @@
 		</IK_Chain>
 	</Source>
 
-	<Pair from = "Entity"			force_root = "1"	to = "MakeHuman-default-skeleton" />
+	<Pair from = "Entity"			force_root = "1"	to = "makehuman-default-skeleton" />
 	<Pair from = "Hips"				force_root = "1"	to = "root" />
-	<Pair from = "LHipJoint"		force_root = "0"	to = "pelvis_L" />
-	<Pair from = "RHipJoint"		force_root = "0"	to = "pelvis_R" />
+	<Pair from = "LHipJoint"		force_root = "0"	to = "pelvis_l" />
+	<Pair from = "RHipJoint"		force_root = "0"	to = "pelvis_r" />
 	<Pair from = "LowerBack"		force_root = "0"	to = "spine05" />
-	<Pair from = "LeftUpLeg"		force_root = "0"	to = "upperleg01_L" />
-	<Pair from = "RightUpLeg"		force_root = "0"	to = "upperleg01_R" />
+	<Pair from = "LeftUpLeg"		force_root = "0"	to = "upperleg01_l" />
+	<Pair from = "RightUpLeg"		force_root = "0"	to = "upperleg01_r" />
 	<Pair from = "Spine"			force_root = "0"	to = "spine02" />
 	<Pair from = "Spine1"			force_root = "0"	to = "spine01" />
-	<Pair from = "LeftLeg"			force_root = "0"	to = "lowerleg01_L" />
-	<Pair from = "RightLeg"			force_root = "0"	to = "lowerleg01_R" />
+	<Pair from = "LeftLeg"			force_root = "0"	to = "lowerleg01_l" />
+	<Pair from = "RightLeg"			force_root = "0"	to = "lowerleg01_r" />
 	<Pair from = "Neck"				force_root = "0"	to = "neck01" />
-	<Pair from = "LeftShoulder"		force_root = "0"	to = "clavicle_L" />
-	<Pair from = "RightShoulder"	force_root = "0"	to = "clavicle_R" />
-	<Pair from = "LeftFoot"			force_root = "0"	to = "foot_L" />
-	<Pair from = "RightFoot"		force_root = "0"	to = "foot_R" />
+	<Pair from = "LeftShoulder"		force_root = "0"	to = "clavicle_l" />
+	<Pair from = "RightShoulder"	force_root = "0"	to = "clavicle_r" />
+	<Pair from = "LeftFoot"			force_root = "0"	to = "foot_l" />
+	<Pair from = "RightFoot"		force_root = "0"	to = "foot_r" />
 	<Pair from = "Neck1"			force_root = "0"	to = "neck02" />
-	<Pair from = "LeftArm"			force_root = "0"	to = "upperarm01_L" />
-	<Pair from = "RightArm"			force_root = "0"	to = "upperarm01_R" />
-	<Pair from = "LeftToeBase"		force_root = "0"	to = "toe1-1_L" />
-	<Pair from = "RightToeBase"		force_root = "0"	to = "toe1-1_R" />
+	<Pair from = "LeftArm"			force_root = "0"	to = "upperarm01_l" />
+	<Pair from = "RightArm"			force_root = "0"	to = "upperarm01_r" />
+	<Pair from = "LeftToeBase"		force_root = "0"	to = "toe1-1_l" />
+	<Pair from = "RightToeBase"		force_root = "0"	to = "toe1-1_r" />
 	<Pair from = "Head"				force_root = "0"	to = "head" />
-	<Pair from = "LeftForeArm"		force_root = "0"	to = "lowerarm01_L" />
-	<Pair from = "RightForeArm"		force_root = "0"	to = "lowerarm01_R" />
-	<Pair from = "LeftHand"			force_root = "0"	to = "wrist_L" />
-	<Pair from = "RightHand"		force_root = "0"	to = "wrist_R" />
+	<Pair from = "LeftForeArm"		force_root = "0"	to = "lowerarm01_l" />
+	<Pair from = "RightForeArm"		force_root = "0"	to = "lowerarm01_r" />
+	<Pair from = "LeftHand"			force_root = "0"	to = "wrist_l" />
+	<Pair from = "RightHand"		force_root = "0"	to = "wrist_r" />
 
 </MotionPipe>
 
