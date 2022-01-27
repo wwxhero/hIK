@@ -328,7 +328,7 @@
 				<Limit name = "R_phi" min = "-30" max = "+10" />
 			</Joint>
 		</IK_Chain>
-		<IK_Chain eef = "Head" len = "4" algor = "DLS" weight_p = "1" weight_r = "1" n_iter = "20" >
+		<IK_Chain eef = "Head" len = "5" algor = "DLS" weight_p = "1" weight_r = "1" n_iter = "20" >
 			<Joint name = "LowerBack" type = "R_Spherical" clamp = "C_Spherical" Dexterity_x = "1" Dexterity_y = "1" Dexterity_z = "1">
 				<Limit name = "R_theta" min = "43" max = "111" />
 				<Limit name = "R_tau" min = "-20" max = "15" />
